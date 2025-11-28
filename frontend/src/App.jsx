@@ -1,75 +1,3 @@
-// import { useState } from "react";
-// import "./App.css";
-// import Header from "../Components/Header";
-// import LQLEditor from "../Components/LqlEditor";
-// import OutputPanels from "../Components/OutputPanels";
-
-// export default function App() {
-//   const [outputs, setOutputs] = useState({
-//     lexerOutput: "",
-//     parserOutput: "",
-//     semanticAnalyzerOutput: "",
-//     intermediateCodeOutput: "",
-//     optimizerOutput: "",
-//     finalCodeOutput: "",
-//   });
-
-//   const [isLoading, setIsLoading] = useState(false);
-
-//   const handleRun = async (code) => {
-//     console.log(code);
-
-//     setIsLoading(true);
-//     try {
-//       const res = await fetch("http://localhost:8000/run", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ code }),
-//       });
-
-//       const { phases: data } = await res.json();
-
-//       console.log(data);
-
-//       setOutputs({
-//         lexerOutput: JSON.stringify(data.tokens || [], null, 2) || "No output",
-//         parserOutput: JSON.stringify(data.parser || [], null, 2) || "No output",
-//         semanticAnalyzerOutput:
-//           JSON.stringify(data.semantic || {}, null, 2) || "No output",
-//         intermediateCodeOutput:
-//           JSON.stringify(data.tac || [], null, 2) || "No output",
-//         optimizerOutput:
-//           JSON.stringify(data.optimized_tac || [], null, 2) || "No output",
-//         finalCodeOutput: data.execution_output || "No output",
-//       });
-//     } catch (err) {
-//       const errorMsg = `Error: ${
-//         err instanceof Error ? err.message : "Unknown error"
-//       }`;
-//       setOutputs({
-//         lexerOutput: errorMsg,
-//         parserOutput: errorMsg,
-//         semanticAnalyzerOutput: errorMsg,
-//         intermediateCodeOutput: errorMsg,
-//         optimizerOutput: errorMsg,
-//         finalCodeOutput: errorMsg,
-//       });
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="app-container">
-//       <Header />
-//       <div className="editor-and-outputs">
-//         <LQLEditor onRun={handleRun} isLoading={isLoading} />
-//         <OutputPanels outputs={outputs} isLoading={isLoading} />
-//       </div>
-//     </div>
-//   );
-// }
-
 import { useState } from "react";
 import "./App.css";
 import Header from "../Components/Header";
@@ -77,6 +5,8 @@ import LQLEditor from "../Components/LqlEditor";
 import OutputPanels from "../Components/OutputPanels";
 
 export default function App() {
+  // Vite exposes variables starting with VITE_ inside import.meta.env.
+  const API_URL = import.meta.env.VITE_API_URL;
   const [outputs, setOutputs] = useState({
     lexerOutput: "",
     parserOutput: "",
@@ -105,7 +35,7 @@ export default function App() {
     };
 
     try {
-      const res = await fetch("http://localhost:8000/run", {
+      const res = await fetch(`${API_URL}/run`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code }),
