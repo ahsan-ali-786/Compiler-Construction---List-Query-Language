@@ -28,6 +28,11 @@ A small domain-specific language for **list operations, arithmetic, bitwise, and
 docker-compose build
 docker-compose up
 ```
+- Access the frontend at:
+
+```http
+http://localhost:5173
+```
 
 ---
 
