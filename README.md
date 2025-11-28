@@ -1,6 +1,3 @@
-Sure! Here's a **completed version of your README.md** with all sections filled in, continuing from where you left off:
-
-````markdown
 # List Query Language (LQL)
 
 A small domain-specific language for **list operations, arithmetic, bitwise, and set operations**, inspired by vectorized languages. This language supports filtering, mapping, sorting, and element-wise operations on lists.
