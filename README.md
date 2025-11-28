@@ -185,6 +185,6 @@ print result
 
 @ Bitwise operations
 list bits = [1,2,3]
-list masked = map bits $0 => $0 & 2
+list masked = map bits $0 => $0 and 2
 print masked
 ```
