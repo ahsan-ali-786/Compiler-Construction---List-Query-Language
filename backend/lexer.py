@@ -5,7 +5,6 @@ Token = namedtuple('Token', ['type', 'value', 'line', 'col'])
 
 # ── Token specification ───────────────────────────────────────
 TOKEN_REGEX = re.compile(r"""
-    # (?P<NUMBER>\d+(\.\d+)?)              |  # positive numbers only
     (?P<NUMBER>-?\d+(\.\d+)?)            |
     (?P<DOLLAR0>\$0)                     |  # $0
     (?P<ARROW>=>)                        |  # arrow for map
@@ -37,37 +36,85 @@ KEYWORDS = {
     'and', 'or', 'xor'  # logical/bitwise operators
 }
 
+# def lex(source):
+    
+#     tokens = []
+#     line, col = 1, 1
+
+#     for mo in TOKEN_REGEX.finditer(source):
+#         kind = mo.lastgroup
+#         value = mo.group()
+
+#         if kind in ('WS', 'COMMENT'):
+#             pass  # skip whitespace and comments
+#         elif kind == 'NEWLINE':
+#             line += value.count('\n')
+#             col = 1
+#             continue
+#         elif kind == 'ID':
+#             # Check if it's a keyword
+#             if value in KEYWORDS:
+#                 tokens.append(Token('KEYWORD', value, line, col))
+#             else:
+#                 tokens.append(Token('ID', value, line, col))
+#         elif kind in ('PLUS', 'MINUS', 'STAR', 'SLASH', 'MOD'):
+#             # Unify arithmetic operators as OP
+#             tokens.append(Token('OP', value, line, col))
+#         elif kind in ('GT', 'LT', 'COMP'):
+#             # Unify comparison operators
+#             tokens.append(Token('COMP', value, line, col))
+#         else:
+#             # Keep original token type for others
+#             tokens.append(Token(kind, value, line, col))
+
+#         col += len(value)
+
+#     tokens.append(Token('EOF', None, line, col))
+#     return tokens
+
+
+
+
 def lex(source):
     tokens = []
     line, col = 1, 1
+    pos = 0  # track current position in source
 
     for mo in TOKEN_REGEX.finditer(source):
+        if mo.start() > pos:
+            # There is unmatched text before this match → invalid lexeme
+            invalid_text = source[pos:mo.start()]
+            raise SyntaxError(f"Invalid lexeme '{invalid_text}' at line {line}, col {col}")
+
         kind = mo.lastgroup
         value = mo.group()
 
         if kind in ('WS', 'COMMENT'):
-            pass  # skip whitespace and comments
+            pass
         elif kind == 'NEWLINE':
             line += value.count('\n')
             col = 1
+            pos = mo.end()
             continue
         elif kind == 'ID':
-            # Check if it's a keyword
             if value in KEYWORDS:
                 tokens.append(Token('KEYWORD', value, line, col))
             else:
                 tokens.append(Token('ID', value, line, col))
         elif kind in ('PLUS', 'MINUS', 'STAR', 'SLASH', 'MOD'):
-            # Unify arithmetic operators as OP
             tokens.append(Token('OP', value, line, col))
         elif kind in ('GT', 'LT', 'COMP'):
-            # Unify comparison operators
             tokens.append(Token('COMP', value, line, col))
         else:
-            # Keep original token type for others
             tokens.append(Token(kind, value, line, col))
 
         col += len(value)
+        pos = mo.end()  # update position
+
+    if pos < len(source):
+        # trailing unmatched text
+        invalid_text = source[pos:]
+        raise SyntaxError(f"Invalid lexeme '{invalid_text}' at line {line}, col {col}")
 
     tokens.append(Token('EOF', None, line, col))
     return tokens

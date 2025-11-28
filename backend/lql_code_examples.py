@@ -625,6 +625,9 @@ list l2 = [3,3]
 list res = l1 union l2
 
 print res
+sort res asc
+sort res asc
+sort res asc
 
 """
 
