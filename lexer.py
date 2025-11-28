@@ -1,38 +1,3 @@
-# import re
-
-# TOKEN_SPEC = [
-#     ('NUMBER',   r'\d+(\.\d+)?'),
-#     ('ID',       r'[A-Za-z_][A-Za-z0-9_]*'),
-#     ('OP',       r'<=|>=|==|!=|<|>|\+|-|\*|/'),
-#     ('ASSIGN',   r'='),
-#     ('ARROW',    r'->'),
-#     ('LBRACK',   r'\['),
-#     ('RBRACK',   r'\]'),
-#     ('COMMA',    r','),
-#     ('NEWLINE',  r'\n'),
-#     ('SKIP',     r'[ \t]+'),
-# ]
-
-# KEYWORDS = {
-#     'list', 'filter', 'sort', 'asc', 'desc', 'map',
-#     'mean', 'sum', 'median', 'variance', 'std', 'min',
-#     'max', 'count', 'print', 'union', 'intersection',
-#     'difference', 'and', 'or', 'xor'
-# }
-
-# def lex(code):
-#     tokens = []
-#     regex = '|'.join(f'(?P<{name}>{pattern})' for name, pattern in TOKEN_SPEC)
-#     for match in re.finditer(regex, code):
-#         kind = match.lastgroup
-#         value = match.group()
-#         if kind == 'ID' and value in KEYWORDS:
-#             tokens.append(('KEYWORD', value))
-#         elif kind not in ('SKIP', 'NEWLINE'):
-#             tokens.append((kind, value))
-#     return tokens
-
-
 import re
 from collections import namedtuple
 
@@ -40,7 +5,8 @@ Token = namedtuple('Token', ['type', 'value', 'line', 'col'])
 
 # ── Token specification ───────────────────────────────────────
 TOKEN_REGEX = re.compile(r"""
-    (?P<NUMBER>\d+(\.\d+)?)              |  # positive numbers only
+    # (?P<NUMBER>\d+(\.\d+)?)              |  # positive numbers only
+    (?P<NUMBER>-?\d+(\.\d+)?)            |
     (?P<DOLLAR0>\$0)                     |  # $0
     (?P<ARROW>=>)                        |  # arrow for map
     (?P<COMP>>=|<=|==|!=)                |  # two-char comparisons first
@@ -50,6 +16,7 @@ TOKEN_REGEX = re.compile(r"""
     (?P<PLUS>\+)                         |  # arithmetic operators
     (?P<MINUS>-)                         |
     (?P<STAR>\*)                         |
+    (?P<MOD>%)                           |
     (?P<SLASH>/)                         |
     (?P<ID>[a-zA-Z_][a-zA-Z0-9_]*)       |  # identifiers & keywords
     (?P<LBRACK>\[)                       |
@@ -57,7 +24,7 @@ TOKEN_REGEX = re.compile(r"""
     (?P<LPAREN>\()                       |
     (?P<RPAREN>\))                       |
     (?P<COMMA>,)                         |
-    (?P<COMMENT>%[^\n]*)                 |  # comment to end of line
+    (?P<COMMENT>@[^\n]*)                 |  # comment to end of line
     (?P<WS>[ \t]+)                       |
     (?P<NEWLINE>\r?\n+)                    
 """, re.VERBOSE)

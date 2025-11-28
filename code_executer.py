@@ -1,103 +1,3 @@
-# import math
-
-# class Executor:
-#     def __init__(self, tac, symbol_table):
-#         self.tac = tac
-#         self.memory = {}          # stores lists and temps
-#         self.memory.update(symbol_table)
-#         self.result = None
-
-#     # ------------------------------------------------------
-#     # MAIN EXECUTION LOOP
-#     # ------------------------------------------------------
-#     def run(self):
-#         for instr in self.tac:
-#             opcode = instr[0]
-
-#             if opcode == "LIST":
-#                 _, name, values = instr
-#                 self.memory[name] = values
-
-#             elif opcode == "FILTER":
-#                 _, dest, src, op, val = instr
-#                 lst = self.memory[src]
-#                 self.memory[dest] = [x for x in lst if self.eval_condition(x, op, val)]
-
-#             elif opcode == "SORT":
-#                 _, dest, src, order = instr
-#                 lst = self.memory[src]
-#                 self.memory[dest] = sorted(lst, reverse=(order == "desc"))
-
-#             elif opcode == "MAP":
-#                 _, dest, src, var, expr = instr
-#                 lst = self.memory[src]
-#                 fun = lambda x: eval(expr, {}, {var: x})
-#                 self.memory[dest] = [fun(x) for x in lst]
-
-#             elif opcode == "STAT":
-#                 _, dest, func, src = instr
-#                 self.memory[dest] = self.compute_stat(func, self.memory[src])
-
-#             elif opcode == "SETOP":
-#                 _, dest, op, left, right = instr
-#                 a = self.memory[left]
-#                 b = self.memory[right]
-#                 self.memory[dest] = self.set_operation(op, a, b)
-
-#             elif opcode == "ASSIGN":
-#                 _, name, src = instr
-#                 self.memory[name] = self.memory[src]
-
-#             elif opcode == "PRINT":
-#                 _, arg = instr
-#                 print(self.memory[arg])
-
-#         return self.memory
-
-#     # ------------------------------------------------------
-#     # HELPERS
-#     # ------------------------------------------------------
-#     def eval_condition(self, x, op, val):
-#         if op == ">": return x > val
-#         if op == "<": return x < val
-#         if op == ">=": return x >= val
-#         if op == "<=": return x <= val
-#         if op == "==": return x == val
-#         if op == "!=": return x != val
-#         raise Exception(f"Invalid operator {op}")
-
-#     def compute_stat(self, func, lst):
-#         if func == "sum": return sum(lst)
-#         if func == "mean": return sum(lst) / len(lst)
-#         if func == "min": return min(lst)
-#         if func == "max": return max(lst)
-#         if func == "count": return len(lst)
-
-#         if func == "median":
-#             s = sorted(lst)
-#             n = len(s)
-#             if n % 2 == 1: return s[n//2]
-#             return (s[n//2 - 1] + s[n//2]) / 2
-
-#         if func == "variance":
-#             mean = sum(lst) / len(lst)
-#             return sum((x - mean)**2 for x in lst) / len(lst)
-
-#         if func == "std":
-#             mean = sum(lst) / len(lst)
-#             var = sum((x - mean)**2 for x in lst) / len(lst)
-#             return math.sqrt(var)
-
-#         raise Exception(f"Unknown stat function: {func}")
-
-#     def set_operation(self, op, a, b):
-#         if op == "union": return list(set(a) | set(b))
-#         if op == "intersection": return list(set(a) & set(b))
-#         if op == "difference": return list(set(a) - set(b))
-#         if op == "unique": return list(set(a))
-#         raise Exception(f"Unknown set op: {op}")
-
-
 import math
 
 class Executor:
@@ -197,7 +97,7 @@ class Executor:
                     'int': int,
                     'float': float
                 }
-                return eval(expr_code, safe_globals, {'x': x})
+                return eval(expr_code, safe_globals, {'x': int(x)})
             except Exception as e:
                 raise Exception(f"Error evaluating map expression '{expr_code}' with x={x}: {e}")
         
@@ -340,6 +240,10 @@ class Executor:
                 if b == 0:
                     raise Exception("Division by zero")
                 result.append(a / b)
+            elif op == '%':
+                if b == 0:
+                    raise Exception("Modulo by zero")
+                result.append(a % b)
             elif op == 'and':
                 # Bitwise AND (convert to int for bitwise ops)
                 result.append(int(a) & int(b))
@@ -371,15 +275,60 @@ class Executor:
         else:
             raise Exception(f"Invalid comparison operator: {op}")
 
+    # def compute_stat(self, func, lst):
+    #     """Compute statistical function on list"""
+    #     if not lst:
+    #         raise Exception(f"Cannot compute {func} on empty list")
+        
+    #     if func == "sum":
+    #         return sum(lst)
+        
+    #     elif func == "mean":
+    #         return sum(lst) / len(lst)
+        
+    #     elif func == "min":
+    #         return min(lst)
+        
+    #     elif func == "max":
+    #         return max(lst)
+        
+    #     elif func == "count":
+    #         return len(lst)
+        
+    #     elif func == "median":
+    #         s = sorted(lst)
+    #         n = len(s)
+    #         if n % 2 == 1:
+    #             return s[n // 2]
+    #         return (s[n // 2 - 1] + s[n // 2]) / 2
+        
+    #     elif func == "variance":
+    #         mean = sum(lst) / len(lst)
+    #         return sum((x - mean) ** 2 for x in lst) / len(lst)
+        
+    #     elif func == "std":
+    #         mean = sum(lst) / len(lst)
+    #         var = sum((x - mean) ** 2 for x in lst) / len(lst)
+    #         return math.sqrt(var)
+        
+    #     else:
+    #         raise Exception(f"Unknown statistical function: {func}")
+
     def compute_stat(self, func, lst):
         """Compute statistical function on list"""
-        if not lst:
-            raise Exception(f"Cannot compute {func} on empty list")
-        
+
+        # Functions that work on empty list
+        if func == "count":
+            return len(lst)
+
         if func == "sum":
             return sum(lst)
-        
-        elif func == "mean":
+
+        # If empty and function requires data, throw error
+        if not lst:
+            raise Exception(f"Cannot compute {func} on empty list")
+
+        if func == "mean":
             return sum(lst) / len(lst)
         
         elif func == "min":
@@ -387,9 +336,6 @@ class Executor:
         
         elif func == "max":
             return max(lst)
-        
-        elif func == "count":
-            return len(lst)
         
         elif func == "median":
             s = sorted(lst)
@@ -409,6 +355,7 @@ class Executor:
         
         else:
             raise Exception(f"Unknown statistical function: {func}")
+
 
     def set_operation(self, op, a, b):
         """Perform set operation on two lists"""

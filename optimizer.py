@@ -1,140 +1,3 @@
-# class Optimizer:
-#     def __init__(self, tac):
-#         self.tac = tac
-
-#     # -----------------------------------------------------
-#     # ENTRY POINT
-#     # -----------------------------------------------------
-#     def optimize(self):
-#         self.constant_folding()
-#         self.remove_self_assign()
-#         self.remove_duplicate_sorts()
-#         self.dead_code_elimination()
-#         self.copy_propagation()
-
-#         return self.tac
-
-#     # -----------------------------------------------------
-#     # CONSTANT FOLDING for MAP expressions
-#     # -----------------------------------------------------
-#     def constant_folding(self):
-#         optimized = []
-#         for instr in self.tac:
-#             if instr[0] == "MAP":
-#                 opcode, dest, src, var, expr = instr
-
-#                 # Try evaluating MAP expr if it's numeric only
-#                 try:
-#                     # reject if it uses the map variable
-#                     if var not in expr:
-#                         # Evaluate as Python expression
-#                         const_val = eval(expr)
-#                         expr = str(const_val)
-#                         instr = ("MAP", dest, src, var, expr)
-#                 except:
-#                     pass
-
-#             optimized.append(instr)
-#         self.tac = optimized
-
-#     # -----------------------------------------------------
-#     # REMOVE ASSIGN x = x
-#     # -----------------------------------------------------
-#     def remove_self_assign(self):
-#         optimized = []
-#         for instr in self.tac:
-#             if instr[0] == "ASSIGN":
-#                 name, src = instr[1], instr[2]
-#                 if name == src:
-#                     continue
-#             optimized.append(instr)
-#         self.tac = optimized
-
-#     # -----------------------------------------------------
-#     # REMOVE REDUNDANT SORTS: two consecutive sorts with same order
-#     # -----------------------------------------------------
-#     def remove_duplicate_sorts(self):
-#         optimized = []
-#         last_sort = {}
-
-#         for instr in self.tac:
-#             if instr[0] == "SORT":
-#                 dest, src, order = instr[1], instr[2], instr[3]
-#                 key = (src, order)
-
-#                 if key in last_sort:  # redundant
-#                     continue
-
-#                 last_sort[key] = True
-
-#             optimized.append(instr)
-
-#         self.tac = optimized
-
-#     # -----------------------------------------------------
-#     # DEAD CODE ELIMINATION
-#     # Remove instructions producing temps never consumed later
-#     # -----------------------------------------------------
-#     def dead_code_elimination(self):
-#         # Step 1: Find used variables
-#         used = set()
-
-#         for instr in self.tac:
-#             opcode = instr[0]
-
-#             if opcode == "ASSIGN":
-#                 used.add(instr[2])
-#             elif opcode in ("FILTER", "SORT", "MAP", "SETOP"):
-#                 # record source lists
-#                 used.add(instr[2])
-#             elif opcode == "STAT":
-#                 used.add(instr[3])
-#             elif opcode == "PRINT":
-#                 used.add(instr[1])
-
-#         # Step 2: Remove instructions that define temps but temps not used
-#         optimized = []
-#         for instr in self.tac:
-#             opcode = instr[0]
-
-#             if opcode in ("FILTER", "SORT", "MAP", "SETOP"):
-#                 dest = instr[1]
-#                 if dest.startswith("t") and dest not in used:
-#                     # temp produced but never used
-#                     continue
-
-#             optimized.append(instr)
-
-#         self.tac = optimized
-
-#     # -----------------------------------------------------
-#     # COPY PROPAGATION
-#     # Replace: ASSIGN x = y, then x→y
-#     # -----------------------------------------------------
-#     def copy_propagation(self):
-#         mapping = {}
-
-#         # Build replacement map
-#         for instr in self.tac:
-#             if instr[0] == "ASSIGN":
-#                 name, src = instr[1], instr[2]
-#                 mapping[name] = src
-
-#         # Apply replacement
-#         optimized = []
-#         for instr in self.tac:
-#             new_instr = list(instr)
-
-#             for i in range(1, len(new_instr)):
-#                 val = new_instr[i]
-#                 if isinstance(val, str) and val in mapping:
-#                     new_instr[i] = mapping[val]
-
-#             optimized.append(tuple(new_instr))
-
-#         self.tac = optimized
-
-
 class Optimizer:
     def __init__(self, tac):
         self.tac = tac
@@ -199,6 +62,50 @@ class Optimizer:
     # -----------------------------------------------------
     # ALGEBRAIC SIMPLIFICATION
     # -----------------------------------------------------
+    # def algebraic_simplification(self):
+    #     """Simplify algebraic expressions in MAP and LISTOP"""
+    #     optimized = []
+        
+    #     for instr in self.tac:
+    #         if instr[0] == "MAP":
+    #             opcode, dest, src, expr_code = instr
+    #             expr_code = self._simplify_expr(expr_code)
+    #             instr = ("MAP", dest, src, expr_code)
+            
+    #         elif instr[0] == "LISTOP":
+    #             # ('LISTOP', dest, op, left, right)
+    #             opcode, dest, op, left, right = instr
+                
+    #             # Simplify: x + 0 = x, x * 1 = x, x * 0 = 0, etc.
+    #             if op == '+' and right == 0:
+    #                 # Replace with copy
+    #                 instr = ("COPY", dest, left)
+    #             elif op == '+' and left == 0:
+    #                 instr = ("COPY", dest, right)
+    #             elif op == '-' and right == 0:
+    #                 instr = ("COPY", dest, left)
+    #             elif op == '*' and (left == 1 or right == 1):
+    #                 other = right if left == 1 else left
+    #                 instr = ("COPY", dest, other)
+    #             elif op == '*' and (left == 0 or right == 0):
+    #                 instr = ("LIST", dest, [0])
+    #             elif op == '/' and right == 1:
+    #                 instr = ("COPY", dest, left)
+    #             elif op == 'and' and (left == 0 or right == 0):
+    #                 instr = ("LIST", dest, [0])
+    #             elif op == 'or' and left == 0:
+    #                 instr = ("COPY", dest, right)
+    #             elif op == 'or' and right == 0:
+    #                 instr = ("COPY", dest, left)
+    #             elif op == 'xor' and right == 0:
+    #                 instr = ("COPY", dest, left)
+    #             elif op == 'xor' and left == 0:
+    #                 instr = ("COPY", dest, right)
+            
+    #         optimized.append(instr)
+        
+    #     self.tac = optimized
+
     def algebraic_simplification(self):
         """Simplify algebraic expressions in MAP and LISTOP"""
         optimized = []
@@ -215,7 +122,6 @@ class Optimizer:
                 
                 # Simplify: x + 0 = x, x * 1 = x, x * 0 = 0, etc.
                 if op == '+' and right == 0:
-                    # Replace with copy
                     instr = ("COPY", dest, left)
                 elif op == '+' and left == 0:
                     instr = ("COPY", dest, right)
@@ -228,6 +134,13 @@ class Optimizer:
                     instr = ("LIST", dest, [0])
                 elif op == '/' and right == 1:
                     instr = ("COPY", dest, left)
+                
+                # ADD THESE MODULO OPTIMIZATIONS ⬇️
+                elif op == '%' and right == 1:
+                    # x % 1 = 0 (any number modulo 1 is 0)
+                    instr = ("LIST", dest, [0])
+                # Optional: x % x = 0 (but requires checking if left == right)
+                
                 elif op == 'and' and (left == 0 or right == 0):
                     instr = ("LIST", dest, [0])
                 elif op == 'or' and left == 0:
@@ -255,6 +168,8 @@ class Optimizer:
         expr = expr.replace('(x * 0)', '0').replace('(0 * x)', '0')
         # x / 1 → x
         expr = expr.replace('(x / 1)', 'x')
+        # x % 1 → 0
+        expr = expr.replace('(x % 1)', '0')
         # x & 0 → 0
         expr = expr.replace('(x & 0)', '0').replace('(0 & x)', '0')
         # x | 0 → x

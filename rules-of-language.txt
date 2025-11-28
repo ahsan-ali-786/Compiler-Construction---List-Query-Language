@@ -1,0 +1,5 @@
+-> In bitwise operations all numbers are calculated in their integer forms.
+-> For arithmetic/set operations b/w lists both operands must have same length.
+-> $0 is a special keyword which is used in map to reference the current element.
+-> We can do arithmetic between a scalar and a list (2 * [1,2,3,4] = [2,4,6,8]) 
+-> We can do arithmetic/set operations b/w lists and literal arrays but both must have same length (l1 + [1,2,3,4])

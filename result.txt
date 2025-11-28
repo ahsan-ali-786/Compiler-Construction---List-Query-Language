@@ -1,0 +1,4716 @@
+
+1 - CODE:
+
+@ TEST 0: First Test 
+
+list data = [1, 2, 3, 4]
+list big = filter data >= 3
+list sq = map data $0 => $0 * $0 + (10 + 7) @ 18, 21, 26, 33
+list result = sq + [5, 6, 1, 3] @ 23, 27, 27, 36
+sort result desc
+print result
+print mean result
+
+list union_res = data union [3,4,59,10]
+print union_res
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=4, col=1)
+Token(type='ID', value='data', line=4, col=6)
+Token(type='ASSIGN', value='=', line=4, col=11)
+Token(type='LBRACK', value='[', line=4, col=13)
+Token(type='NUMBER', value='1', line=4, col=14)
+Token(type='COMMA', value=',', line=4, col=15)
+Token(type='NUMBER', value='2', line=4, col=17)
+Token(type='COMMA', value=',', line=4, col=18)
+Token(type='NUMBER', value='3', line=4, col=20)
+Token(type='COMMA', value=',', line=4, col=21)
+Token(type='NUMBER', value='4', line=4, col=23)
+Token(type='RBRACK', value=']', line=4, col=24)
+Token(type='KEYWORD', value='list', line=5, col=1)
+Token(type='ID', value='big', line=5, col=6)
+Token(type='ASSIGN', value='=', line=5, col=10)
+Token(type='KEYWORD', value='filter', line=5, col=12)
+Token(type='ID', value='data', line=5, col=19)
+Token(type='COMP', value='>=', line=5, col=24)
+Token(type='NUMBER', value='3', line=5, col=27)
+Token(type='KEYWORD', value='list', line=6, col=1)
+Token(type='ID', value='sq', line=6, col=6)
+Token(type='ASSIGN', value='=', line=6, col=9)
+Token(type='KEYWORD', value='map', line=6, col=11)
+Token(type='ID', value='data', line=6, col=15)
+Token(type='DOLLAR0', value='$0', line=6, col=20)
+Token(type='ARROW', value='=>', line=6, col=23)
+Token(type='DOLLAR0', value='$0', line=6, col=26)
+Token(type='OP', value='*', line=6, col=29)
+Token(type='DOLLAR0', value='$0', line=6, col=31)
+Token(type='OP', value='+', line=6, col=34)
+Token(type='LPAREN', value='(', line=6, col=36)
+Token(type='NUMBER', value='10', line=6, col=37)
+Token(type='OP', value='+', line=6, col=40)
+Token(type='NUMBER', value='7', line=6, col=42)
+Token(type='RPAREN', value=')', line=6, col=43)
+Token(type='KEYWORD', value='list', line=7, col=1)
+Token(type='ID', value='result', line=7, col=6)
+Token(type='ASSIGN', value='=', line=7, col=13)
+Token(type='ID', value='sq', line=7, col=15)
+Token(type='OP', value='+', line=7, col=18)
+Token(type='LBRACK', value='[', line=7, col=20)
+Token(type='NUMBER', value='5', line=7, col=21)
+Token(type='COMMA', value=',', line=7, col=22)
+Token(type='NUMBER', value='6', line=7, col=24)
+Token(type='COMMA', value=',', line=7, col=25)
+Token(type='NUMBER', value='1', line=7, col=27)
+Token(type='COMMA', value=',', line=7, col=28)
+Token(type='NUMBER', value='3', line=7, col=30)
+Token(type='RBRACK', value=']', line=7, col=31)
+Token(type='KEYWORD', value='sort', line=8, col=1)
+Token(type='ID', value='result', line=8, col=6)
+Token(type='KEYWORD', value='desc', line=8, col=13)
+Token(type='KEYWORD', value='print', line=9, col=1)
+Token(type='ID', value='result', line=9, col=7)
+Token(type='KEYWORD', value='print', line=10, col=1)
+Token(type='KEYWORD', value='mean', line=10, col=7)
+Token(type='ID', value='result', line=10, col=12)
+Token(type='KEYWORD', value='list', line=12, col=1)
+Token(type='ID', value='union_res', line=12, col=6)
+Token(type='ASSIGN', value='=', line=12, col=16)
+Token(type='ID', value='data', line=12, col=18)
+Token(type='KEYWORD', value='union', line=12, col=23)
+Token(type='LBRACK', value='[', line=12, col=29)
+Token(type='NUMBER', value='3', line=12, col=30)
+Token(type='COMMA', value=',', line=12, col=31)
+Token(type='NUMBER', value='4', line=12, col=32)
+Token(type='COMMA', value=',', line=12, col=33)
+Token(type='NUMBER', value='59', line=12, col=34)
+Token(type='COMMA', value=',', line=12, col=36)
+Token(type='NUMBER', value='10', line=12, col=37)
+Token(type='RBRACK', value=']', line=12, col=39)
+Token(type='KEYWORD', value='print', line=13, col=1)
+Token(type='ID', value='union_res', line=13, col=7)
+Token(type='EOF', value=None, line=15, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'data', 'source': [1.0, 2.0, 3.0, 4.0]}
+{'name': 'big', 'source': <parser.FilterStmt object at 0x00000286A9519EB0>}
+{'name': 'sq', 'source': <parser.MapStmt object at 0x00000286A951A060>}
+{'name': 'result', 'source': <parser.ListOpStmt object at 0x00000286A951A0C0>}
+{'list_name': 'result', 'order': 'desc'}
+{'target': 'result'}
+{'target': <parser.StatStmt object at 0x00000286A951A180>}
+{'name': 'union_res', 'source': <parser.SetOpStmt object at 0x00000286A951A1E0>}
+{'target': 'union_res'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'data': {'type': 'list', 'declared': True}, 'big': {'type': 'list', 'declared': True}, 'sq': {'type': 'list', 'declared': True}, 'result': {'type': 'list', 'declared': True}, 'union_res': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'data', [1.0, 2.0, 3.0, 4.0])
+('FILTER', 't1', 'data', '>=', 3.0)
+('LIST', 'big', 't1')
+('MAP', 't2', 'data', '((x * x) + (10 + 7))')
+('LIST', 'sq', 't2')
+('LISTOP', 't3', '+', 'sq', [5.0, 6.0, 1.0, 3.0])
+('LIST', 'result', 't3')
+('SORT', 'result', 'desc')
+('PRINT', 'result')
+('STAT', 't4', 'mean', 'result')
+('PRINT', 't4')
+('SETOP', 't5', 'union', 'data', [3.0, 4.0, 59.0, 10.0])
+('LIST', 'union_res', 't5')
+('PRINT', 'union_res')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'data', [1.0, 2.0, 3.0, 4.0])
+('FILTER', 't1', 'data', '>=', 3.0)
+('LIST', 'big', 't1')
+('MAP', 't2', 'data', '((x * x) + (10 + 7))')
+('LIST', 'sq', 't2')
+('LISTOP', 't3', '+', 't2', [5.0, 6.0, 1.0, 3.0])
+('LIST', 'result', 't3')
+('SORT', 't3', 'desc')
+('PRINT', 't3')
+('STAT', 't4', 'mean', 't3')
+('PRINT', 't4')
+('SETOP', 't5', 'union', 'data', [3.0, 4.0, 59.0, 10.0])
+('LIST', 'union_res', 't5')
+('PRINT', 't5')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+@ TEST 0: First Test 
+
+list data = [1, 2, 3, 4]
+list big = filter data >= 3
+list sq = map data $0 => $0 * $0 + (10 + 7) @ 18, 21, 26, 33
+list result = sq + [5, 6, 1, 3] @ 23, 27, 27, 36
+sort result desc
+print result
+print mean result
+
+list union_res = data union [3,4,59,10]
+print union_res
+
+
+
+OUTPUT:
+[36.0, 27.0, 27.0, 23.0]
+28.25
+[1.0, 2.0, 3.0, 4.0, 59.0, 10.0]
+
+============================================================================
+============================================================================
+
+2 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 1: Basic List Declaration & Printing
+@ Grammar: ListDecl → "list" ListIdentifier "=" "[" Array "]"
+@          PrintStmt → "print" ListIdentifier
+@ ──────────────────────────────────────────────────────────────────────────
+list nums = [1, 2, 3, 4, 5]
+print nums
+
+list empty = []
+print empty
+
+list floats = [3.14, 2.71, 1.41, -9.8]
+print floats
+
+list negatives = [-1, -2, -3, -4]
+print negatives
+
+list mixed = [10, -5, 3.14, 0, 7.5, -2.3]
+print mixed
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=8, col=1)
+Token(type='ID', value='nums', line=8, col=6)
+Token(type='ASSIGN', value='=', line=8, col=11)
+Token(type='LBRACK', value='[', line=8, col=13)
+Token(type='NUMBER', value='1', line=8, col=14)
+Token(type='COMMA', value=',', line=8, col=15)
+Token(type='NUMBER', value='2', line=8, col=17)
+Token(type='COMMA', value=',', line=8, col=18)
+Token(type='NUMBER', value='3', line=8, col=20)
+Token(type='COMMA', value=',', line=8, col=21)
+Token(type='NUMBER', value='4', line=8, col=23)
+Token(type='COMMA', value=',', line=8, col=24)
+Token(type='NUMBER', value='5', line=8, col=26)
+Token(type='RBRACK', value=']', line=8, col=27)
+Token(type='KEYWORD', value='print', line=9, col=1)
+Token(type='ID', value='nums', line=9, col=7)
+Token(type='KEYWORD', value='list', line=11, col=1)
+Token(type='ID', value='empty', line=11, col=6)
+Token(type='ASSIGN', value='=', line=11, col=12)
+Token(type='LBRACK', value='[', line=11, col=14)
+Token(type='RBRACK', value=']', line=11, col=15)
+Token(type='KEYWORD', value='print', line=12, col=1)
+Token(type='ID', value='empty', line=12, col=7)
+Token(type='KEYWORD', value='list', line=14, col=1)
+Token(type='ID', value='floats', line=14, col=6)
+Token(type='ASSIGN', value='=', line=14, col=13)
+Token(type='LBRACK', value='[', line=14, col=15)
+Token(type='NUMBER', value='3.14', line=14, col=16)
+Token(type='COMMA', value=',', line=14, col=20)
+Token(type='NUMBER', value='2.71', line=14, col=22)
+Token(type='COMMA', value=',', line=14, col=26)
+Token(type='NUMBER', value='1.41', line=14, col=28)
+Token(type='COMMA', value=',', line=14, col=32)
+Token(type='NUMBER', value='-9.8', line=14, col=34)
+Token(type='RBRACK', value=']', line=14, col=38)
+Token(type='KEYWORD', value='print', line=15, col=1)
+Token(type='ID', value='floats', line=15, col=7)
+Token(type='KEYWORD', value='list', line=17, col=1)
+Token(type='ID', value='negatives', line=17, col=6)
+Token(type='ASSIGN', value='=', line=17, col=16)
+Token(type='LBRACK', value='[', line=17, col=18)
+Token(type='NUMBER', value='-1', line=17, col=19)
+Token(type='COMMA', value=',', line=17, col=21)
+Token(type='NUMBER', value='-2', line=17, col=23)
+Token(type='COMMA', value=',', line=17, col=25)
+Token(type='NUMBER', value='-3', line=17, col=27)
+Token(type='COMMA', value=',', line=17, col=29)
+Token(type='NUMBER', value='-4', line=17, col=31)
+Token(type='RBRACK', value=']', line=17, col=33)
+Token(type='KEYWORD', value='print', line=18, col=1)
+Token(type='ID', value='negatives', line=18, col=7)
+Token(type='KEYWORD', value='list', line=20, col=1)
+Token(type='ID', value='mixed', line=20, col=6)
+Token(type='ASSIGN', value='=', line=20, col=12)
+Token(type='LBRACK', value='[', line=20, col=14)
+Token(type='NUMBER', value='10', line=20, col=15)
+Token(type='COMMA', value=',', line=20, col=17)
+Token(type='NUMBER', value='-5', line=20, col=19)
+Token(type='COMMA', value=',', line=20, col=21)
+Token(type='NUMBER', value='3.14', line=20, col=23)
+Token(type='COMMA', value=',', line=20, col=27)
+Token(type='NUMBER', value='0', line=20, col=29)
+Token(type='COMMA', value=',', line=20, col=30)
+Token(type='NUMBER', value='7.5', line=20, col=32)
+Token(type='COMMA', value=',', line=20, col=35)
+Token(type='NUMBER', value='-2.3', line=20, col=37)
+Token(type='RBRACK', value=']', line=20, col=41)
+Token(type='KEYWORD', value='print', line=21, col=1)
+Token(type='ID', value='mixed', line=21, col=7)
+Token(type='EOF', value=None, line=23, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'nums', 'source': [1.0, 2.0, 3.0, 4.0, 5.0]}
+{'target': 'nums'}
+{'name': 'empty', 'source': []}
+{'target': 'empty'}
+{'name': 'floats', 'source': [3.14, 2.71, 1.41, -9.8]}
+{'target': 'floats'}
+{'name': 'negatives', 'source': [-1.0, -2.0, -3.0, -4.0]}
+{'target': 'negatives'}
+{'name': 'mixed', 'source': [10.0, -5.0, 3.14, 0.0, 7.5, -2.3]}
+{'target': 'mixed'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'nums': {'type': 'list', 'declared': True}, 'empty': {'type': 'list', 'declared': True}, 'floats': {'type': 'list', 'declared': True}, 'negatives': {'type': 'list', 'declared': True}, 'mixed': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'nums', [1.0, 2.0, 3.0, 4.0, 5.0])
+('PRINT', 'nums')
+('LIST', 'empty', [])
+('PRINT', 'empty')
+('LIST', 'floats', [3.14, 2.71, 1.41, -9.8])
+('PRINT', 'floats')
+('LIST', 'negatives', [-1.0, -2.0, -3.0, -4.0])
+('PRINT', 'negatives')
+('LIST', 'mixed', [10.0, -5.0, 3.14, 0.0, 7.5, -2.3])
+('PRINT', 'mixed')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'nums', [1.0, 2.0, 3.0, 4.0, 5.0])
+('PRINT', 'nums')
+('LIST', 'empty', [])
+('PRINT', 'empty')
+('LIST', 'floats', [3.14, 2.71, 1.41, -9.8])
+('PRINT', 'floats')
+('LIST', 'negatives', [-1.0, -2.0, -3.0, -4.0])
+('PRINT', 'negatives')
+('LIST', 'mixed', [10.0, -5.0, 3.14, 0.0, 7.5, -2.3])
+('PRINT', 'mixed')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 1: Basic List Declaration & Printing
+@ Grammar: ListDecl → "list" ListIdentifier "=" "[" Array "]"
+@          PrintStmt → "print" ListIdentifier
+@ ──────────────────────────────────────────────────────────────────────────
+list nums = [1, 2, 3, 4, 5]
+print nums
+
+list empty = []
+print empty
+
+list floats = [3.14, 2.71, 1.41, -9.8]
+print floats
+
+list negatives = [-1, -2, -3, -4]
+print negatives
+
+list mixed = [10, -5, 3.14, 0, 7.5, -2.3]
+print mixed
+
+
+
+OUTPUT:
+[1.0, 2.0, 3.0, 4.0, 5.0]
+[]
+[3.14, 2.71, 1.41, -9.8]
+[-1.0, -2.0, -3.0, -4.0]
+[10.0, -5.0, 3.14, 0.0, 7.5, -2.3]
+
+============================================================================
+============================================================================
+
+3 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 2: Statistical Operations
+@ Grammar: ScalarOpExpr → Operation ListIdentifier
+@          Operation → "mean" | "sum" | "median" | "variance" | "std" | 
+@                      "min" | "max" | "count"
+@ ──────────────────────────────────────────────────────────────────────────
+list stats_data = [10, 20, 30, 40, 50]
+print sum stats_data
+print mean stats_data
+print median stats_data
+print variance stats_data
+print std stats_data
+print min stats_data
+print max stats_data
+print count stats_data
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=9, col=1)
+Token(type='ID', value='stats_data', line=9, col=6)
+Token(type='ASSIGN', value='=', line=9, col=17)
+Token(type='LBRACK', value='[', line=9, col=19)
+Token(type='NUMBER', value='10', line=9, col=20)
+Token(type='COMMA', value=',', line=9, col=22)
+Token(type='NUMBER', value='20', line=9, col=24)
+Token(type='COMMA', value=',', line=9, col=26)
+Token(type='NUMBER', value='30', line=9, col=28)
+Token(type='COMMA', value=',', line=9, col=30)
+Token(type='NUMBER', value='40', line=9, col=32)
+Token(type='COMMA', value=',', line=9, col=34)
+Token(type='NUMBER', value='50', line=9, col=36)
+Token(type='RBRACK', value=']', line=9, col=38)
+Token(type='KEYWORD', value='print', line=10, col=1)
+Token(type='KEYWORD', value='sum', line=10, col=7)
+Token(type='ID', value='stats_data', line=10, col=11)
+Token(type='KEYWORD', value='print', line=11, col=1)
+Token(type='KEYWORD', value='mean', line=11, col=7)
+Token(type='ID', value='stats_data', line=11, col=12)
+Token(type='KEYWORD', value='print', line=12, col=1)
+Token(type='KEYWORD', value='median', line=12, col=7)
+Token(type='ID', value='stats_data', line=12, col=14)
+Token(type='KEYWORD', value='print', line=13, col=1)
+Token(type='KEYWORD', value='variance', line=13, col=7)
+Token(type='ID', value='stats_data', line=13, col=16)
+Token(type='KEYWORD', value='print', line=14, col=1)
+Token(type='KEYWORD', value='std', line=14, col=7)
+Token(type='ID', value='stats_data', line=14, col=11)
+Token(type='KEYWORD', value='print', line=15, col=1)
+Token(type='KEYWORD', value='min', line=15, col=7)
+Token(type='ID', value='stats_data', line=15, col=11)
+Token(type='KEYWORD', value='print', line=16, col=1)
+Token(type='KEYWORD', value='max', line=16, col=7)
+Token(type='ID', value='stats_data', line=16, col=11)
+Token(type='KEYWORD', value='print', line=17, col=1)
+Token(type='KEYWORD', value='count', line=17, col=7)
+Token(type='ID', value='stats_data', line=17, col=13)
+Token(type='EOF', value=None, line=19, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'stats_data', 'source': [10.0, 20.0, 30.0, 40.0, 50.0]}
+{'target': <parser.StatStmt object at 0x00000286A951A600>}
+{'target': <parser.StatStmt object at 0x00000286A951A6F0>}
+{'target': <parser.StatStmt object at 0x00000286A951A7B0>}
+{'target': <parser.StatStmt object at 0x00000286A951A810>}
+{'target': <parser.StatStmt object at 0x00000286A951A870>}
+{'target': <parser.StatStmt object at 0x00000286A951A930>}
+{'target': <parser.StatStmt object at 0x00000286A951A960>}
+{'target': <parser.StatStmt object at 0x00000286A951A9C0>}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'stats_data': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'stats_data', [10.0, 20.0, 30.0, 40.0, 50.0])
+('STAT', 't1', 'sum', 'stats_data')
+('PRINT', 't1')
+('STAT', 't2', 'mean', 'stats_data')
+('PRINT', 't2')
+('STAT', 't3', 'median', 'stats_data')
+('PRINT', 't3')
+('STAT', 't4', 'variance', 'stats_data')
+('PRINT', 't4')
+('STAT', 't5', 'std', 'stats_data')
+('PRINT', 't5')
+('STAT', 't6', 'min', 'stats_data')
+('PRINT', 't6')
+('STAT', 't7', 'max', 'stats_data')
+('PRINT', 't7')
+('STAT', 't8', 'count', 'stats_data')
+('PRINT', 't8')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'stats_data', [10.0, 20.0, 30.0, 40.0, 50.0])
+('STAT', 't1', 'sum', 'stats_data')
+('PRINT', 't1')
+('STAT', 't2', 'mean', 'stats_data')
+('PRINT', 't2')
+('STAT', 't3', 'median', 'stats_data')
+('PRINT', 't3')
+('STAT', 't4', 'variance', 'stats_data')
+('PRINT', 't4')
+('STAT', 't5', 'std', 'stats_data')
+('PRINT', 't5')
+('STAT', 't6', 'min', 'stats_data')
+('PRINT', 't6')
+('STAT', 't7', 'max', 'stats_data')
+('PRINT', 't7')
+('STAT', 't8', 'count', 'stats_data')
+('PRINT', 't8')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 2: Statistical Operations
+@ Grammar: ScalarOpExpr → Operation ListIdentifier
+@          Operation → "mean" | "sum" | "median" | "variance" | "std" | 
+@                      "min" | "max" | "count"
+@ ──────────────────────────────────────────────────────────────────────────
+list stats_data = [10, 20, 30, 40, 50]
+print sum stats_data
+print mean stats_data
+print median stats_data
+print variance stats_data
+print std stats_data
+print min stats_data
+print max stats_data
+print count stats_data
+
+
+
+OUTPUT:
+150.0
+30.0
+30.0
+200.0
+14.142135623730951
+10.0
+50.0
+5
+
+============================================================================
+============================================================================
+
+4 - CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 3: Filter with All Comparison Operators
+@ Grammar: FilterStmt → "filter" ListIdentifier ComparisonOp Number
+@          ComparisonOp → "==" | "!=" | ">" | ">=" | "<" | "<="
+@ ──────────────────────────────────────────────────────────────────────────
+list values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+list gt_five = filter values > 5
+print gt_five
+
+list gte_five = filter values >= 5
+print gte_five
+
+list lt_five = filter values < 5
+print lt_five
+
+list lte_five = filter values <= 5
+print lte_five
+
+list eq_five = filter values == 5
+print eq_five
+
+list neq_five = filter values != 5
+print neq_five
+
+list decimals = filter values > 3.5
+print decimals
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=7, col=1)
+Token(type='ID', value='values', line=7, col=6)
+Token(type='ASSIGN', value='=', line=7, col=13)
+Token(type='LBRACK', value='[', line=7, col=15)
+Token(type='NUMBER', value='1', line=7, col=16)
+Token(type='COMMA', value=',', line=7, col=17)
+Token(type='NUMBER', value='2', line=7, col=19)
+Token(type='COMMA', value=',', line=7, col=20)
+Token(type='NUMBER', value='3', line=7, col=22)
+Token(type='COMMA', value=',', line=7, col=23)
+Token(type='NUMBER', value='4', line=7, col=25)
+Token(type='COMMA', value=',', line=7, col=26)
+Token(type='NUMBER', value='5', line=7, col=28)
+Token(type='COMMA', value=',', line=7, col=29)
+Token(type='NUMBER', value='6', line=7, col=31)
+Token(type='COMMA', value=',', line=7, col=32)
+Token(type='NUMBER', value='7', line=7, col=34)
+Token(type='COMMA', value=',', line=7, col=35)
+Token(type='NUMBER', value='8', line=7, col=37)
+Token(type='COMMA', value=',', line=7, col=38)
+Token(type='NUMBER', value='9', line=7, col=40)
+Token(type='COMMA', value=',', line=7, col=41)
+Token(type='NUMBER', value='10', line=7, col=43)
+Token(type='RBRACK', value=']', line=7, col=45)
+Token(type='KEYWORD', value='list', line=9, col=1)
+Token(type='ID', value='gt_five', line=9, col=6)
+Token(type='ASSIGN', value='=', line=9, col=14)
+Token(type='KEYWORD', value='filter', line=9, col=16)
+Token(type='ID', value='values', line=9, col=23)
+Token(type='COMP', value='>', line=9, col=30)
+Token(type='NUMBER', value='5', line=9, col=32)
+Token(type='KEYWORD', value='print', line=10, col=1)
+Token(type='ID', value='gt_five', line=10, col=7)
+Token(type='KEYWORD', value='list', line=12, col=1)
+Token(type='ID', value='gte_five', line=12, col=6)
+Token(type='ASSIGN', value='=', line=12, col=15)
+Token(type='KEYWORD', value='filter', line=12, col=17)
+Token(type='ID', value='values', line=12, col=24)
+Token(type='COMP', value='>=', line=12, col=31)
+Token(type='NUMBER', value='5', line=12, col=34)
+Token(type='KEYWORD', value='print', line=13, col=1)
+Token(type='ID', value='gte_five', line=13, col=7)
+Token(type='KEYWORD', value='list', line=15, col=1)
+Token(type='ID', value='lt_five', line=15, col=6)
+Token(type='ASSIGN', value='=', line=15, col=14)
+Token(type='KEYWORD', value='filter', line=15, col=16)
+Token(type='ID', value='values', line=15, col=23)
+Token(type='COMP', value='<', line=15, col=30)
+Token(type='NUMBER', value='5', line=15, col=32)
+Token(type='KEYWORD', value='print', line=16, col=1)
+Token(type='ID', value='lt_five', line=16, col=7)
+Token(type='KEYWORD', value='list', line=18, col=1)
+Token(type='ID', value='lte_five', line=18, col=6)
+Token(type='ASSIGN', value='=', line=18, col=15)
+Token(type='KEYWORD', value='filter', line=18, col=17)
+Token(type='ID', value='values', line=18, col=24)
+Token(type='COMP', value='<=', line=18, col=31)
+Token(type='NUMBER', value='5', line=18, col=34)
+Token(type='KEYWORD', value='print', line=19, col=1)
+Token(type='ID', value='lte_five', line=19, col=7)
+Token(type='KEYWORD', value='list', line=21, col=1)
+Token(type='ID', value='eq_five', line=21, col=6)
+Token(type='ASSIGN', value='=', line=21, col=14)
+Token(type='KEYWORD', value='filter', line=21, col=16)
+Token(type='ID', value='values', line=21, col=23)
+Token(type='COMP', value='==', line=21, col=30)
+Token(type='NUMBER', value='5', line=21, col=33)
+Token(type='KEYWORD', value='print', line=22, col=1)
+Token(type='ID', value='eq_five', line=22, col=7)
+Token(type='KEYWORD', value='list', line=24, col=1)
+Token(type='ID', value='neq_five', line=24, col=6)
+Token(type='ASSIGN', value='=', line=24, col=15)
+Token(type='KEYWORD', value='filter', line=24, col=17)
+Token(type='ID', value='values', line=24, col=24)
+Token(type='COMP', value='!=', line=24, col=31)
+Token(type='NUMBER', value='5', line=24, col=34)
+Token(type='KEYWORD', value='print', line=25, col=1)
+Token(type='ID', value='neq_five', line=25, col=7)
+Token(type='KEYWORD', value='list', line=27, col=1)
+Token(type='ID', value='decimals', line=27, col=6)
+Token(type='ASSIGN', value='=', line=27, col=15)
+Token(type='KEYWORD', value='filter', line=27, col=17)
+Token(type='ID', value='values', line=27, col=24)
+Token(type='COMP', value='>', line=27, col=31)
+Token(type='NUMBER', value='3.5', line=27, col=33)
+Token(type='KEYWORD', value='print', line=28, col=1)
+Token(type='ID', value='decimals', line=28, col=7)
+Token(type='EOF', value=None, line=30, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'values', 'source': [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]}
+{'name': 'gt_five', 'source': <parser.FilterStmt object at 0x00000286A951A5A0>}
+{'target': 'gt_five'}
+{'name': 'gte_five', 'source': <parser.FilterStmt object at 0x00000286A951A480>}
+{'target': 'gte_five'}
+{'name': 'lt_five', 'source': <parser.FilterStmt object at 0x00000286A95199D0>}
+{'target': 'lt_five'}
+{'name': 'lte_five', 'source': <parser.FilterStmt object at 0x00000286A9519BB0>}
+{'target': 'lte_five'}
+{'name': 'eq_five', 'source': <parser.FilterStmt object at 0x00000286A9519EE0>}
+{'target': 'eq_five'}
+{'name': 'neq_five', 'source': <parser.FilterStmt object at 0x00000286A95196A0>}
+{'target': 'neq_five'}
+{'name': 'decimals', 'source': <parser.FilterStmt object at 0x00000286A951AA20>}
+{'target': 'decimals'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'values': {'type': 'list', 'declared': True}, 'gt_five': {'type': 'list', 'declared': True}, 'gte_five': {'type': 'list', 'declared': True}, 'lt_five': {'type': 'list', 'declared': True}, 'lte_five': {'type': 'list', 'declared': True}, 'eq_five': {'type': 'list', 'declared': True}, 'neq_five': {'type': 'list', 'declared': True}, 'decimals': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'values', [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])
+('FILTER', 't1', 'values', '>', 5.0)
+('LIST', 'gt_five', 't1')
+('PRINT', 'gt_five')
+('FILTER', 't2', 'values', '>=', 5.0)
+('LIST', 'gte_five', 't2')
+('PRINT', 'gte_five')
+('FILTER', 't3', 'values', '<', 5.0)
+('LIST', 'lt_five', 't3')
+('PRINT', 'lt_five')
+('FILTER', 't4', 'values', '<=', 5.0)
+('LIST', 'lte_five', 't4')
+('PRINT', 'lte_five')
+('FILTER', 't5', 'values', '==', 5.0)
+('LIST', 'eq_five', 't5')
+('PRINT', 'eq_five')
+('FILTER', 't6', 'values', '!=', 5.0)
+('LIST', 'neq_five', 't6')
+('PRINT', 'neq_five')
+('FILTER', 't7', 'values', '>', 3.5)
+('LIST', 'decimals', 't7')
+('PRINT', 'decimals')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'values', [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])
+('FILTER', 't1', 'values', '>', 5.0)
+('LIST', 'gt_five', 't1')
+('PRINT', 't1')
+('FILTER', 't2', 'values', '>=', 5.0)
+('LIST', 'gte_five', 't2')
+('PRINT', 't2')
+('FILTER', 't3', 'values', '<', 5.0)
+('LIST', 'lt_five', 't3')
+('PRINT', 't3')
+('FILTER', 't4', 'values', '<=', 5.0)
+('LIST', 'lte_five', 't4')
+('PRINT', 't4')
+('FILTER', 't5', 'values', '==', 5.0)
+('LIST', 'eq_five', 't5')
+('PRINT', 't5')
+('FILTER', 't6', 'values', '!=', 5.0)
+('LIST', 'neq_five', 't6')
+('PRINT', 't6')
+('FILTER', 't7', 'values', '>', 3.5)
+('LIST', 'decimals', 't7')
+('PRINT', 't7')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 3: Filter with All Comparison Operators
+@ Grammar: FilterStmt → "filter" ListIdentifier ComparisonOp Number
+@          ComparisonOp → "==" | "!=" | ">" | ">=" | "<" | "<="
+@ ──────────────────────────────────────────────────────────────────────────
+list values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+list gt_five = filter values > 5
+print gt_five
+
+list gte_five = filter values >= 5
+print gte_five
+
+list lt_five = filter values < 5
+print lt_five
+
+list lte_five = filter values <= 5
+print lte_five
+
+list eq_five = filter values == 5
+print eq_five
+
+list neq_five = filter values != 5
+print neq_five
+
+list decimals = filter values > 3.5
+print decimals
+
+
+
+OUTPUT:
+[6.0, 7.0, 8.0, 9.0, 10.0]
+[5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+[1.0, 2.0, 3.0, 4.0]
+[1.0, 2.0, 3.0, 4.0, 5.0]
+[5.0]
+[1.0, 2.0, 3.0, 4.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+[4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+
+============================================================================
+============================================================================
+
+5 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 4: Sort (Ascending & Descending)
+@ Grammar: SortStmt → "sort" ListIdentifier ("asc" | "desc")
+@ ──────────────────────────────────────────────────────────────────────────
+list unsorted = [5, 2, 8, 1, 9, 3]
+sort unsorted asc
+print unsorted
+
+list reverse_sort = [5, 2, 8, 1, 9, 3]
+sort reverse_sort desc
+print reverse_sort
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=7, col=1)
+Token(type='ID', value='unsorted', line=7, col=6)
+Token(type='ASSIGN', value='=', line=7, col=15)
+Token(type='LBRACK', value='[', line=7, col=17)
+Token(type='NUMBER', value='5', line=7, col=18)
+Token(type='COMMA', value=',', line=7, col=19)
+Token(type='NUMBER', value='2', line=7, col=21)
+Token(type='COMMA', value=',', line=7, col=22)
+Token(type='NUMBER', value='8', line=7, col=24)
+Token(type='COMMA', value=',', line=7, col=25)
+Token(type='NUMBER', value='1', line=7, col=27)
+Token(type='COMMA', value=',', line=7, col=28)
+Token(type='NUMBER', value='9', line=7, col=30)
+Token(type='COMMA', value=',', line=7, col=31)
+Token(type='NUMBER', value='3', line=7, col=33)
+Token(type='RBRACK', value=']', line=7, col=34)
+Token(type='KEYWORD', value='sort', line=8, col=1)
+Token(type='ID', value='unsorted', line=8, col=6)
+Token(type='KEYWORD', value='asc', line=8, col=15)
+Token(type='KEYWORD', value='print', line=9, col=1)
+Token(type='ID', value='unsorted', line=9, col=7)
+Token(type='KEYWORD', value='list', line=11, col=1)
+Token(type='ID', value='reverse_sort', line=11, col=6)
+Token(type='ASSIGN', value='=', line=11, col=19)
+Token(type='LBRACK', value='[', line=11, col=21)
+Token(type='NUMBER', value='5', line=11, col=22)
+Token(type='COMMA', value=',', line=11, col=23)
+Token(type='NUMBER', value='2', line=11, col=25)
+Token(type='COMMA', value=',', line=11, col=26)
+Token(type='NUMBER', value='8', line=11, col=28)
+Token(type='COMMA', value=',', line=11, col=29)
+Token(type='NUMBER', value='1', line=11, col=31)
+Token(type='COMMA', value=',', line=11, col=32)
+Token(type='NUMBER', value='9', line=11, col=34)
+Token(type='COMMA', value=',', line=11, col=35)
+Token(type='NUMBER', value='3', line=11, col=37)
+Token(type='RBRACK', value=']', line=11, col=38)
+Token(type='KEYWORD', value='sort', line=12, col=1)
+Token(type='ID', value='reverse_sort', line=12, col=6)
+Token(type='KEYWORD', value='desc', line=12, col=19)
+Token(type='KEYWORD', value='print', line=13, col=1)
+Token(type='ID', value='reverse_sort', line=13, col=7)
+Token(type='EOF', value=None, line=15, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'unsorted', 'source': [5.0, 2.0, 8.0, 1.0, 9.0, 3.0]}
+{'list_name': 'unsorted', 'order': 'asc'}
+{'target': 'unsorted'}
+{'name': 'reverse_sort', 'source': [5.0, 2.0, 8.0, 1.0, 9.0, 3.0]}
+{'list_name': 'reverse_sort', 'order': 'desc'}
+{'target': 'reverse_sort'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'unsorted': {'type': 'list', 'declared': True}, 'reverse_sort': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'unsorted', [5.0, 2.0, 8.0, 1.0, 9.0, 3.0])
+('SORT', 'unsorted', 'asc')
+('PRINT', 'unsorted')
+('LIST', 'reverse_sort', [5.0, 2.0, 8.0, 1.0, 9.0, 3.0])
+('SORT', 'reverse_sort', 'desc')
+('PRINT', 'reverse_sort')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'unsorted', [5.0, 2.0, 8.0, 1.0, 9.0, 3.0])
+('SORT', 'unsorted', 'asc')
+('PRINT', 'unsorted')
+('LIST', 'reverse_sort', [5.0, 2.0, 8.0, 1.0, 9.0, 3.0])
+('SORT', 'reverse_sort', 'desc')
+('PRINT', 'reverse_sort')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 4: Sort (Ascending & Descending)
+@ Grammar: SortStmt → "sort" ListIdentifier ("asc" | "desc")
+@ ──────────────────────────────────────────────────────────────────────────
+list unsorted = [5, 2, 8, 1, 9, 3]
+sort unsorted asc
+print unsorted
+
+list reverse_sort = [5, 2, 8, 1, 9, 3]
+sort reverse_sort desc
+print reverse_sort
+
+
+
+OUTPUT:
+[1.0, 2.0, 3.0, 5.0, 8.0, 9.0]
+[9.0, 8.0, 5.0, 3.0, 2.0, 1.0]
+
+============================================================================
+============================================================================
+
+6 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 5: Map with Expression Precedence
+@ Grammar: MapStmt → "map" ListIdentifier "$0" "=>" Expr
+@          Expr → OrExpr
+@          Primary → Number | "$0" | "(" Expr ")" | "-" Primary
+@ ──────────────────────────────────────────────────────────────────────────
+list base = [1, 2, 3, 4, 5]
+
+@ Simple arithmetic
+list squared = map base $0 => $0 * $0
+print squared
+
+list doubled = map base $0 => $0 * 2
+print doubled
+
+list incremented = map base $0 => $0 + 10
+print incremented
+
+@ Unary minus
+list negated = map base $0 => -$0
+print negated
+
+@ Complex expression with parentheses
+list complex = map base $0 => ($0 + 5) * 2
+print complex
+
+@ Multiple operations with precedence
+list precedence = map base $0 => $0 * 2 + 3
+print precedence
+
+@ Nested parentheses
+list nested = map base $0 => (($0 + 1) * 2) - 3
+print nested
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=9, col=1)
+Token(type='ID', value='base', line=9, col=6)
+Token(type='ASSIGN', value='=', line=9, col=11)
+Token(type='LBRACK', value='[', line=9, col=13)
+Token(type='NUMBER', value='1', line=9, col=14)
+Token(type='COMMA', value=',', line=9, col=15)
+Token(type='NUMBER', value='2', line=9, col=17)
+Token(type='COMMA', value=',', line=9, col=18)
+Token(type='NUMBER', value='3', line=9, col=20)
+Token(type='COMMA', value=',', line=9, col=21)
+Token(type='NUMBER', value='4', line=9, col=23)
+Token(type='COMMA', value=',', line=9, col=24)
+Token(type='NUMBER', value='5', line=9, col=26)
+Token(type='RBRACK', value=']', line=9, col=27)
+Token(type='KEYWORD', value='list', line=12, col=1)
+Token(type='ID', value='squared', line=12, col=6)
+Token(type='ASSIGN', value='=', line=12, col=14)
+Token(type='KEYWORD', value='map', line=12, col=16)
+Token(type='ID', value='base', line=12, col=20)
+Token(type='DOLLAR0', value='$0', line=12, col=25)
+Token(type='ARROW', value='=>', line=12, col=28)
+Token(type='DOLLAR0', value='$0', line=12, col=31)
+Token(type='OP', value='*', line=12, col=34)
+Token(type='DOLLAR0', value='$0', line=12, col=36)
+Token(type='KEYWORD', value='print', line=13, col=1)
+Token(type='ID', value='squared', line=13, col=7)
+Token(type='KEYWORD', value='list', line=15, col=1)
+Token(type='ID', value='doubled', line=15, col=6)
+Token(type='ASSIGN', value='=', line=15, col=14)
+Token(type='KEYWORD', value='map', line=15, col=16)
+Token(type='ID', value='base', line=15, col=20)
+Token(type='DOLLAR0', value='$0', line=15, col=25)
+Token(type='ARROW', value='=>', line=15, col=28)
+Token(type='DOLLAR0', value='$0', line=15, col=31)
+Token(type='OP', value='*', line=15, col=34)
+Token(type='NUMBER', value='2', line=15, col=36)
+Token(type='KEYWORD', value='print', line=16, col=1)
+Token(type='ID', value='doubled', line=16, col=7)
+Token(type='KEYWORD', value='list', line=18, col=1)
+Token(type='ID', value='incremented', line=18, col=6)
+Token(type='ASSIGN', value='=', line=18, col=18)
+Token(type='KEYWORD', value='map', line=18, col=20)
+Token(type='ID', value='base', line=18, col=24)
+Token(type='DOLLAR0', value='$0', line=18, col=29)
+Token(type='ARROW', value='=>', line=18, col=32)
+Token(type='DOLLAR0', value='$0', line=18, col=35)
+Token(type='OP', value='+', line=18, col=38)
+Token(type='NUMBER', value='10', line=18, col=40)
+Token(type='KEYWORD', value='print', line=19, col=1)
+Token(type='ID', value='incremented', line=19, col=7)
+Token(type='KEYWORD', value='list', line=22, col=1)
+Token(type='ID', value='negated', line=22, col=6)
+Token(type='ASSIGN', value='=', line=22, col=14)
+Token(type='KEYWORD', value='map', line=22, col=16)
+Token(type='ID', value='base', line=22, col=20)
+Token(type='DOLLAR0', value='$0', line=22, col=25)
+Token(type='ARROW', value='=>', line=22, col=28)
+Token(type='OP', value='-', line=22, col=31)
+Token(type='DOLLAR0', value='$0', line=22, col=32)
+Token(type='KEYWORD', value='print', line=23, col=1)
+Token(type='ID', value='negated', line=23, col=7)
+Token(type='KEYWORD', value='list', line=26, col=1)
+Token(type='ID', value='complex', line=26, col=6)
+Token(type='ASSIGN', value='=', line=26, col=14)
+Token(type='KEYWORD', value='map', line=26, col=16)
+Token(type='ID', value='base', line=26, col=20)
+Token(type='DOLLAR0', value='$0', line=26, col=25)
+Token(type='ARROW', value='=>', line=26, col=28)
+Token(type='LPAREN', value='(', line=26, col=31)
+Token(type='DOLLAR0', value='$0', line=26, col=32)
+Token(type='OP', value='+', line=26, col=35)
+Token(type='NUMBER', value='5', line=26, col=37)
+Token(type='RPAREN', value=')', line=26, col=38)
+Token(type='OP', value='*', line=26, col=40)
+Token(type='NUMBER', value='2', line=26, col=42)
+Token(type='KEYWORD', value='print', line=27, col=1)
+Token(type='ID', value='complex', line=27, col=7)
+Token(type='KEYWORD', value='list', line=30, col=1)
+Token(type='ID', value='precedence', line=30, col=6)
+Token(type='ASSIGN', value='=', line=30, col=17)
+Token(type='KEYWORD', value='map', line=30, col=19)
+Token(type='ID', value='base', line=30, col=23)
+Token(type='DOLLAR0', value='$0', line=30, col=28)
+Token(type='ARROW', value='=>', line=30, col=31)
+Token(type='DOLLAR0', value='$0', line=30, col=34)
+Token(type='OP', value='*', line=30, col=37)
+Token(type='NUMBER', value='2', line=30, col=39)
+Token(type='OP', value='+', line=30, col=41)
+Token(type='NUMBER', value='3', line=30, col=43)
+Token(type='KEYWORD', value='print', line=31, col=1)
+Token(type='ID', value='precedence', line=31, col=7)
+Token(type='KEYWORD', value='list', line=34, col=1)
+Token(type='ID', value='nested', line=34, col=6)
+Token(type='ASSIGN', value='=', line=34, col=13)
+Token(type='KEYWORD', value='map', line=34, col=15)
+Token(type='ID', value='base', line=34, col=19)
+Token(type='DOLLAR0', value='$0', line=34, col=24)
+Token(type='ARROW', value='=>', line=34, col=27)
+Token(type='LPAREN', value='(', line=34, col=30)
+Token(type='LPAREN', value='(', line=34, col=31)
+Token(type='DOLLAR0', value='$0', line=34, col=32)
+Token(type='OP', value='+', line=34, col=35)
+Token(type='NUMBER', value='1', line=34, col=37)
+Token(type='RPAREN', value=')', line=34, col=38)
+Token(type='OP', value='*', line=34, col=40)
+Token(type='NUMBER', value='2', line=34, col=42)
+Token(type='RPAREN', value=')', line=34, col=43)
+Token(type='OP', value='-', line=34, col=45)
+Token(type='NUMBER', value='3', line=34, col=47)
+Token(type='KEYWORD', value='print', line=35, col=1)
+Token(type='ID', value='nested', line=35, col=7)
+Token(type='EOF', value=None, line=37, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'base', 'source': [1.0, 2.0, 3.0, 4.0, 5.0]}
+{'name': 'squared', 'source': <parser.MapStmt object at 0x00000286A95193A0>}
+{'target': 'squared'}
+{'name': 'doubled', 'source': <parser.MapStmt object at 0x00000286A9519D90>}
+{'target': 'doubled'}
+{'name': 'incremented', 'source': <parser.MapStmt object at 0x00000286A951A930>}
+{'target': 'incremented'}
+{'name': 'negated', 'source': <parser.MapStmt object at 0x00000286A951ACC0>}
+{'target': 'negated'}
+{'name': 'complex', 'source': <parser.MapStmt object at 0x00000286A951AE70>}
+{'target': 'complex'}
+{'name': 'precedence', 'source': <parser.MapStmt object at 0x00000286A951AFF0>}
+{'target': 'precedence'}
+{'name': 'nested', 'source': <parser.MapStmt object at 0x00000286A951B1D0>}
+{'target': 'nested'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'base': {'type': 'list', 'declared': True}, 'squared': {'type': 'list', 'declared': True}, 'doubled': {'type': 'list', 'declared': True}, 'incremented': {'type': 'list', 'declared': True}, 'negated': {'type': 'list', 'declared': True}, 'complex': {'type': 'list', 'declared': True}, 'precedence': {'type': 'list', 'declared': True}, 'nested': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'base', [1.0, 2.0, 3.0, 4.0, 5.0])
+('MAP', 't1', 'base', '(x * x)')
+('LIST', 'squared', 't1')
+('PRINT', 'squared')
+('MAP', 't2', 'base', '(x * 2)')
+('LIST', 'doubled', 't2')
+('PRINT', 'doubled')
+('MAP', 't3', 'base', '(x + 10)')
+('LIST', 'incremented', 't3')
+('PRINT', 'incremented')
+('MAP', 't4', 'base', '(-x)')
+('LIST', 'negated', 't4')
+('PRINT', 'negated')
+('MAP', 't5', 'base', '((x + 5) * 2)')
+('LIST', 'complex', 't5')
+('PRINT', 'complex')
+('MAP', 't6', 'base', '((x * 2) + 3)')
+('LIST', 'precedence', 't6')
+('PRINT', 'precedence')
+('MAP', 't7', 'base', '(((x + 1) * 2) - 3)')
+('LIST', 'nested', 't7')
+('PRINT', 'nested')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'base', [1.0, 2.0, 3.0, 4.0, 5.0])
+('MAP', 't1', 'base', '(x * x)')
+('LIST', 'squared', 't1')
+('PRINT', 't1')
+('MAP', 't2', 'base', '(x * 2)')
+('LIST', 'doubled', 't2')
+('PRINT', 't2')
+('MAP', 't3', 'base', '(x + 10)')
+('LIST', 'incremented', 't3')
+('PRINT', 't3')
+('MAP', 't4', 'base', '(-x)')
+('LIST', 'negated', 't4')
+('PRINT', 't4')
+('MAP', 't5', 'base', '((x + 5) * 2)')
+('LIST', 'complex', 't5')
+('PRINT', 't5')
+('MAP', 't6', 'base', '((x * 2) + 3)')
+('LIST', 'precedence', 't6')
+('PRINT', 't6')
+('MAP', 't7', 'base', '(((x + 1) * 2) - 3)')
+('LIST', 'nested', 't7')
+('PRINT', 't7')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 5: Map with Expression Precedence
+@ Grammar: MapStmt → "map" ListIdentifier "$0" "=>" Expr
+@          Expr → OrExpr
+@          Primary → Number | "$0" | "(" Expr ")" | "-" Primary
+@ ──────────────────────────────────────────────────────────────────────────
+list base = [1, 2, 3, 4, 5]
+
+@ Simple arithmetic
+list squared = map base $0 => $0 * $0
+print squared
+
+list doubled = map base $0 => $0 * 2
+print doubled
+
+list incremented = map base $0 => $0 + 10
+print incremented
+
+@ Unary minus
+list negated = map base $0 => -$0
+print negated
+
+@ Complex expression with parentheses
+list complex = map base $0 => ($0 + 5) * 2
+print complex
+
+@ Multiple operations with precedence
+list precedence = map base $0 => $0 * 2 + 3
+print precedence
+
+@ Nested parentheses
+list nested = map base $0 => (($0 + 1) * 2) - 3
+print nested
+
+
+
+OUTPUT:
+[1, 4, 9, 16, 25]
+[2, 4, 6, 8, 10]
+[11, 12, 13, 14, 15]
+[-1, -2, -3, -4, -5]
+[12, 14, 16, 18, 20]
+[5, 7, 9, 11, 13]
+[1, 3, 5, 7, 9]
+
+============================================================================
+============================================================================
+
+7 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 6: Map with Bitwise Operations (and, or, xor)
+@ Grammar: OrExpr → XorExpr ( "or" XorExpr )*
+@          XorExpr → AndExpr ( "xor" AndExpr )*
+@          AndExpr → AddExpr ( "and" AddExpr )*
+@ ──────────────────────────────────────────────────────────────────────────
+list bits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 15, 255]
+
+@ Bitwise AND
+list masked = map bits $0 => $0 and 3
+print masked
+
+@ Bitwise OR
+list set_bits = map bits $0 => $0 or 8
+print set_bits
+
+@ Bitwise XOR
+list toggled = map bits $0 => $0 xor 1
+print toggled
+
+@ Combined bitwise operations with precedence
+list bitwise_combo = map bits $0 => $0 and 7 or 8
+print bitwise_combo
+
+@ Complex bitwise expression
+list complex_bits = map bits $0 => ($0 and 15) xor 7
+print complex_bits
+
+@ All three bitwise operators
+list all_bitwise = map bits $0 => $0 and 12 xor 5 or 2
+print all_bitwise
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=9, col=1)
+Token(type='ID', value='bits', line=9, col=6)
+Token(type='ASSIGN', value='=', line=9, col=11)
+Token(type='LBRACK', value='[', line=9, col=13)
+Token(type='NUMBER', value='0', line=9, col=14)
+Token(type='COMMA', value=',', line=9, col=15)
+Token(type='NUMBER', value='1', line=9, col=17)
+Token(type='COMMA', value=',', line=9, col=18)
+Token(type='NUMBER', value='2', line=9, col=20)
+Token(type='COMMA', value=',', line=9, col=21)
+Token(type='NUMBER', value='3', line=9, col=23)
+Token(type='COMMA', value=',', line=9, col=24)
+Token(type='NUMBER', value='4', line=9, col=26)
+Token(type='COMMA', value=',', line=9, col=27)
+Token(type='NUMBER', value='5', line=9, col=29)
+Token(type='COMMA', value=',', line=9, col=30)
+Token(type='NUMBER', value='6', line=9, col=32)
+Token(type='COMMA', value=',', line=9, col=33)
+Token(type='NUMBER', value='7', line=9, col=35)
+Token(type='COMMA', value=',', line=9, col=36)
+Token(type='NUMBER', value='8', line=9, col=38)
+Token(type='COMMA', value=',', line=9, col=39)
+Token(type='NUMBER', value='15', line=9, col=41)
+Token(type='COMMA', value=',', line=9, col=43)
+Token(type='NUMBER', value='255', line=9, col=45)
+Token(type='RBRACK', value=']', line=9, col=48)
+Token(type='KEYWORD', value='list', line=12, col=1)
+Token(type='ID', value='masked', line=12, col=6)
+Token(type='ASSIGN', value='=', line=12, col=13)
+Token(type='KEYWORD', value='map', line=12, col=15)
+Token(type='ID', value='bits', line=12, col=19)
+Token(type='DOLLAR0', value='$0', line=12, col=24)
+Token(type='ARROW', value='=>', line=12, col=27)
+Token(type='DOLLAR0', value='$0', line=12, col=30)
+Token(type='KEYWORD', value='and', line=12, col=33)
+Token(type='NUMBER', value='3', line=12, col=37)
+Token(type='KEYWORD', value='print', line=13, col=1)
+Token(type='ID', value='masked', line=13, col=7)
+Token(type='KEYWORD', value='list', line=16, col=1)
+Token(type='ID', value='set_bits', line=16, col=6)
+Token(type='ASSIGN', value='=', line=16, col=15)
+Token(type='KEYWORD', value='map', line=16, col=17)
+Token(type='ID', value='bits', line=16, col=21)
+Token(type='DOLLAR0', value='$0', line=16, col=26)
+Token(type='ARROW', value='=>', line=16, col=29)
+Token(type='DOLLAR0', value='$0', line=16, col=32)
+Token(type='KEYWORD', value='or', line=16, col=35)
+Token(type='NUMBER', value='8', line=16, col=38)
+Token(type='KEYWORD', value='print', line=17, col=1)
+Token(type='ID', value='set_bits', line=17, col=7)
+Token(type='KEYWORD', value='list', line=20, col=1)
+Token(type='ID', value='toggled', line=20, col=6)
+Token(type='ASSIGN', value='=', line=20, col=14)
+Token(type='KEYWORD', value='map', line=20, col=16)
+Token(type='ID', value='bits', line=20, col=20)
+Token(type='DOLLAR0', value='$0', line=20, col=25)
+Token(type='ARROW', value='=>', line=20, col=28)
+Token(type='DOLLAR0', value='$0', line=20, col=31)
+Token(type='KEYWORD', value='xor', line=20, col=34)
+Token(type='NUMBER', value='1', line=20, col=38)
+Token(type='KEYWORD', value='print', line=21, col=1)
+Token(type='ID', value='toggled', line=21, col=7)
+Token(type='KEYWORD', value='list', line=24, col=1)
+Token(type='ID', value='bitwise_combo', line=24, col=6)
+Token(type='ASSIGN', value='=', line=24, col=20)
+Token(type='KEYWORD', value='map', line=24, col=22)
+Token(type='ID', value='bits', line=24, col=26)
+Token(type='DOLLAR0', value='$0', line=24, col=31)
+Token(type='ARROW', value='=>', line=24, col=34)
+Token(type='DOLLAR0', value='$0', line=24, col=37)
+Token(type='KEYWORD', value='and', line=24, col=40)
+Token(type='NUMBER', value='7', line=24, col=44)
+Token(type='KEYWORD', value='or', line=24, col=46)
+Token(type='NUMBER', value='8', line=24, col=49)
+Token(type='KEYWORD', value='print', line=25, col=1)
+Token(type='ID', value='bitwise_combo', line=25, col=7)
+Token(type='KEYWORD', value='list', line=28, col=1)
+Token(type='ID', value='complex_bits', line=28, col=6)
+Token(type='ASSIGN', value='=', line=28, col=19)
+Token(type='KEYWORD', value='map', line=28, col=21)
+Token(type='ID', value='bits', line=28, col=25)
+Token(type='DOLLAR0', value='$0', line=28, col=30)
+Token(type='ARROW', value='=>', line=28, col=33)
+Token(type='LPAREN', value='(', line=28, col=36)
+Token(type='DOLLAR0', value='$0', line=28, col=37)
+Token(type='KEYWORD', value='and', line=28, col=40)
+Token(type='NUMBER', value='15', line=28, col=44)
+Token(type='RPAREN', value=')', line=28, col=46)
+Token(type='KEYWORD', value='xor', line=28, col=48)
+Token(type='NUMBER', value='7', line=28, col=52)
+Token(type='KEYWORD', value='print', line=29, col=1)
+Token(type='ID', value='complex_bits', line=29, col=7)
+Token(type='KEYWORD', value='list', line=32, col=1)
+Token(type='ID', value='all_bitwise', line=32, col=6)
+Token(type='ASSIGN', value='=', line=32, col=18)
+Token(type='KEYWORD', value='map', line=32, col=20)
+Token(type='ID', value='bits', line=32, col=24)
+Token(type='DOLLAR0', value='$0', line=32, col=29)
+Token(type='ARROW', value='=>', line=32, col=32)
+Token(type='DOLLAR0', value='$0', line=32, col=35)
+Token(type='KEYWORD', value='and', line=32, col=38)
+Token(type='NUMBER', value='12', line=32, col=42)
+Token(type='KEYWORD', value='xor', line=32, col=45)
+Token(type='NUMBER', value='5', line=32, col=49)
+Token(type='KEYWORD', value='or', line=32, col=51)
+Token(type='NUMBER', value='2', line=32, col=54)
+Token(type='KEYWORD', value='print', line=33, col=1)
+Token(type='ID', value='all_bitwise', line=33, col=7)
+Token(type='EOF', value=None, line=35, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'bits', 'source': [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 15.0, 255.0]}
+{'name': 'masked', 'source': <parser.MapStmt object at 0x00000286A951A690>}
+{'target': 'masked'}
+{'name': 'set_bits', 'source': <parser.MapStmt object at 0x00000286A951A210>}
+{'target': 'set_bits'}
+{'name': 'toggled', 'source': <parser.MapStmt object at 0x00000286A951AA50>}
+{'target': 'toggled'}
+{'name': 'bitwise_combo', 'source': <parser.MapStmt object at 0x00000286A95199D0>}
+{'target': 'bitwise_combo'}
+{'name': 'complex_bits', 'source': <parser.MapStmt object at 0x00000286A951A5D0>}
+{'target': 'complex_bits'}
+{'name': 'all_bitwise', 'source': <parser.MapStmt object at 0x00000286A9519B50>}
+{'target': 'all_bitwise'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'bits': {'type': 'list', 'declared': True}, 'masked': {'type': 'list', 'declared': True}, 'set_bits': {'type': 'list', 'declared': True}, 'toggled': {'type': 'list', 'declared': True}, 'bitwise_combo': {'type': 'list', 'declared': True}, 'complex_bits': {'type': 'list', 'declared': True}, 'all_bitwise': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'bits', [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 15.0, 255.0])
+('MAP', 't1', 'bits', '(x & 3)')
+('LIST', 'masked', 't1')
+('PRINT', 'masked')
+('MAP', 't2', 'bits', '(x | 8)')
+('LIST', 'set_bits', 't2')
+('PRINT', 'set_bits')
+('MAP', 't3', 'bits', '(x ^ 1)')
+('LIST', 'toggled', 't3')
+('PRINT', 'toggled')
+('MAP', 't4', 'bits', '((x & 7) | 8)')
+('LIST', 'bitwise_combo', 't4')
+('PRINT', 'bitwise_combo')
+('MAP', 't5', 'bits', '((x & 15) ^ 7)')
+('LIST', 'complex_bits', 't5')
+('PRINT', 'complex_bits')
+('MAP', 't6', 'bits', '(((x & 12) ^ 5) | 2)')
+('LIST', 'all_bitwise', 't6')
+('PRINT', 'all_bitwise')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'bits', [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 15.0, 255.0])
+('MAP', 't1', 'bits', '(x & 3)')
+('LIST', 'masked', 't1')
+('PRINT', 't1')
+('MAP', 't2', 'bits', '(x | 8)')
+('LIST', 'set_bits', 't2')
+('PRINT', 't2')
+('MAP', 't3', 'bits', '(x ^ 1)')
+('LIST', 'toggled', 't3')
+('PRINT', 't3')
+('MAP', 't4', 'bits', '((x & 7) | 8)')
+('LIST', 'bitwise_combo', 't4')
+('PRINT', 't4')
+('MAP', 't5', 'bits', '((x & 15) ^ 7)')
+('LIST', 'complex_bits', 't5')
+('PRINT', 't5')
+('MAP', 't6', 'bits', '(((x & 12) ^ 5) | 2)')
+('LIST', 'all_bitwise', 't6')
+('PRINT', 't6')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 6: Map with Bitwise Operations (and, or, xor)
+@ Grammar: OrExpr → XorExpr ( "or" XorExpr )*
+@          XorExpr → AndExpr ( "xor" AndExpr )*
+@          AndExpr → AddExpr ( "and" AddExpr )*
+@ ──────────────────────────────────────────────────────────────────────────
+list bits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 15, 255]
+
+@ Bitwise AND
+list masked = map bits $0 => $0 and 3
+print masked
+
+@ Bitwise OR
+list set_bits = map bits $0 => $0 or 8
+print set_bits
+
+@ Bitwise XOR
+list toggled = map bits $0 => $0 xor 1
+print toggled
+
+@ Combined bitwise operations with precedence
+list bitwise_combo = map bits $0 => $0 and 7 or 8
+print bitwise_combo
+
+@ Complex bitwise expression
+list complex_bits = map bits $0 => ($0 and 15) xor 7
+print complex_bits
+
+@ All three bitwise operators
+list all_bitwise = map bits $0 => $0 and 12 xor 5 or 2
+print all_bitwise
+
+
+
+OUTPUT:
+[0, 1, 2, 3, 0, 1, 2, 3, 0, 3, 3]
+[8, 9, 10, 11, 12, 13, 14, 15, 8, 15, 255]
+[1, 0, 3, 2, 5, 4, 7, 6, 9, 14, 254]
+[8, 9, 10, 11, 12, 13, 14, 15, 8, 15, 15]
+[7, 6, 5, 4, 3, 2, 1, 0, 15, 8, 8]
+[7, 7, 7, 7, 3, 3, 3, 3, 15, 11, 11]
+
+============================================================================
+============================================================================
+
+8 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 7: Map with Mixed Arithmetic and Bitwise
+@ Tests full expression precedence hierarchy
+@ ──────────────────────────────────────────────────────────────────────────
+list mixed_ops = [1, 2, 4, 8, 16]
+
+@ Multiplication has higher precedence than addition
+list arith_precedence = map mixed_ops $0 => $0 + $0 * 2
+print arith_precedence
+
+@ Bitwise AND has lower precedence than multiplication
+list mixed_precedence = map mixed_ops $0 => $0 * 2 and 7
+print mixed_precedence
+
+@ Full precedence test: mul, add, and, xor, or
+list full_precedence = map mixed_ops $0 => $0 * 2 + 1 and 15 xor 3 or 1
+print full_precedence
+
+@ With parentheses to override precedence
+list override = map mixed_ops $0 => ($0 + 1) * (2 and 3)
+print override
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=7, col=1)
+Token(type='ID', value='mixed_ops', line=7, col=6)
+Token(type='ASSIGN', value='=', line=7, col=16)
+Token(type='LBRACK', value='[', line=7, col=18)
+Token(type='NUMBER', value='1', line=7, col=19)
+Token(type='COMMA', value=',', line=7, col=20)
+Token(type='NUMBER', value='2', line=7, col=22)
+Token(type='COMMA', value=',', line=7, col=23)
+Token(type='NUMBER', value='4', line=7, col=25)
+Token(type='COMMA', value=',', line=7, col=26)
+Token(type='NUMBER', value='8', line=7, col=28)
+Token(type='COMMA', value=',', line=7, col=29)
+Token(type='NUMBER', value='16', line=7, col=31)
+Token(type='RBRACK', value=']', line=7, col=33)
+Token(type='KEYWORD', value='list', line=10, col=1)
+Token(type='ID', value='arith_precedence', line=10, col=6)
+Token(type='ASSIGN', value='=', line=10, col=23)
+Token(type='KEYWORD', value='map', line=10, col=25)
+Token(type='ID', value='mixed_ops', line=10, col=29)
+Token(type='DOLLAR0', value='$0', line=10, col=39)
+Token(type='ARROW', value='=>', line=10, col=42)
+Token(type='DOLLAR0', value='$0', line=10, col=45)
+Token(type='OP', value='+', line=10, col=48)
+Token(type='DOLLAR0', value='$0', line=10, col=50)
+Token(type='OP', value='*', line=10, col=53)
+Token(type='NUMBER', value='2', line=10, col=55)
+Token(type='KEYWORD', value='print', line=11, col=1)
+Token(type='ID', value='arith_precedence', line=11, col=7)
+Token(type='KEYWORD', value='list', line=14, col=1)
+Token(type='ID', value='mixed_precedence', line=14, col=6)
+Token(type='ASSIGN', value='=', line=14, col=23)
+Token(type='KEYWORD', value='map', line=14, col=25)
+Token(type='ID', value='mixed_ops', line=14, col=29)
+Token(type='DOLLAR0', value='$0', line=14, col=39)
+Token(type='ARROW', value='=>', line=14, col=42)
+Token(type='DOLLAR0', value='$0', line=14, col=45)
+Token(type='OP', value='*', line=14, col=48)
+Token(type='NUMBER', value='2', line=14, col=50)
+Token(type='KEYWORD', value='and', line=14, col=52)
+Token(type='NUMBER', value='7', line=14, col=56)
+Token(type='KEYWORD', value='print', line=15, col=1)
+Token(type='ID', value='mixed_precedence', line=15, col=7)
+Token(type='KEYWORD', value='list', line=18, col=1)
+Token(type='ID', value='full_precedence', line=18, col=6)
+Token(type='ASSIGN', value='=', line=18, col=22)
+Token(type='KEYWORD', value='map', line=18, col=24)
+Token(type='ID', value='mixed_ops', line=18, col=28)
+Token(type='DOLLAR0', value='$0', line=18, col=38)
+Token(type='ARROW', value='=>', line=18, col=41)
+Token(type='DOLLAR0', value='$0', line=18, col=44)
+Token(type='OP', value='*', line=18, col=47)
+Token(type='NUMBER', value='2', line=18, col=49)
+Token(type='OP', value='+', line=18, col=51)
+Token(type='NUMBER', value='1', line=18, col=53)
+Token(type='KEYWORD', value='and', line=18, col=55)
+Token(type='NUMBER', value='15', line=18, col=59)
+Token(type='KEYWORD', value='xor', line=18, col=62)
+Token(type='NUMBER', value='3', line=18, col=66)
+Token(type='KEYWORD', value='or', line=18, col=68)
+Token(type='NUMBER', value='1', line=18, col=71)
+Token(type='KEYWORD', value='print', line=19, col=1)
+Token(type='ID', value='full_precedence', line=19, col=7)
+Token(type='KEYWORD', value='list', line=22, col=1)
+Token(type='ID', value='override', line=22, col=6)
+Token(type='ASSIGN', value='=', line=22, col=15)
+Token(type='KEYWORD', value='map', line=22, col=17)
+Token(type='ID', value='mixed_ops', line=22, col=21)
+Token(type='DOLLAR0', value='$0', line=22, col=31)
+Token(type='ARROW', value='=>', line=22, col=34)
+Token(type='LPAREN', value='(', line=22, col=37)
+Token(type='DOLLAR0', value='$0', line=22, col=38)
+Token(type='OP', value='+', line=22, col=41)
+Token(type='NUMBER', value='1', line=22, col=43)
+Token(type='RPAREN', value=')', line=22, col=44)
+Token(type='OP', value='*', line=22, col=46)
+Token(type='LPAREN', value='(', line=22, col=48)
+Token(type='NUMBER', value='2', line=22, col=49)
+Token(type='KEYWORD', value='and', line=22, col=51)
+Token(type='NUMBER', value='3', line=22, col=55)
+Token(type='RPAREN', value=')', line=22, col=56)
+Token(type='KEYWORD', value='print', line=23, col=1)
+Token(type='ID', value='override', line=23, col=7)
+Token(type='EOF', value=None, line=24, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'mixed_ops', 'source': [1.0, 2.0, 4.0, 8.0, 16.0]}
+{'name': 'arith_precedence', 'source': <parser.MapStmt object at 0x00000286A951B500>}
+{'target': 'arith_precedence'}
+{'name': 'mixed_precedence', 'source': <parser.MapStmt object at 0x00000286A951B740>}
+{'target': 'mixed_precedence'}
+{'name': 'full_precedence', 'source': <parser.MapStmt object at 0x00000286A951BC20>}
+{'target': 'full_precedence'}
+{'name': 'override', 'source': <parser.MapStmt object at 0x00000286A951BEC0>}
+{'target': 'override'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'mixed_ops': {'type': 'list', 'declared': True}, 'arith_precedence': {'type': 'list', 'declared': True}, 'mixed_precedence': {'type': 'list', 'declared': True}, 'full_precedence': {'type': 'list', 'declared': True}, 'override': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'mixed_ops', [1.0, 2.0, 4.0, 8.0, 16.0])
+('MAP', 't1', 'mixed_ops', '(x + (x * 2))')
+('LIST', 'arith_precedence', 't1')
+('PRINT', 'arith_precedence')
+('MAP', 't2', 'mixed_ops', '((x * 2) & 7)')
+('LIST', 'mixed_precedence', 't2')
+('PRINT', 'mixed_precedence')
+('MAP', 't3', 'mixed_ops', '(((((x * 2) + 1) & 15) ^ 3) | 1)')
+('LIST', 'full_precedence', 't3')
+('PRINT', 'full_precedence')
+('MAP', 't4', 'mixed_ops', '((x + 1) * (2 & 3))')
+('LIST', 'override', 't4')
+('PRINT', 'override')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'mixed_ops', [1.0, 2.0, 4.0, 8.0, 16.0])
+('MAP', 't1', 'mixed_ops', '(x + (x * 2))')
+('LIST', 'arith_precedence', 't1')
+('PRINT', 't1')
+('MAP', 't2', 'mixed_ops', '((x * 2) & 7)')
+('LIST', 'mixed_precedence', 't2')
+('PRINT', 't2')
+('MAP', 't3', 'mixed_ops', '(((((x * 2) + 1) & 15) ^ 3) | 1)')
+('LIST', 'full_precedence', 't3')
+('PRINT', 't3')
+('MAP', 't4', 'mixed_ops', '((x + 1) * (2 & 3))')
+('LIST', 'override', 't4')
+('PRINT', 't4')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 7: Map with Mixed Arithmetic and Bitwise
+@ Tests full expression precedence hierarchy
+@ ──────────────────────────────────────────────────────────────────────────
+list mixed_ops = [1, 2, 4, 8, 16]
+
+@ Multiplication has higher precedence than addition
+list arith_precedence = map mixed_ops $0 => $0 + $0 * 2
+print arith_precedence
+
+@ Bitwise AND has lower precedence than multiplication
+list mixed_precedence = map mixed_ops $0 => $0 * 2 and 7
+print mixed_precedence
+
+@ Full precedence test: mul, add, and, xor, or
+list full_precedence = map mixed_ops $0 => $0 * 2 + 1 and 15 xor 3 or 1
+print full_precedence
+
+@ With parentheses to override precedence
+list override = map mixed_ops $0 => ($0 + 1) * (2 and 3)
+print override
+
+
+OUTPUT:
+[3, 6, 12, 24, 48]
+[2, 4, 0, 0, 0]
+[1, 7, 11, 3, 3]
+[4, 6, 10, 18, 34]
+
+============================================================================
+============================================================================
+
+9 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 8: Set Operations
+@ Grammar: SetStmt → ListIdentifier SetOperator ListIdentifier
+@          SetOperator → "union" | "intersection" | "difference"
+@ ──────────────────────────────────────────────────────────────────────────
+list set_a = [1, 2, 3, 4, 5]
+list set_b = [4, 5, 6, 7, 8]
+
+list union_ab = set_a union set_b
+print union_ab
+
+list intersection_ab = set_a intersection set_b
+print intersection_ab
+
+list diff_ab = set_a difference set_b
+print diff_ab
+
+@ With duplicates
+list dupes_a = [1, 1, 2, 2, 3, 3]
+list dupes_b = [2, 2, 3, 3, 4, 4]
+
+list union_dupes = dupes_a union dupes_b
+print union_dupes
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=8, col=1)
+Token(type='ID', value='set_a', line=8, col=6)
+Token(type='ASSIGN', value='=', line=8, col=12)
+Token(type='LBRACK', value='[', line=8, col=14)
+Token(type='NUMBER', value='1', line=8, col=15)
+Token(type='COMMA', value=',', line=8, col=16)
+Token(type='NUMBER', value='2', line=8, col=18)
+Token(type='COMMA', value=',', line=8, col=19)
+Token(type='NUMBER', value='3', line=8, col=21)
+Token(type='COMMA', value=',', line=8, col=22)
+Token(type='NUMBER', value='4', line=8, col=24)
+Token(type='COMMA', value=',', line=8, col=25)
+Token(type='NUMBER', value='5', line=8, col=27)
+Token(type='RBRACK', value=']', line=8, col=28)
+Token(type='KEYWORD', value='list', line=9, col=1)
+Token(type='ID', value='set_b', line=9, col=6)
+Token(type='ASSIGN', value='=', line=9, col=12)
+Token(type='LBRACK', value='[', line=9, col=14)
+Token(type='NUMBER', value='4', line=9, col=15)
+Token(type='COMMA', value=',', line=9, col=16)
+Token(type='NUMBER', value='5', line=9, col=18)
+Token(type='COMMA', value=',', line=9, col=19)
+Token(type='NUMBER', value='6', line=9, col=21)
+Token(type='COMMA', value=',', line=9, col=22)
+Token(type='NUMBER', value='7', line=9, col=24)
+Token(type='COMMA', value=',', line=9, col=25)
+Token(type='NUMBER', value='8', line=9, col=27)
+Token(type='RBRACK', value=']', line=9, col=28)
+Token(type='KEYWORD', value='list', line=11, col=1)
+Token(type='ID', value='union_ab', line=11, col=6)
+Token(type='ASSIGN', value='=', line=11, col=15)
+Token(type='ID', value='set_a', line=11, col=17)
+Token(type='KEYWORD', value='union', line=11, col=23)
+Token(type='ID', value='set_b', line=11, col=29)
+Token(type='KEYWORD', value='print', line=12, col=1)
+Token(type='ID', value='union_ab', line=12, col=7)
+Token(type='KEYWORD', value='list', line=14, col=1)
+Token(type='ID', value='intersection_ab', line=14, col=6)
+Token(type='ASSIGN', value='=', line=14, col=22)
+Token(type='ID', value='set_a', line=14, col=24)
+Token(type='KEYWORD', value='intersection', line=14, col=30)
+Token(type='ID', value='set_b', line=14, col=43)
+Token(type='KEYWORD', value='print', line=15, col=1)
+Token(type='ID', value='intersection_ab', line=15, col=7)
+Token(type='KEYWORD', value='list', line=17, col=1)
+Token(type='ID', value='diff_ab', line=17, col=6)
+Token(type='ASSIGN', value='=', line=17, col=14)
+Token(type='ID', value='set_a', line=17, col=16)
+Token(type='KEYWORD', value='difference', line=17, col=22)
+Token(type='ID', value='set_b', line=17, col=33)
+Token(type='KEYWORD', value='print', line=18, col=1)
+Token(type='ID', value='diff_ab', line=18, col=7)
+Token(type='KEYWORD', value='list', line=21, col=1)
+Token(type='ID', value='dupes_a', line=21, col=6)
+Token(type='ASSIGN', value='=', line=21, col=14)
+Token(type='LBRACK', value='[', line=21, col=16)
+Token(type='NUMBER', value='1', line=21, col=17)
+Token(type='COMMA', value=',', line=21, col=18)
+Token(type='NUMBER', value='1', line=21, col=20)
+Token(type='COMMA', value=',', line=21, col=21)
+Token(type='NUMBER', value='2', line=21, col=23)
+Token(type='COMMA', value=',', line=21, col=24)
+Token(type='NUMBER', value='2', line=21, col=26)
+Token(type='COMMA', value=',', line=21, col=27)
+Token(type='NUMBER', value='3', line=21, col=29)
+Token(type='COMMA', value=',', line=21, col=30)
+Token(type='NUMBER', value='3', line=21, col=32)
+Token(type='RBRACK', value=']', line=21, col=33)
+Token(type='KEYWORD', value='list', line=22, col=1)
+Token(type='ID', value='dupes_b', line=22, col=6)
+Token(type='ASSIGN', value='=', line=22, col=14)
+Token(type='LBRACK', value='[', line=22, col=16)
+Token(type='NUMBER', value='2', line=22, col=17)
+Token(type='COMMA', value=',', line=22, col=18)
+Token(type='NUMBER', value='2', line=22, col=20)
+Token(type='COMMA', value=',', line=22, col=21)
+Token(type='NUMBER', value='3', line=22, col=23)
+Token(type='COMMA', value=',', line=22, col=24)
+Token(type='NUMBER', value='3', line=22, col=26)
+Token(type='COMMA', value=',', line=22, col=27)
+Token(type='NUMBER', value='4', line=22, col=29)
+Token(type='COMMA', value=',', line=22, col=30)
+Token(type='NUMBER', value='4', line=22, col=32)
+Token(type='RBRACK', value=']', line=22, col=33)
+Token(type='KEYWORD', value='list', line=24, col=1)
+Token(type='ID', value='union_dupes', line=24, col=6)
+Token(type='ASSIGN', value='=', line=24, col=18)
+Token(type='ID', value='dupes_a', line=24, col=20)
+Token(type='KEYWORD', value='union', line=24, col=28)
+Token(type='ID', value='dupes_b', line=24, col=34)
+Token(type='KEYWORD', value='print', line=25, col=1)
+Token(type='ID', value='union_dupes', line=25, col=7)
+Token(type='EOF', value=None, line=27, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'set_a', 'source': [1.0, 2.0, 3.0, 4.0, 5.0]}
+{'name': 'set_b', 'source': [4.0, 5.0, 6.0, 7.0, 8.0]}
+{'name': 'union_ab', 'source': <parser.SetOpStmt object at 0x00000286A951A9C0>}
+{'target': 'union_ab'}
+{'name': 'intersection_ab', 'source': <parser.SetOpStmt object at 0x00000286A951B350>}
+{'target': 'intersection_ab'}
+{'name': 'diff_ab', 'source': <parser.SetOpStmt object at 0x00000286A951B290>}
+{'target': 'diff_ab'}
+{'name': 'dupes_a', 'source': [1.0, 1.0, 2.0, 2.0, 3.0, 3.0]}
+{'name': 'dupes_b', 'source': [2.0, 2.0, 3.0, 3.0, 4.0, 4.0]}
+{'name': 'union_dupes', 'source': <parser.SetOpStmt object at 0x00000286A9519EE0>}
+{'target': 'union_dupes'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'set_a': {'type': 'list', 'declared': True}, 'set_b': {'type': 'list', 'declared': True}, 'union_ab': {'type': 'list', 'declared': True}, 'intersection_ab': {'type': 'list', 'declared': True}, 'diff_ab': {'type': 'list', 'declared': True}, 'dupes_a': {'type': 'list', 'declared': True}, 'dupes_b': {'type': 'list', 'declared': True}, 'union_dupes': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'set_a', [1.0, 2.0, 3.0, 4.0, 5.0])
+('LIST', 'set_b', [4.0, 5.0, 6.0, 7.0, 8.0])
+('SETOP', 't1', 'union', 'set_a', 'set_b')
+('LIST', 'union_ab', 't1')
+('PRINT', 'union_ab')
+('SETOP', 't2', 'intersection', 'set_a', 'set_b')
+('LIST', 'intersection_ab', 't2')
+('PRINT', 'intersection_ab')
+('SETOP', 't3', 'difference', 'set_a', 'set_b')
+('LIST', 'diff_ab', 't3')
+('PRINT', 'diff_ab')
+('LIST', 'dupes_a', [1.0, 1.0, 2.0, 2.0, 3.0, 3.0])
+('LIST', 'dupes_b', [2.0, 2.0, 3.0, 3.0, 4.0, 4.0])
+('SETOP', 't4', 'union', 'dupes_a', 'dupes_b')
+('LIST', 'union_dupes', 't4')
+('PRINT', 'union_dupes')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'set_a', [1.0, 2.0, 3.0, 4.0, 5.0])
+('LIST', 'set_b', [4.0, 5.0, 6.0, 7.0, 8.0])
+('SETOP', 't1', 'union', 'set_a', 'set_b')
+('LIST', 'union_ab', 't1')
+('PRINT', 't1')
+('SETOP', 't2', 'intersection', 'set_a', 'set_b')
+('LIST', 'intersection_ab', 't2')
+('PRINT', 't2')
+('SETOP', 't3', 'difference', 'set_a', 'set_b')
+('LIST', 'diff_ab', 't3')
+('PRINT', 't3')
+('LIST', 'dupes_a', [1.0, 1.0, 2.0, 2.0, 3.0, 3.0])
+('LIST', 'dupes_b', [2.0, 2.0, 3.0, 3.0, 4.0, 4.0])
+('SETOP', 't4', 'union', 'dupes_a', 'dupes_b')
+('LIST', 'union_dupes', 't4')
+('PRINT', 't4')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 8: Set Operations
+@ Grammar: SetStmt → ListIdentifier SetOperator ListIdentifier
+@          SetOperator → "union" | "intersection" | "difference"
+@ ──────────────────────────────────────────────────────────────────────────
+list set_a = [1, 2, 3, 4, 5]
+list set_b = [4, 5, 6, 7, 8]
+
+list union_ab = set_a union set_b
+print union_ab
+
+list intersection_ab = set_a intersection set_b
+print intersection_ab
+
+list diff_ab = set_a difference set_b
+print diff_ab
+
+@ With duplicates
+list dupes_a = [1, 1, 2, 2, 3, 3]
+list dupes_b = [2, 2, 3, 3, 4, 4]
+
+list union_dupes = dupes_a union dupes_b
+print union_dupes
+
+
+
+OUTPUT:
+[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
+[4.0, 5.0]
+[1.0, 2.0, 3.0]
+[1.0, 2.0, 3.0, 4.0]
+
+============================================================================
+============================================================================
+
+10 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 9: List Operations with Precedence
+@ Grammar: ListOpStmt → ListOrExpr
+@          ListOrExpr → ListXorExpr ( "or" ListXorExpr )*
+@          ListXorExpr → ListAndExpr ( "xor" ListAndExpr )*
+@          ListAndExpr → ListAddExpr ( "and" ListAddExpr )*
+@          ListAddExpr → ListMulExpr ( ("+" | "-") MulExpr )*
+@          ListMulExpr → ListPrimary ( ("*" | "/") ListPrimary )*
+@ ──────────────────────────────────────────────────────────────────────────
+list a = [1, 2, 3, 4]
+list b = [10, 20, 30, 40]
+list c = [2, 2, 2, 2]
+
+@ Arithmetic operations
+list add_result = a + b
+print add_result
+
+list sub_result = b - a
+print sub_result
+
+list mul_result = a * c
+print mul_result
+
+list div_result = b / c
+print div_result
+
+@ Precedence: multiplication before addition
+list precedence1 = a + b * c
+print precedence1
+
+@ Precedence: division before subtraction
+list precedence2 = b - a / c
+print precedence2
+
+@ Bitwise list operations
+list and_result = a and b
+print and_result
+
+list or_result = a or b
+print or_result
+
+list xor_result = a xor b
+print xor_result
+
+@ Full precedence: or < xor < and < +- < */
+list full_list_precedence = a + b * c and b or a
+print full_list_precedence
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=12, col=1)
+Token(type='ID', value='a', line=12, col=6)
+Token(type='ASSIGN', value='=', line=12, col=8)
+Token(type='LBRACK', value='[', line=12, col=10)
+Token(type='NUMBER', value='1', line=12, col=11)
+Token(type='COMMA', value=',', line=12, col=12)
+Token(type='NUMBER', value='2', line=12, col=14)
+Token(type='COMMA', value=',', line=12, col=15)
+Token(type='NUMBER', value='3', line=12, col=17)
+Token(type='COMMA', value=',', line=12, col=18)
+Token(type='NUMBER', value='4', line=12, col=20)
+Token(type='RBRACK', value=']', line=12, col=21)
+Token(type='KEYWORD', value='list', line=13, col=1)
+Token(type='ID', value='b', line=13, col=6)
+Token(type='ASSIGN', value='=', line=13, col=8)
+Token(type='LBRACK', value='[', line=13, col=10)
+Token(type='NUMBER', value='10', line=13, col=11)
+Token(type='COMMA', value=',', line=13, col=13)
+Token(type='NUMBER', value='20', line=13, col=15)
+Token(type='COMMA', value=',', line=13, col=17)
+Token(type='NUMBER', value='30', line=13, col=19)
+Token(type='COMMA', value=',', line=13, col=21)
+Token(type='NUMBER', value='40', line=13, col=23)
+Token(type='RBRACK', value=']', line=13, col=25)
+Token(type='KEYWORD', value='list', line=14, col=1)
+Token(type='ID', value='c', line=14, col=6)
+Token(type='ASSIGN', value='=', line=14, col=8)
+Token(type='LBRACK', value='[', line=14, col=10)
+Token(type='NUMBER', value='2', line=14, col=11)
+Token(type='COMMA', value=',', line=14, col=12)
+Token(type='NUMBER', value='2', line=14, col=14)
+Token(type='COMMA', value=',', line=14, col=15)
+Token(type='NUMBER', value='2', line=14, col=17)
+Token(type='COMMA', value=',', line=14, col=18)
+Token(type='NUMBER', value='2', line=14, col=20)
+Token(type='RBRACK', value=']', line=14, col=21)
+Token(type='KEYWORD', value='list', line=17, col=1)
+Token(type='ID', value='add_result', line=17, col=6)
+Token(type='ASSIGN', value='=', line=17, col=17)
+Token(type='ID', value='a', line=17, col=19)
+Token(type='OP', value='+', line=17, col=21)
+Token(type='ID', value='b', line=17, col=23)
+Token(type='KEYWORD', value='print', line=18, col=1)
+Token(type='ID', value='add_result', line=18, col=7)
+Token(type='KEYWORD', value='list', line=20, col=1)
+Token(type='ID', value='sub_result', line=20, col=6)
+Token(type='ASSIGN', value='=', line=20, col=17)
+Token(type='ID', value='b', line=20, col=19)
+Token(type='OP', value='-', line=20, col=21)
+Token(type='ID', value='a', line=20, col=23)
+Token(type='KEYWORD', value='print', line=21, col=1)
+Token(type='ID', value='sub_result', line=21, col=7)
+Token(type='KEYWORD', value='list', line=23, col=1)
+Token(type='ID', value='mul_result', line=23, col=6)
+Token(type='ASSIGN', value='=', line=23, col=17)
+Token(type='ID', value='a', line=23, col=19)
+Token(type='OP', value='*', line=23, col=21)
+Token(type='ID', value='c', line=23, col=23)
+Token(type='KEYWORD', value='print', line=24, col=1)
+Token(type='ID', value='mul_result', line=24, col=7)
+Token(type='KEYWORD', value='list', line=26, col=1)
+Token(type='ID', value='div_result', line=26, col=6)
+Token(type='ASSIGN', value='=', line=26, col=17)
+Token(type='ID', value='b', line=26, col=19)
+Token(type='OP', value='/', line=26, col=21)
+Token(type='ID', value='c', line=26, col=23)
+Token(type='KEYWORD', value='print', line=27, col=1)
+Token(type='ID', value='div_result', line=27, col=7)
+Token(type='KEYWORD', value='list', line=30, col=1)
+Token(type='ID', value='precedence1', line=30, col=6)
+Token(type='ASSIGN', value='=', line=30, col=18)
+Token(type='ID', value='a', line=30, col=20)
+Token(type='OP', value='+', line=30, col=22)
+Token(type='ID', value='b', line=30, col=24)
+Token(type='OP', value='*', line=30, col=26)
+Token(type='ID', value='c', line=30, col=28)
+Token(type='KEYWORD', value='print', line=31, col=1)
+Token(type='ID', value='precedence1', line=31, col=7)
+Token(type='KEYWORD', value='list', line=34, col=1)
+Token(type='ID', value='precedence2', line=34, col=6)
+Token(type='ASSIGN', value='=', line=34, col=18)
+Token(type='ID', value='b', line=34, col=20)
+Token(type='OP', value='-', line=34, col=22)
+Token(type='ID', value='a', line=34, col=24)
+Token(type='OP', value='/', line=34, col=26)
+Token(type='ID', value='c', line=34, col=28)
+Token(type='KEYWORD', value='print', line=35, col=1)
+Token(type='ID', value='precedence2', line=35, col=7)
+Token(type='KEYWORD', value='list', line=38, col=1)
+Token(type='ID', value='and_result', line=38, col=6)
+Token(type='ASSIGN', value='=', line=38, col=17)
+Token(type='ID', value='a', line=38, col=19)
+Token(type='KEYWORD', value='and', line=38, col=21)
+Token(type='ID', value='b', line=38, col=25)
+Token(type='KEYWORD', value='print', line=39, col=1)
+Token(type='ID', value='and_result', line=39, col=7)
+Token(type='KEYWORD', value='list', line=41, col=1)
+Token(type='ID', value='or_result', line=41, col=6)
+Token(type='ASSIGN', value='=', line=41, col=16)
+Token(type='ID', value='a', line=41, col=18)
+Token(type='KEYWORD', value='or', line=41, col=20)
+Token(type='ID', value='b', line=41, col=23)
+Token(type='KEYWORD', value='print', line=42, col=1)
+Token(type='ID', value='or_result', line=42, col=7)
+Token(type='KEYWORD', value='list', line=44, col=1)
+Token(type='ID', value='xor_result', line=44, col=6)
+Token(type='ASSIGN', value='=', line=44, col=17)
+Token(type='ID', value='a', line=44, col=19)
+Token(type='KEYWORD', value='xor', line=44, col=21)
+Token(type='ID', value='b', line=44, col=25)
+Token(type='KEYWORD', value='print', line=45, col=1)
+Token(type='ID', value='xor_result', line=45, col=7)
+Token(type='KEYWORD', value='list', line=48, col=1)
+Token(type='ID', value='full_list_precedence', line=48, col=6)
+Token(type='ASSIGN', value='=', line=48, col=27)
+Token(type='ID', value='a', line=48, col=29)
+Token(type='OP', value='+', line=48, col=31)
+Token(type='ID', value='b', line=48, col=33)
+Token(type='OP', value='*', line=48, col=35)
+Token(type='ID', value='c', line=48, col=37)
+Token(type='KEYWORD', value='and', line=48, col=39)
+Token(type='ID', value='b', line=48, col=43)
+Token(type='KEYWORD', value='or', line=48, col=45)
+Token(type='ID', value='a', line=48, col=48)
+Token(type='KEYWORD', value='print', line=49, col=1)
+Token(type='ID', value='full_list_precedence', line=49, col=7)
+Token(type='EOF', value=None, line=51, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'a', 'source': [1.0, 2.0, 3.0, 4.0]}
+{'name': 'b', 'source': [10.0, 20.0, 30.0, 40.0]}
+{'name': 'c', 'source': [2.0, 2.0, 2.0, 2.0]}
+{'name': 'add_result', 'source': <parser.ListOpStmt object at 0x00000286A951B7A0>}
+{'target': 'add_result'}
+{'name': 'sub_result', 'source': <parser.ListOpStmt object at 0x00000286A951B800>}
+{'target': 'sub_result'}
+{'name': 'mul_result', 'source': <parser.ListOpStmt object at 0x00000286A951A510>}
+{'target': 'mul_result'}
+{'name': 'div_result', 'source': <parser.ListOpStmt object at 0x00000286A951A240>}
+{'target': 'div_result'}
+{'name': 'precedence1', 'source': <parser.ListOpStmt object at 0x00000286A951B8F0>}
+{'target': 'precedence1'}
+{'name': 'precedence2', 'source': <parser.ListOpStmt object at 0x00000286A951BC80>}
+{'target': 'precedence2'}
+{'name': 'and_result', 'source': <parser.ListOpStmt object at 0x00000286A951BE60>}
+{'target': 'and_result'}
+{'name': 'or_result', 'source': <parser.ListOpStmt object at 0x00000286A951BE30>}
+{'target': 'or_result'}
+{'name': 'xor_result', 'source': <parser.ListOpStmt object at 0x00000286A951BD10>}
+{'target': 'xor_result'}
+{'name': 'full_list_precedence', 'source': <parser.ListOpStmt object at 0x00000286A9519BE0>}
+{'target': 'full_list_precedence'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'a': {'type': 'list', 'declared': True}, 'b': {'type': 'list', 'declared': True}, 'c': {'type': 'list', 'declared': True}, 'add_result': {'type': 'list', 'declared': True}, 'sub_result': {'type': 'list', 'declared': True}, 'mul_result': {'type': 'list', 'declared': True}, 'div_result': {'type': 'list', 'declared': True}, 'precedence1': {'type': 'list', 'declared': True}, 'precedence2': {'type': 'list', 'declared': True}, 'and_result': {'type': 'list', 'declared': True}, 'or_result': {'type': 'list', 'declared': True}, 'xor_result': {'type': 'list', 'declared': True}, 'full_list_precedence': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'a', [1.0, 2.0, 3.0, 4.0])
+('LIST', 'b', [10.0, 20.0, 30.0, 40.0])
+('LIST', 'c', [2.0, 2.0, 2.0, 2.0])
+('LISTOP', 't1', '+', 'a', 'b')
+('LIST', 'add_result', 't1')
+('PRINT', 'add_result')
+('LISTOP', 't2', '-', 'b', 'a')
+('LIST', 'sub_result', 't2')
+('PRINT', 'sub_result')
+('LISTOP', 't3', '*', 'a', 'c')
+('LIST', 'mul_result', 't3')
+('PRINT', 'mul_result')
+('LISTOP', 't4', '/', 'b', 'c')
+('LIST', 'div_result', 't4')
+('PRINT', 'div_result')
+('LISTOP', 't6', '*', 'b', 'c')
+('LISTOP', 't5', '+', 'a', 't6')
+('LIST', 'precedence1', 't5')
+('PRINT', 'precedence1')
+('LISTOP', 't8', '/', 'a', 'c')
+('LISTOP', 't7', '-', 'b', 't8')
+('LIST', 'precedence2', 't7')
+('PRINT', 'precedence2')
+('LISTOP', 't9', 'and', 'a', 'b')
+('LIST', 'and_result', 't9')
+('PRINT', 'and_result')
+('LISTOP', 't10', 'or', 'a', 'b')
+('LIST', 'or_result', 't10')
+('PRINT', 'or_result')
+('LISTOP', 't11', 'xor', 'a', 'b')
+('LIST', 'xor_result', 't11')
+('PRINT', 'xor_result')
+('LISTOP', 't15', '*', 'b', 'c')
+('LISTOP', 't14', '+', 'a', 't15')
+('LISTOP', 't13', 'and', 't14', 'b')
+('LISTOP', 't12', 'or', 't13', 'a')
+('LIST', 'full_list_precedence', 't12')
+('PRINT', 'full_list_precedence')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'a', [1.0, 2.0, 3.0, 4.0])
+('LIST', 'b', [10.0, 20.0, 30.0, 40.0])
+('LIST', 'c', [2.0, 2.0, 2.0, 2.0])
+('LISTOP', 't1', '+', 'a', 'b')
+('LIST', 'add_result', 't1')
+('PRINT', 't1')
+('LISTOP', 't2', '-', 'b', 'a')
+('LIST', 'sub_result', 't2')
+('PRINT', 't2')
+('LISTOP', 't3', '*', 'a', 'c')
+('LIST', 'mul_result', 't3')
+('PRINT', 't3')
+('LISTOP', 't4', '/', 'b', 'c')
+('LIST', 'div_result', 't4')
+('PRINT', 't4')
+('LISTOP', 't6', '*', 'b', 'c')
+('LISTOP', 't5', '+', 'a', 't6')
+('LIST', 'precedence1', 't5')
+('PRINT', 't5')
+('LISTOP', 't8', '/', 'a', 'c')
+('LISTOP', 't7', '-', 'b', 't8')
+('LIST', 'precedence2', 't7')
+('PRINT', 't7')
+('LISTOP', 't9', 'and', 'a', 'b')
+('LIST', 'and_result', 't9')
+('PRINT', 't9')
+('LISTOP', 't10', 'or', 'a', 'b')
+('LIST', 'or_result', 't10')
+('PRINT', 't10')
+('LISTOP', 't11', 'xor', 'a', 'b')
+('LIST', 'xor_result', 't11')
+('PRINT', 't11')
+('LISTOP', 't15', '*', 'b', 'c')
+('LISTOP', 't14', '+', 'a', 't15')
+('LISTOP', 't13', 'and', 't14', 'b')
+('LISTOP', 't12', 'or', 't13', 'a')
+('LIST', 'full_list_precedence', 't12')
+('PRINT', 't12')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 9: List Operations with Precedence
+@ Grammar: ListOpStmt → ListOrExpr
+@          ListOrExpr → ListXorExpr ( "or" ListXorExpr )*
+@          ListXorExpr → ListAndExpr ( "xor" ListAndExpr )*
+@          ListAndExpr → ListAddExpr ( "and" ListAddExpr )*
+@          ListAddExpr → ListMulExpr ( ("+" | "-") MulExpr )*
+@          ListMulExpr → ListPrimary ( ("*" | "/") ListPrimary )*
+@ ──────────────────────────────────────────────────────────────────────────
+list a = [1, 2, 3, 4]
+list b = [10, 20, 30, 40]
+list c = [2, 2, 2, 2]
+
+@ Arithmetic operations
+list add_result = a + b
+print add_result
+
+list sub_result = b - a
+print sub_result
+
+list mul_result = a * c
+print mul_result
+
+list div_result = b / c
+print div_result
+
+@ Precedence: multiplication before addition
+list precedence1 = a + b * c
+print precedence1
+
+@ Precedence: division before subtraction
+list precedence2 = b - a / c
+print precedence2
+
+@ Bitwise list operations
+list and_result = a and b
+print and_result
+
+list or_result = a or b
+print or_result
+
+list xor_result = a xor b
+print xor_result
+
+@ Full precedence: or < xor < and < +- < */
+list full_list_precedence = a + b * c and b or a
+print full_list_precedence
+
+
+
+OUTPUT:
+[11.0, 22.0, 33.0, 44.0]
+[9.0, 18.0, 27.0, 36.0]
+[2.0, 4.0, 6.0, 8.0]
+[5.0, 10.0, 15.0, 20.0]
+[21.0, 42.0, 63.0, 84.0]
+[9.5, 19.0, 28.5, 38.0]
+[0, 0, 2, 0]
+[11, 22, 31, 44]
+[11, 22, 29, 44]
+[1, 2, 31, 4]
+
+============================================================================
+============================================================================
+
+11 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 10: List Operations with Scalars (Broadcasting)
+@ Grammar: ListPrimary → ListIdentifier | Number | "[" Array "]"
+@ ──────────────────────────────────────────────────────────────────────────
+list broadcast_base = [1, 2, 3, 4, 5]
+
+@ Scalar addition
+list scalar_add = broadcast_base + 10
+print scalar_add
+
+@ Scalar multiplication
+list scalar_mul = broadcast_base * 3
+print scalar_mul
+
+@ Scalar bitwise operations
+list scalar_and = broadcast_base and 1
+print scalar_and
+
+list scalar_or = broadcast_base or 8
+print scalar_or
+
+@ Mixed: list + scalar with precedence
+list mixed_scalar = broadcast_base * 2 + 5
+print mixed_scalar
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=7, col=1)
+Token(type='ID', value='broadcast_base', line=7, col=6)
+Token(type='ASSIGN', value='=', line=7, col=21)
+Token(type='LBRACK', value='[', line=7, col=23)
+Token(type='NUMBER', value='1', line=7, col=24)
+Token(type='COMMA', value=',', line=7, col=25)
+Token(type='NUMBER', value='2', line=7, col=27)
+Token(type='COMMA', value=',', line=7, col=28)
+Token(type='NUMBER', value='3', line=7, col=30)
+Token(type='COMMA', value=',', line=7, col=31)
+Token(type='NUMBER', value='4', line=7, col=33)
+Token(type='COMMA', value=',', line=7, col=34)
+Token(type='NUMBER', value='5', line=7, col=36)
+Token(type='RBRACK', value=']', line=7, col=37)
+Token(type='KEYWORD', value='list', line=10, col=1)
+Token(type='ID', value='scalar_add', line=10, col=6)
+Token(type='ASSIGN', value='=', line=10, col=17)
+Token(type='ID', value='broadcast_base', line=10, col=19)
+Token(type='OP', value='+', line=10, col=34)
+Token(type='NUMBER', value='10', line=10, col=36)
+Token(type='KEYWORD', value='print', line=11, col=1)
+Token(type='ID', value='scalar_add', line=11, col=7)
+Token(type='KEYWORD', value='list', line=14, col=1)
+Token(type='ID', value='scalar_mul', line=14, col=6)
+Token(type='ASSIGN', value='=', line=14, col=17)
+Token(type='ID', value='broadcast_base', line=14, col=19)
+Token(type='OP', value='*', line=14, col=34)
+Token(type='NUMBER', value='3', line=14, col=36)
+Token(type='KEYWORD', value='print', line=15, col=1)
+Token(type='ID', value='scalar_mul', line=15, col=7)
+Token(type='KEYWORD', value='list', line=18, col=1)
+Token(type='ID', value='scalar_and', line=18, col=6)
+Token(type='ASSIGN', value='=', line=18, col=17)
+Token(type='ID', value='broadcast_base', line=18, col=19)
+Token(type='KEYWORD', value='and', line=18, col=34)
+Token(type='NUMBER', value='1', line=18, col=38)
+Token(type='KEYWORD', value='print', line=19, col=1)
+Token(type='ID', value='scalar_and', line=19, col=7)
+Token(type='KEYWORD', value='list', line=21, col=1)
+Token(type='ID', value='scalar_or', line=21, col=6)
+Token(type='ASSIGN', value='=', line=21, col=16)
+Token(type='ID', value='broadcast_base', line=21, col=18)
+Token(type='KEYWORD', value='or', line=21, col=33)
+Token(type='NUMBER', value='8', line=21, col=36)
+Token(type='KEYWORD', value='print', line=22, col=1)
+Token(type='ID', value='scalar_or', line=22, col=7)
+Token(type='KEYWORD', value='list', line=25, col=1)
+Token(type='ID', value='mixed_scalar', line=25, col=6)
+Token(type='ASSIGN', value='=', line=25, col=19)
+Token(type='ID', value='broadcast_base', line=25, col=21)
+Token(type='OP', value='*', line=25, col=36)
+Token(type='NUMBER', value='2', line=25, col=38)
+Token(type='OP', value='+', line=25, col=40)
+Token(type='NUMBER', value='5', line=25, col=42)
+Token(type='KEYWORD', value='print', line=26, col=1)
+Token(type='ID', value='mixed_scalar', line=26, col=7)
+Token(type='EOF', value=None, line=28, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'broadcast_base', 'source': [1.0, 2.0, 3.0, 4.0, 5.0]}
+{'name': 'scalar_add', 'source': <parser.ListOpStmt object at 0x00000286A951A6F0>}
+{'target': 'scalar_add'}
+{'name': 'scalar_mul', 'source': <parser.ListOpStmt object at 0x00000286A951B410>}
+{'target': 'scalar_mul'}
+{'name': 'scalar_and', 'source': <parser.ListOpStmt object at 0x00000286A951B560>}
+{'target': 'scalar_and'}
+{'name': 'scalar_or', 'source': <parser.ListOpStmt object at 0x00000286A951B710>}
+{'target': 'scalar_or'}
+{'name': 'mixed_scalar', 'source': <parser.ListOpStmt object at 0x00000286A951B5F0>}
+{'target': 'mixed_scalar'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'broadcast_base': {'type': 'list', 'declared': True}, 'scalar_add': {'type': 'list', 'declared': True}, 'scalar_mul': {'type': 'list', 'declared': True}, 'scalar_and': {'type': 'list', 'declared': True}, 'scalar_or': {'type': 'list', 'declared': True}, 'mixed_scalar': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'broadcast_base', [1.0, 2.0, 3.0, 4.0, 5.0])
+('LISTOP', 't1', '+', 'broadcast_base', 10.0)
+('LIST', 'scalar_add', 't1')
+('PRINT', 'scalar_add')
+('LISTOP', 't2', '*', 'broadcast_base', 3.0)
+('LIST', 'scalar_mul', 't2')
+('PRINT', 'scalar_mul')
+('LISTOP', 't3', 'and', 'broadcast_base', 1.0)
+('LIST', 'scalar_and', 't3')
+('PRINT', 'scalar_and')
+('LISTOP', 't4', 'or', 'broadcast_base', 8.0)
+('LIST', 'scalar_or', 't4')
+('PRINT', 'scalar_or')
+('LISTOP', 't6', '*', 'broadcast_base', 2.0)
+('LISTOP', 't5', '+', 't6', 5.0)
+('LIST', 'mixed_scalar', 't5')
+('PRINT', 'mixed_scalar')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'broadcast_base', [1.0, 2.0, 3.0, 4.0, 5.0])
+('LISTOP', 't1', '+', 'broadcast_base', 10.0)
+('LIST', 'scalar_add', 't1')
+('PRINT', 't1')
+('LISTOP', 't2', '*', 'broadcast_base', 3.0)
+('LIST', 'scalar_mul', 't2')
+('PRINT', 't2')
+('LISTOP', 't3', 'and', 'broadcast_base', 1.0)
+('LIST', 'scalar_and', 't3')
+('PRINT', 't3')
+('LISTOP', 't4', 'or', 'broadcast_base', 8.0)
+('LIST', 'scalar_or', 't4')
+('PRINT', 't4')
+('LISTOP', 't6', '+', 'broadcast_base', 'broadcast_base')
+('LISTOP', 't5', '+', 't6', 5.0)
+('LIST', 'mixed_scalar', 't5')
+('PRINT', 't5')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 10: List Operations with Scalars (Broadcasting)
+@ Grammar: ListPrimary → ListIdentifier | Number | "[" Array "]"
+@ ──────────────────────────────────────────────────────────────────────────
+list broadcast_base = [1, 2, 3, 4, 5]
+
+@ Scalar addition
+list scalar_add = broadcast_base + 10
+print scalar_add
+
+@ Scalar multiplication
+list scalar_mul = broadcast_base * 3
+print scalar_mul
+
+@ Scalar bitwise operations
+list scalar_and = broadcast_base and 1
+print scalar_and
+
+list scalar_or = broadcast_base or 8
+print scalar_or
+
+@ Mixed: list + scalar with precedence
+list mixed_scalar = broadcast_base * 2 + 5
+print mixed_scalar
+
+
+
+OUTPUT:
+[11.0, 12.0, 13.0, 14.0, 15.0]
+[3.0, 6.0, 9.0, 12.0, 15.0]
+[1, 0, 1, 0, 1]
+[9, 10, 11, 12, 13]
+[7.0, 9.0, 11.0, 13.0, 15.0]
+
+============================================================================
+============================================================================
+
+12 - CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 11: List Operations with Literal Arrays
+@ Grammar: ListPrimary → "[" Array "]"
+@ ──────────────────────────────────────────────────────────────────────────
+list literal_base = [1, 2, 3]
+
+list literal_add = literal_base + [10, 20, 30]
+print literal_add
+
+list literal_mul = literal_base * [2, 3, 4]
+print literal_mul
+
+@ Direct operation with two literal arrays
+list two_literals = [1, 2, 3] + [4, 5, 6]
+print two_literals
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=6, col=1)
+Token(type='ID', value='literal_base', line=6, col=6)
+Token(type='ASSIGN', value='=', line=6, col=19)
+Token(type='LBRACK', value='[', line=6, col=21)
+Token(type='NUMBER', value='1', line=6, col=22)
+Token(type='COMMA', value=',', line=6, col=23)
+Token(type='NUMBER', value='2', line=6, col=25)
+Token(type='COMMA', value=',', line=6, col=26)
+Token(type='NUMBER', value='3', line=6, col=28)
+Token(type='RBRACK', value=']', line=6, col=29)
+Token(type='KEYWORD', value='list', line=8, col=1)
+Token(type='ID', value='literal_add', line=8, col=6)
+Token(type='ASSIGN', value='=', line=8, col=18)
+Token(type='ID', value='literal_base', line=8, col=20)
+Token(type='OP', value='+', line=8, col=33)
+Token(type='LBRACK', value='[', line=8, col=35)
+Token(type='NUMBER', value='10', line=8, col=36)
+Token(type='COMMA', value=',', line=8, col=38)
+Token(type='NUMBER', value='20', line=8, col=40)
+Token(type='COMMA', value=',', line=8, col=42)
+Token(type='NUMBER', value='30', line=8, col=44)
+Token(type='RBRACK', value=']', line=8, col=46)
+Token(type='KEYWORD', value='print', line=9, col=1)
+Token(type='ID', value='literal_add', line=9, col=7)
+Token(type='KEYWORD', value='list', line=11, col=1)
+Token(type='ID', value='literal_mul', line=11, col=6)
+Token(type='ASSIGN', value='=', line=11, col=18)
+Token(type='ID', value='literal_base', line=11, col=20)
+Token(type='OP', value='*', line=11, col=33)
+Token(type='LBRACK', value='[', line=11, col=35)
+Token(type='NUMBER', value='2', line=11, col=36)
+Token(type='COMMA', value=',', line=11, col=37)
+Token(type='NUMBER', value='3', line=11, col=39)
+Token(type='COMMA', value=',', line=11, col=40)
+Token(type='NUMBER', value='4', line=11, col=42)
+Token(type='RBRACK', value=']', line=11, col=43)
+Token(type='KEYWORD', value='print', line=12, col=1)
+Token(type='ID', value='literal_mul', line=12, col=7)
+Token(type='KEYWORD', value='list', line=15, col=1)
+Token(type='ID', value='two_literals', line=15, col=6)
+Token(type='ASSIGN', value='=', line=15, col=19)
+Token(type='LBRACK', value='[', line=15, col=21)
+Token(type='NUMBER', value='1', line=15, col=22)
+Token(type='COMMA', value=',', line=15, col=23)
+Token(type='NUMBER', value='2', line=15, col=25)
+Token(type='COMMA', value=',', line=15, col=26)
+Token(type='NUMBER', value='3', line=15, col=28)
+Token(type='RBRACK', value=']', line=15, col=29)
+Token(type='OP', value='+', line=15, col=31)
+Token(type='LBRACK', value='[', line=15, col=33)
+Token(type='NUMBER', value='4', line=15, col=34)
+Token(type='COMMA', value=',', line=15, col=35)
+Token(type='NUMBER', value='5', line=15, col=37)
+Token(type='COMMA', value=',', line=15, col=38)
+Token(type='NUMBER', value='6', line=15, col=40)
+Token(type='RBRACK', value=']', line=15, col=41)
+Token(type='KEYWORD', value='print', line=16, col=1)
+Token(type='ID', value='two_literals', line=16, col=7)
+Token(type='EOF', value=None, line=17, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'literal_base', 'source': [1.0, 2.0, 3.0]}
+{'name': 'literal_add', 'source': <parser.ListOpStmt object at 0x00000286A951B500>}
+{'target': 'literal_add'}
+{'name': 'literal_mul', 'source': <parser.ListOpStmt object at 0x00000286A951ABA0>}
+{'target': 'literal_mul'}
+{'name': 'two_literals', 'source': <parser.ListOpStmt object at 0x00000286A95197F0>}
+{'target': 'two_literals'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'literal_base': {'type': 'list', 'declared': True}, 'literal_add': {'type': 'list', 'declared': True}, 'literal_mul': {'type': 'list', 'declared': True}, 'two_literals': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'literal_base', [1.0, 2.0, 3.0])
+('LISTOP', 't1', '+', 'literal_base', [10.0, 20.0, 30.0])
+('LIST', 'literal_add', 't1')
+('PRINT', 'literal_add')
+('LISTOP', 't2', '*', 'literal_base', [2.0, 3.0, 4.0])
+('LIST', 'literal_mul', 't2')
+('PRINT', 'literal_mul')
+('LISTOP', 't3', '+', [1.0, 2.0, 3.0], [4.0, 5.0, 6.0])
+('LIST', 'two_literals', 't3')
+('PRINT', 'two_literals')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'literal_base', [1.0, 2.0, 3.0])
+('LISTOP', 't1', '+', 'literal_base', [10.0, 20.0, 30.0])
+('LIST', 'literal_add', 't1')
+('PRINT', 't1')
+('LISTOP', 't2', '*', 'literal_base', [2.0, 3.0, 4.0])
+('LIST', 'literal_mul', 't2')
+('PRINT', 't2')
+('LISTOP', 't3', '+', [1.0, 2.0, 3.0], [4.0, 5.0, 6.0])
+('LIST', 'two_literals', 't3')
+('PRINT', 't3')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 11: List Operations with Literal Arrays
+@ Grammar: ListPrimary → "[" Array "]"
+@ ──────────────────────────────────────────────────────────────────────────
+list literal_base = [1, 2, 3]
+
+list literal_add = literal_base + [10, 20, 30]
+print literal_add
+
+list literal_mul = literal_base * [2, 3, 4]
+print literal_mul
+
+@ Direct operation with two literal arrays
+list two_literals = [1, 2, 3] + [4, 5, 6]
+print two_literals
+
+
+OUTPUT:
+[11.0, 22.0, 33.0]
+[2.0, 6.0, 12.0]
+[5.0, 7.0, 9.0]
+
+============================================================================
+============================================================================
+
+13 - CODE:
+
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 12: Parenthesized List Operations
+@ Grammar: ListPrimary → "(" ListOpStmt ")"
+@ ──────────────────────────────────────────────────────────────────────────
+list paren_a = [1, 2, 3, 4]
+list paren_b = [2, 2, 2, 2]
+list paren_c = [10, 10, 10, 10]
+
+@ Without parentheses: a + b * c = a + (b * c)
+list no_paren = paren_a + paren_b * paren_c
+print no_paren
+
+@ With parentheses: (a + b) * c
+list with_paren = (paren_a + paren_b) * paren_c
+print with_paren
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=8, col=1)
+Token(type='ID', value='paren_a', line=8, col=6)
+Token(type='ASSIGN', value='=', line=8, col=14)
+Token(type='LBRACK', value='[', line=8, col=16)
+Token(type='NUMBER', value='1', line=8, col=17)
+Token(type='COMMA', value=',', line=8, col=18)
+Token(type='NUMBER', value='2', line=8, col=20)
+Token(type='COMMA', value=',', line=8, col=21)
+Token(type='NUMBER', value='3', line=8, col=23)
+Token(type='COMMA', value=',', line=8, col=24)
+Token(type='NUMBER', value='4', line=8, col=26)
+Token(type='RBRACK', value=']', line=8, col=27)
+Token(type='KEYWORD', value='list', line=9, col=1)
+Token(type='ID', value='paren_b', line=9, col=6)
+Token(type='ASSIGN', value='=', line=9, col=14)
+Token(type='LBRACK', value='[', line=9, col=16)
+Token(type='NUMBER', value='2', line=9, col=17)
+Token(type='COMMA', value=',', line=9, col=18)
+Token(type='NUMBER', value='2', line=9, col=20)
+Token(type='COMMA', value=',', line=9, col=21)
+Token(type='NUMBER', value='2', line=9, col=23)
+Token(type='COMMA', value=',', line=9, col=24)
+Token(type='NUMBER', value='2', line=9, col=26)
+Token(type='RBRACK', value=']', line=9, col=27)
+Token(type='KEYWORD', value='list', line=10, col=1)
+Token(type='ID', value='paren_c', line=10, col=6)
+Token(type='ASSIGN', value='=', line=10, col=14)
+Token(type='LBRACK', value='[', line=10, col=16)
+Token(type='NUMBER', value='10', line=10, col=17)
+Token(type='COMMA', value=',', line=10, col=19)
+Token(type='NUMBER', value='10', line=10, col=21)
+Token(type='COMMA', value=',', line=10, col=23)
+Token(type='NUMBER', value='10', line=10, col=25)
+Token(type='COMMA', value=',', line=10, col=27)
+Token(type='NUMBER', value='10', line=10, col=29)
+Token(type='RBRACK', value=']', line=10, col=31)
+Token(type='KEYWORD', value='list', line=13, col=1)
+Token(type='ID', value='no_paren', line=13, col=6)
+Token(type='ASSIGN', value='=', line=13, col=15)
+Token(type='ID', value='paren_a', line=13, col=17)
+Token(type='OP', value='+', line=13, col=25)
+Token(type='ID', value='paren_b', line=13, col=27)
+Token(type='OP', value='*', line=13, col=35)
+Token(type='ID', value='paren_c', line=13, col=37)
+Token(type='KEYWORD', value='print', line=14, col=1)
+Token(type='ID', value='no_paren', line=14, col=7)
+Token(type='KEYWORD', value='list', line=17, col=1)
+Token(type='ID', value='with_paren', line=17, col=6)
+Token(type='ASSIGN', value='=', line=17, col=17)
+Token(type='LPAREN', value='(', line=17, col=19)
+Token(type='ID', value='paren_a', line=17, col=20)
+Token(type='OP', value='+', line=17, col=28)
+Token(type='ID', value='paren_b', line=17, col=30)
+Token(type='RPAREN', value=')', line=17, col=37)
+Token(type='OP', value='*', line=17, col=39)
+Token(type='ID', value='paren_c', line=17, col=41)
+Token(type='KEYWORD', value='print', line=18, col=1)
+Token(type='ID', value='with_paren', line=18, col=7)
+Token(type='EOF', value=None, line=20, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'paren_a', 'source': [1.0, 2.0, 3.0, 4.0]}
+{'name': 'paren_b', 'source': [2.0, 2.0, 2.0, 2.0]}
+{'name': 'paren_c', 'source': [10.0, 10.0, 10.0, 10.0]}
+{'name': 'no_paren', 'source': <parser.ListOpStmt object at 0x00000286A951A780>}
+{'target': 'no_paren'}
+{'name': 'with_paren', 'source': <parser.ListOpStmt object at 0x00000286A95193A0>}
+{'target': 'with_paren'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'paren_a': {'type': 'list', 'declared': True}, 'paren_b': {'type': 'list', 'declared': True}, 'paren_c': {'type': 'list', 'declared': True}, 'no_paren': {'type': 'list', 'declared': True}, 'with_paren': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'paren_a', [1.0, 2.0, 3.0, 4.0])
+('LIST', 'paren_b', [2.0, 2.0, 2.0, 2.0])
+('LIST', 'paren_c', [10.0, 10.0, 10.0, 10.0])
+('LISTOP', 't2', '*', 'paren_b', 'paren_c')
+('LISTOP', 't1', '+', 'paren_a', 't2')
+('LIST', 'no_paren', 't1')
+('PRINT', 'no_paren')
+('LISTOP', 't4', '+', 'paren_a', 'paren_b')
+('LISTOP', 't3', '*', 't4', 'paren_c')
+('LIST', 'with_paren', 't3')
+('PRINT', 'with_paren')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'paren_a', [1.0, 2.0, 3.0, 4.0])
+('LIST', 'paren_b', [2.0, 2.0, 2.0, 2.0])
+('LIST', 'paren_c', [10.0, 10.0, 10.0, 10.0])
+('LISTOP', 't2', '*', 'paren_b', 'paren_c')
+('LISTOP', 't1', '+', 'paren_a', 't2')
+('LIST', 'no_paren', 't1')
+('PRINT', 't1')
+('LISTOP', 't4', '+', 'paren_a', 'paren_b')
+('LISTOP', 't3', '*', 't4', 'paren_c')
+('LIST', 'with_paren', 't3')
+('PRINT', 't3')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 12: Parenthesized List Operations
+@ Grammar: ListPrimary → "(" ListOpStmt ")"
+@ ──────────────────────────────────────────────────────────────────────────
+list paren_a = [1, 2, 3, 4]
+list paren_b = [2, 2, 2, 2]
+list paren_c = [10, 10, 10, 10]
+
+@ Without parentheses: a + b * c = a + (b * c)
+list no_paren = paren_a + paren_b * paren_c
+print no_paren
+
+@ With parentheses: (a + b) * c
+list with_paren = (paren_a + paren_b) * paren_c
+print with_paren
+
+
+
+OUTPUT:
+[21.0, 22.0, 23.0, 24.0]
+[30.0, 40.0, 50.0, 60.0]
+
+============================================================================
+============================================================================
+
+14 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 13: Chained List Declarations
+@ Grammar: ListSource → FilterStmt | MapStmt | SetStmt | ListOpStmt
+@ ──────────────────────────────────────────────────────────────────────────
+list chain_start = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+@ Filter as source
+list chain_filtered = filter chain_start > 5
+print chain_filtered
+
+@ Map as source
+list chain_mapped = map chain_filtered $0 => $0 * 2
+print chain_mapped
+
+@ ListOp as source
+list chain_added = chain_mapped + [100, 200, 300, 400, 400]
+print chain_added
+
+@ Sort the result
+sort chain_added desc
+print chain_added
+
+@ Set operation as source
+list chain_set = chain_filtered union chain_mapped
+print chain_set
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=7, col=1)
+Token(type='ID', value='chain_start', line=7, col=6)
+Token(type='ASSIGN', value='=', line=7, col=18)
+Token(type='LBRACK', value='[', line=7, col=20)
+Token(type='NUMBER', value='1', line=7, col=21)
+Token(type='COMMA', value=',', line=7, col=22)
+Token(type='NUMBER', value='2', line=7, col=24)
+Token(type='COMMA', value=',', line=7, col=25)
+Token(type='NUMBER', value='3', line=7, col=27)
+Token(type='COMMA', value=',', line=7, col=28)
+Token(type='NUMBER', value='4', line=7, col=30)
+Token(type='COMMA', value=',', line=7, col=31)
+Token(type='NUMBER', value='5', line=7, col=33)
+Token(type='COMMA', value=',', line=7, col=34)
+Token(type='NUMBER', value='6', line=7, col=36)
+Token(type='COMMA', value=',', line=7, col=37)
+Token(type='NUMBER', value='7', line=7, col=39)
+Token(type='COMMA', value=',', line=7, col=40)
+Token(type='NUMBER', value='8', line=7, col=42)
+Token(type='COMMA', value=',', line=7, col=43)
+Token(type='NUMBER', value='9', line=7, col=45)
+Token(type='COMMA', value=',', line=7, col=46)
+Token(type='NUMBER', value='10', line=7, col=48)
+Token(type='RBRACK', value=']', line=7, col=50)
+Token(type='KEYWORD', value='list', line=10, col=1)
+Token(type='ID', value='chain_filtered', line=10, col=6)
+Token(type='ASSIGN', value='=', line=10, col=21)
+Token(type='KEYWORD', value='filter', line=10, col=23)
+Token(type='ID', value='chain_start', line=10, col=30)
+Token(type='COMP', value='>', line=10, col=42)
+Token(type='NUMBER', value='5', line=10, col=44)
+Token(type='KEYWORD', value='print', line=11, col=1)
+Token(type='ID', value='chain_filtered', line=11, col=7)
+Token(type='KEYWORD', value='list', line=14, col=1)
+Token(type='ID', value='chain_mapped', line=14, col=6)
+Token(type='ASSIGN', value='=', line=14, col=19)
+Token(type='KEYWORD', value='map', line=14, col=21)
+Token(type='ID', value='chain_filtered', line=14, col=25)
+Token(type='DOLLAR0', value='$0', line=14, col=40)
+Token(type='ARROW', value='=>', line=14, col=43)
+Token(type='DOLLAR0', value='$0', line=14, col=46)
+Token(type='OP', value='*', line=14, col=49)
+Token(type='NUMBER', value='2', line=14, col=51)
+Token(type='KEYWORD', value='print', line=15, col=1)
+Token(type='ID', value='chain_mapped', line=15, col=7)
+Token(type='KEYWORD', value='list', line=18, col=1)
+Token(type='ID', value='chain_added', line=18, col=6)
+Token(type='ASSIGN', value='=', line=18, col=18)
+Token(type='ID', value='chain_mapped', line=18, col=20)
+Token(type='OP', value='+', line=18, col=33)
+Token(type='LBRACK', value='[', line=18, col=35)
+Token(type='NUMBER', value='100', line=18, col=36)
+Token(type='COMMA', value=',', line=18, col=39)
+Token(type='NUMBER', value='200', line=18, col=41)
+Token(type='COMMA', value=',', line=18, col=44)
+Token(type='NUMBER', value='300', line=18, col=46)
+Token(type='COMMA', value=',', line=18, col=49)
+Token(type='NUMBER', value='400', line=18, col=51)
+Token(type='COMMA', value=',', line=18, col=54)
+Token(type='NUMBER', value='400', line=18, col=56)
+Token(type='RBRACK', value=']', line=18, col=59)
+Token(type='KEYWORD', value='print', line=19, col=1)
+Token(type='ID', value='chain_added', line=19, col=7)
+Token(type='KEYWORD', value='sort', line=22, col=1)
+Token(type='ID', value='chain_added', line=22, col=6)
+Token(type='KEYWORD', value='desc', line=22, col=18)
+Token(type='KEYWORD', value='print', line=23, col=1)
+Token(type='ID', value='chain_added', line=23, col=7)
+Token(type='KEYWORD', value='list', line=26, col=1)
+Token(type='ID', value='chain_set', line=26, col=6)
+Token(type='ASSIGN', value='=', line=26, col=16)
+Token(type='ID', value='chain_filtered', line=26, col=18)
+Token(type='KEYWORD', value='union', line=26, col=33)
+Token(type='ID', value='chain_mapped', line=26, col=39)
+Token(type='KEYWORD', value='print', line=27, col=1)
+Token(type='ID', value='chain_set', line=27, col=7)
+Token(type='EOF', value=None, line=29, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'chain_start', 'source': [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]}
+{'name': 'chain_filtered', 'source': <parser.FilterStmt object at 0x00000286A951B320>}
+{'target': 'chain_filtered'}
+{'name': 'chain_mapped', 'source': <parser.MapStmt object at 0x00000286A951B4A0>}
+{'target': 'chain_mapped'}
+{'name': 'chain_added', 'source': <parser.ListOpStmt object at 0x00000286A951B5F0>}
+{'target': 'chain_added'}
+{'list_name': 'chain_added', 'order': 'desc'}
+{'target': 'chain_added'}
+{'name': 'chain_set', 'source': <parser.SetOpStmt object at 0x00000286A951BE00>}
+{'target': 'chain_set'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'chain_start': {'type': 'list', 'declared': True}, 'chain_filtered': {'type': 'list', 'declared': True}, 'chain_mapped': {'type': 'list', 'declared': True}, 'chain_added': {'type': 'list', 'declared': True}, 'chain_set': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'chain_start', [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])
+('FILTER', 't1', 'chain_start', '>', 5.0)
+('LIST', 'chain_filtered', 't1')
+('PRINT', 'chain_filtered')
+('MAP', 't2', 'chain_filtered', '(x * 2)')
+('LIST', 'chain_mapped', 't2')
+('PRINT', 'chain_mapped')
+('LISTOP', 't3', '+', 'chain_mapped', [100.0, 200.0, 300.0, 400.0, 400.0])
+('LIST', 'chain_added', 't3')
+('PRINT', 'chain_added')
+('SORT', 'chain_added', 'desc')
+('PRINT', 'chain_added')
+('SETOP', 't4', 'union', 'chain_filtered', 'chain_mapped')
+('LIST', 'chain_set', 't4')
+('PRINT', 'chain_set')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'chain_start', [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])
+('FILTER', 't1', 'chain_start', '>', 5.0)
+('LIST', 'chain_filtered', 't1')
+('PRINT', 't1')
+('MAP', 't2', 't1', '(x * 2)')
+('LIST', 'chain_mapped', 't2')
+('PRINT', 't2')
+('LISTOP', 't3', '+', 't2', [100.0, 200.0, 300.0, 400.0, 400.0])
+('LIST', 'chain_added', 't3')
+('PRINT', 't3')
+('SORT', 't3', 'desc')
+('PRINT', 't3')
+('SETOP', 't4', 'union', 't1', 't2')
+('LIST', 'chain_set', 't4')
+('PRINT', 't4')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 13: Chained List Declarations
+@ Grammar: ListSource → FilterStmt | MapStmt | SetStmt | ListOpStmt
+@ ──────────────────────────────────────────────────────────────────────────
+list chain_start = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+@ Filter as source
+list chain_filtered = filter chain_start > 5
+print chain_filtered
+
+@ Map as source
+list chain_mapped = map chain_filtered $0 => $0 * 2
+print chain_mapped
+
+@ ListOp as source
+list chain_added = chain_mapped + [100, 200, 300, 400, 400]
+print chain_added
+
+@ Sort the result
+sort chain_added desc
+print chain_added
+
+@ Set operation as source
+list chain_set = chain_filtered union chain_mapped
+print chain_set
+
+
+
+OUTPUT:
+[6.0, 7.0, 8.0, 9.0, 10.0]
+[12, 14, 16, 18, 20]
+[112.0, 214.0, 316.0, 418.0, 420.0]
+[420.0, 418.0, 316.0, 214.0, 112.0]
+[6.0, 7.0, 8.0, 9.0, 10.0, 12, 14, 16, 18, 20]
+
+============================================================================
+============================================================================
+
+15 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 14: Complex Nested Expressions in Map
+@ Tests deep nesting and all operators
+@ ──────────────────────────────────────────────────────────────────────────
+list nest_base = [1, 2, 3, 4, 5]
+
+@ Deep arithmetic nesting
+list deep_nest = map nest_base $0 => ((($0 + 1) * 2) - 3) / 4
+print deep_nest
+
+@ Deep bitwise nesting
+list deep_bitwise = map nest_base $0 => (($0 and 7) or 8) xor 15
+print deep_bitwise
+
+@ Mixed arithmetic and bitwise with multiple levels
+list ultimate = map nest_base $0 => (($0 * 2 + 3) and 31) or (($0 - 1) xor 7)
+print ultimate
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=7, col=1)
+Token(type='ID', value='nest_base', line=7, col=6)
+Token(type='ASSIGN', value='=', line=7, col=16)
+Token(type='LBRACK', value='[', line=7, col=18)
+Token(type='NUMBER', value='1', line=7, col=19)
+Token(type='COMMA', value=',', line=7, col=20)
+Token(type='NUMBER', value='2', line=7, col=22)
+Token(type='COMMA', value=',', line=7, col=23)
+Token(type='NUMBER', value='3', line=7, col=25)
+Token(type='COMMA', value=',', line=7, col=26)
+Token(type='NUMBER', value='4', line=7, col=28)
+Token(type='COMMA', value=',', line=7, col=29)
+Token(type='NUMBER', value='5', line=7, col=31)
+Token(type='RBRACK', value=']', line=7, col=32)
+Token(type='KEYWORD', value='list', line=10, col=1)
+Token(type='ID', value='deep_nest', line=10, col=6)
+Token(type='ASSIGN', value='=', line=10, col=16)
+Token(type='KEYWORD', value='map', line=10, col=18)
+Token(type='ID', value='nest_base', line=10, col=22)
+Token(type='DOLLAR0', value='$0', line=10, col=32)
+Token(type='ARROW', value='=>', line=10, col=35)
+Token(type='LPAREN', value='(', line=10, col=38)
+Token(type='LPAREN', value='(', line=10, col=39)
+Token(type='LPAREN', value='(', line=10, col=40)
+Token(type='DOLLAR0', value='$0', line=10, col=41)
+Token(type='OP', value='+', line=10, col=44)
+Token(type='NUMBER', value='1', line=10, col=46)
+Token(type='RPAREN', value=')', line=10, col=47)
+Token(type='OP', value='*', line=10, col=49)
+Token(type='NUMBER', value='2', line=10, col=51)
+Token(type='RPAREN', value=')', line=10, col=52)
+Token(type='OP', value='-', line=10, col=54)
+Token(type='NUMBER', value='3', line=10, col=56)
+Token(type='RPAREN', value=')', line=10, col=57)
+Token(type='OP', value='/', line=10, col=59)
+Token(type='NUMBER', value='4', line=10, col=61)
+Token(type='KEYWORD', value='print', line=11, col=1)
+Token(type='ID', value='deep_nest', line=11, col=7)
+Token(type='KEYWORD', value='list', line=14, col=1)
+Token(type='ID', value='deep_bitwise', line=14, col=6)
+Token(type='ASSIGN', value='=', line=14, col=19)
+Token(type='KEYWORD', value='map', line=14, col=21)
+Token(type='ID', value='nest_base', line=14, col=25)
+Token(type='DOLLAR0', value='$0', line=14, col=35)
+Token(type='ARROW', value='=>', line=14, col=38)
+Token(type='LPAREN', value='(', line=14, col=41)
+Token(type='LPAREN', value='(', line=14, col=42)
+Token(type='DOLLAR0', value='$0', line=14, col=43)
+Token(type='KEYWORD', value='and', line=14, col=46)
+Token(type='NUMBER', value='7', line=14, col=50)
+Token(type='RPAREN', value=')', line=14, col=51)
+Token(type='KEYWORD', value='or', line=14, col=53)
+Token(type='NUMBER', value='8', line=14, col=56)
+Token(type='RPAREN', value=')', line=14, col=57)
+Token(type='KEYWORD', value='xor', line=14, col=59)
+Token(type='NUMBER', value='15', line=14, col=63)
+Token(type='KEYWORD', value='print', line=15, col=1)
+Token(type='ID', value='deep_bitwise', line=15, col=7)
+Token(type='KEYWORD', value='list', line=18, col=1)
+Token(type='ID', value='ultimate', line=18, col=6)
+Token(type='ASSIGN', value='=', line=18, col=15)
+Token(type='KEYWORD', value='map', line=18, col=17)
+Token(type='ID', value='nest_base', line=18, col=21)
+Token(type='DOLLAR0', value='$0', line=18, col=31)
+Token(type='ARROW', value='=>', line=18, col=34)
+Token(type='LPAREN', value='(', line=18, col=37)
+Token(type='LPAREN', value='(', line=18, col=38)
+Token(type='DOLLAR0', value='$0', line=18, col=39)
+Token(type='OP', value='*', line=18, col=42)
+Token(type='NUMBER', value='2', line=18, col=44)
+Token(type='OP', value='+', line=18, col=46)
+Token(type='NUMBER', value='3', line=18, col=48)
+Token(type='RPAREN', value=')', line=18, col=49)
+Token(type='KEYWORD', value='and', line=18, col=51)
+Token(type='NUMBER', value='31', line=18, col=55)
+Token(type='RPAREN', value=')', line=18, col=57)
+Token(type='KEYWORD', value='or', line=18, col=59)
+Token(type='LPAREN', value='(', line=18, col=62)
+Token(type='LPAREN', value='(', line=18, col=63)
+Token(type='DOLLAR0', value='$0', line=18, col=64)
+Token(type='OP', value='-', line=18, col=67)
+Token(type='NUMBER', value='1', line=18, col=69)
+Token(type='RPAREN', value=')', line=18, col=70)
+Token(type='KEYWORD', value='xor', line=18, col=72)
+Token(type='NUMBER', value='7', line=18, col=76)
+Token(type='RPAREN', value=')', line=18, col=77)
+Token(type='KEYWORD', value='print', line=19, col=1)
+Token(type='ID', value='ultimate', line=19, col=7)
+Token(type='EOF', value=None, line=21, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'nest_base', 'source': [1.0, 2.0, 3.0, 4.0, 5.0]}
+{'name': 'deep_nest', 'source': <parser.MapStmt object at 0x00000286A951A240>}
+{'target': 'deep_nest'}
+{'name': 'deep_bitwise', 'source': <parser.MapStmt object at 0x00000286A951ABA0>}
+{'target': 'deep_bitwise'}
+{'name': 'ultimate', 'source': <parser.MapStmt object at 0x00000286A9519B80>}
+{'target': 'ultimate'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'nest_base': {'type': 'list', 'declared': True}, 'deep_nest': {'type': 'list', 'declared': True}, 'deep_bitwise': {'type': 'list', 'declared': True}, 'ultimate': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'nest_base', [1.0, 2.0, 3.0, 4.0, 5.0])
+('MAP', 't1', 'nest_base', '((((x + 1) * 2) - 3) / 4)')
+('LIST', 'deep_nest', 't1')
+('PRINT', 'deep_nest')
+('MAP', 't2', 'nest_base', '(((x & 7) | 8) ^ 15)')
+('LIST', 'deep_bitwise', 't2')
+('PRINT', 'deep_bitwise')
+('MAP', 't3', 'nest_base', '((((x * 2) + 3) & 31) | ((x - 1) ^ 7))')
+('LIST', 'ultimate', 't3')
+('PRINT', 'ultimate')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'nest_base', [1.0, 2.0, 3.0, 4.0, 5.0])
+('MAP', 't1', 'nest_base', '((((x + 1) * 2) - 3) / 4)')
+('LIST', 'deep_nest', 't1')
+('PRINT', 't1')
+('MAP', 't2', 'nest_base', '(((x & 7) | 8) ^ 15)')
+('LIST', 'deep_bitwise', 't2')
+('PRINT', 't2')
+('MAP', 't3', 'nest_base', '((((x * 2) + 3) & 31) | ((x - 1) ^ 7))')
+('LIST', 'ultimate', 't3')
+('PRINT', 't3')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 14: Complex Nested Expressions in Map
+@ Tests deep nesting and all operators
+@ ──────────────────────────────────────────────────────────────────────────
+list nest_base = [1, 2, 3, 4, 5]
+
+@ Deep arithmetic nesting
+list deep_nest = map nest_base $0 => ((($0 + 1) * 2) - 3) / 4
+print deep_nest
+
+@ Deep bitwise nesting
+list deep_bitwise = map nest_base $0 => (($0 and 7) or 8) xor 15
+print deep_bitwise
+
+@ Mixed arithmetic and bitwise with multiple levels
+list ultimate = map nest_base $0 => (($0 * 2 + 3) and 31) or (($0 - 1) xor 7)
+print ultimate
+
+
+
+OUTPUT:
+[0.25, 0.75, 1.25, 1.75, 2.25]
+[6, 5, 4, 3, 2]
+[7, 7, 13, 15, 15]
+
+============================================================================
+============================================================================
+
+16 - CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 15: Edge Cases
+@ ──────────────────────────────────────────────────────────────────────────
+
+@ Empty list operations
+list empty1 = []
+list empty2 = []
+list empty_union = empty1 union empty2
+print empty_union
+print count empty_union
+
+@ Single element
+list single = [42]
+print single
+list single_squared = map single $0 => $0 * $0
+print single_squared
+
+@ Large numbers
+list large = [1000000, 2000000, 3000000]
+print sum large
+print mean large
+
+@ Decimal precision
+list precise = [0.1, 0.2, 0.3]
+print sum precise
+
+@ Negative numbers in all contexts
+list all_negative = [-1, -2, -3, -4, -5]
+list negative_filter = filter all_negative > -3
+print negative_filter
+
+list negative_map = map all_negative $0 => -$0
+print negative_map
+
+@ Zero in operations
+list with_zeros = [0, 1, 0, 2, 0, 3]
+list zero_filter = filter with_zeros != 0
+print zero_filter
+
+list zero_ops = with_zeros + 5
+print zero_ops
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=8, col=1)
+Token(type='ID', value='empty1', line=8, col=6)
+Token(type='ASSIGN', value='=', line=8, col=13)
+Token(type='LBRACK', value='[', line=8, col=15)
+Token(type='RBRACK', value=']', line=8, col=16)
+Token(type='KEYWORD', value='list', line=9, col=1)
+Token(type='ID', value='empty2', line=9, col=6)
+Token(type='ASSIGN', value='=', line=9, col=13)
+Token(type='LBRACK', value='[', line=9, col=15)
+Token(type='RBRACK', value=']', line=9, col=16)
+Token(type='KEYWORD', value='list', line=10, col=1)
+Token(type='ID', value='empty_union', line=10, col=6)
+Token(type='ASSIGN', value='=', line=10, col=18)
+Token(type='ID', value='empty1', line=10, col=20)
+Token(type='KEYWORD', value='union', line=10, col=27)
+Token(type='ID', value='empty2', line=10, col=33)
+Token(type='KEYWORD', value='print', line=11, col=1)
+Token(type='ID', value='empty_union', line=11, col=7)
+Token(type='KEYWORD', value='print', line=12, col=1)
+Token(type='KEYWORD', value='count', line=12, col=7)
+Token(type='ID', value='empty_union', line=12, col=13)
+Token(type='KEYWORD', value='list', line=15, col=1)
+Token(type='ID', value='single', line=15, col=6)
+Token(type='ASSIGN', value='=', line=15, col=13)
+Token(type='LBRACK', value='[', line=15, col=15)
+Token(type='NUMBER', value='42', line=15, col=16)
+Token(type='RBRACK', value=']', line=15, col=18)
+Token(type='KEYWORD', value='print', line=16, col=1)
+Token(type='ID', value='single', line=16, col=7)
+Token(type='KEYWORD', value='list', line=17, col=1)
+Token(type='ID', value='single_squared', line=17, col=6)
+Token(type='ASSIGN', value='=', line=17, col=21)
+Token(type='KEYWORD', value='map', line=17, col=23)
+Token(type='ID', value='single', line=17, col=27)
+Token(type='DOLLAR0', value='$0', line=17, col=34)
+Token(type='ARROW', value='=>', line=17, col=37)
+Token(type='DOLLAR0', value='$0', line=17, col=40)
+Token(type='OP', value='*', line=17, col=43)
+Token(type='DOLLAR0', value='$0', line=17, col=45)
+Token(type='KEYWORD', value='print', line=18, col=1)
+Token(type='ID', value='single_squared', line=18, col=7)
+Token(type='KEYWORD', value='list', line=21, col=1)
+Token(type='ID', value='large', line=21, col=6)
+Token(type='ASSIGN', value='=', line=21, col=12)
+Token(type='LBRACK', value='[', line=21, col=14)
+Token(type='NUMBER', value='1000000', line=21, col=15)
+Token(type='COMMA', value=',', line=21, col=22)
+Token(type='NUMBER', value='2000000', line=21, col=24)
+Token(type='COMMA', value=',', line=21, col=31)
+Token(type='NUMBER', value='3000000', line=21, col=33)
+Token(type='RBRACK', value=']', line=21, col=40)
+Token(type='KEYWORD', value='print', line=22, col=1)
+Token(type='KEYWORD', value='sum', line=22, col=7)
+Token(type='ID', value='large', line=22, col=11)
+Token(type='KEYWORD', value='print', line=23, col=1)
+Token(type='KEYWORD', value='mean', line=23, col=7)
+Token(type='ID', value='large', line=23, col=12)
+Token(type='KEYWORD', value='list', line=26, col=1)
+Token(type='ID', value='precise', line=26, col=6)
+Token(type='ASSIGN', value='=', line=26, col=14)
+Token(type='LBRACK', value='[', line=26, col=16)
+Token(type='NUMBER', value='0.1', line=26, col=17)
+Token(type='COMMA', value=',', line=26, col=20)
+Token(type='NUMBER', value='0.2', line=26, col=22)
+Token(type='COMMA', value=',', line=26, col=25)
+Token(type='NUMBER', value='0.3', line=26, col=27)
+Token(type='RBRACK', value=']', line=26, col=30)
+Token(type='KEYWORD', value='print', line=27, col=1)
+Token(type='KEYWORD', value='sum', line=27, col=7)
+Token(type='ID', value='precise', line=27, col=11)
+Token(type='KEYWORD', value='list', line=30, col=1)
+Token(type='ID', value='all_negative', line=30, col=6)
+Token(type='ASSIGN', value='=', line=30, col=19)
+Token(type='LBRACK', value='[', line=30, col=21)
+Token(type='NUMBER', value='-1', line=30, col=22)
+Token(type='COMMA', value=',', line=30, col=24)
+Token(type='NUMBER', value='-2', line=30, col=26)
+Token(type='COMMA', value=',', line=30, col=28)
+Token(type='NUMBER', value='-3', line=30, col=30)
+Token(type='COMMA', value=',', line=30, col=32)
+Token(type='NUMBER', value='-4', line=30, col=34)
+Token(type='COMMA', value=',', line=30, col=36)
+Token(type='NUMBER', value='-5', line=30, col=38)
+Token(type='RBRACK', value=']', line=30, col=40)
+Token(type='KEYWORD', value='list', line=31, col=1)
+Token(type='ID', value='negative_filter', line=31, col=6)
+Token(type='ASSIGN', value='=', line=31, col=22)
+Token(type='KEYWORD', value='filter', line=31, col=24)
+Token(type='ID', value='all_negative', line=31, col=31)
+Token(type='COMP', value='>', line=31, col=44)
+Token(type='NUMBER', value='-3', line=31, col=46)
+Token(type='KEYWORD', value='print', line=32, col=1)
+Token(type='ID', value='negative_filter', line=32, col=7)
+Token(type='KEYWORD', value='list', line=34, col=1)
+Token(type='ID', value='negative_map', line=34, col=6)
+Token(type='ASSIGN', value='=', line=34, col=19)
+Token(type='KEYWORD', value='map', line=34, col=21)
+Token(type='ID', value='all_negative', line=34, col=25)
+Token(type='DOLLAR0', value='$0', line=34, col=38)
+Token(type='ARROW', value='=>', line=34, col=41)
+Token(type='OP', value='-', line=34, col=44)
+Token(type='DOLLAR0', value='$0', line=34, col=45)
+Token(type='KEYWORD', value='print', line=35, col=1)
+Token(type='ID', value='negative_map', line=35, col=7)
+Token(type='KEYWORD', value='list', line=38, col=1)
+Token(type='ID', value='with_zeros', line=38, col=6)
+Token(type='ASSIGN', value='=', line=38, col=17)
+Token(type='LBRACK', value='[', line=38, col=19)
+Token(type='NUMBER', value='0', line=38, col=20)
+Token(type='COMMA', value=',', line=38, col=21)
+Token(type='NUMBER', value='1', line=38, col=23)
+Token(type='COMMA', value=',', line=38, col=24)
+Token(type='NUMBER', value='0', line=38, col=26)
+Token(type='COMMA', value=',', line=38, col=27)
+Token(type='NUMBER', value='2', line=38, col=29)
+Token(type='COMMA', value=',', line=38, col=30)
+Token(type='NUMBER', value='0', line=38, col=32)
+Token(type='COMMA', value=',', line=38, col=33)
+Token(type='NUMBER', value='3', line=38, col=35)
+Token(type='RBRACK', value=']', line=38, col=36)
+Token(type='KEYWORD', value='list', line=39, col=1)
+Token(type='ID', value='zero_filter', line=39, col=6)
+Token(type='ASSIGN', value='=', line=39, col=18)
+Token(type='KEYWORD', value='filter', line=39, col=20)
+Token(type='ID', value='with_zeros', line=39, col=27)
+Token(type='COMP', value='!=', line=39, col=38)
+Token(type='NUMBER', value='0', line=39, col=41)
+Token(type='KEYWORD', value='print', line=40, col=1)
+Token(type='ID', value='zero_filter', line=40, col=7)
+Token(type='KEYWORD', value='list', line=42, col=1)
+Token(type='ID', value='zero_ops', line=42, col=6)
+Token(type='ASSIGN', value='=', line=42, col=15)
+Token(type='ID', value='with_zeros', line=42, col=17)
+Token(type='OP', value='+', line=42, col=28)
+Token(type='NUMBER', value='5', line=42, col=30)
+Token(type='KEYWORD', value='print', line=43, col=1)
+Token(type='ID', value='zero_ops', line=43, col=7)
+Token(type='EOF', value=None, line=45, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'empty1', 'source': []}
+{'name': 'empty2', 'source': []}
+{'name': 'empty_union', 'source': <parser.SetOpStmt object at 0x00000286A951B500>}
+{'target': 'empty_union'}
+{'target': <parser.StatStmt object at 0x00000286A951B590>}
+{'name': 'single', 'source': [42.0]}
+{'target': 'single'}
+{'name': 'single_squared', 'source': <parser.MapStmt object at 0x00000286A95193A0>}
+{'target': 'single_squared'}
+{'name': 'large', 'source': [1000000.0, 2000000.0, 3000000.0]}
+{'target': <parser.StatStmt object at 0x00000286A951BDA0>}
+{'target': <parser.StatStmt object at 0x00000286A951BD10>}
+{'name': 'precise', 'source': [0.1, 0.2, 0.3]}
+{'target': <parser.StatStmt object at 0x00000286A9519BE0>}
+{'name': 'all_negative', 'source': [-1.0, -2.0, -3.0, -4.0, -5.0]}
+{'name': 'negative_filter', 'source': <parser.FilterStmt object at 0x00000286A951BCB0>}
+{'target': 'negative_filter'}
+{'name': 'negative_map', 'source': <parser.MapStmt object at 0x00000286A951AD50>}
+{'target': 'negative_map'}
+{'name': 'with_zeros', 'source': [0.0, 1.0, 0.0, 2.0, 0.0, 3.0]}
+{'name': 'zero_filter', 'source': <parser.FilterStmt object at 0x00000286A951AE10>}
+{'target': 'zero_filter'}
+{'name': 'zero_ops', 'source': <parser.ListOpStmt object at 0x00000286A951AD80>}
+{'target': 'zero_ops'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'empty1': {'type': 'list', 'declared': True}, 'empty2': {'type': 'list', 'declared': True}, 'empty_union': {'type': 'list', 'declared': True}, 'single': {'type': 'list', 'declared': True}, 'single_squared': {'type': 'list', 'declared': True}, 'large': {'type': 'list', 'declared': True}, 'precise': {'type': 'list', 'declared': True}, 'all_negative': {'type': 'list', 'declared': True}, 'negative_filter': {'type': 'list', 'declared': True}, 'negative_map': {'type': 'list', 'declared': True}, 'with_zeros': {'type': 'list', 'declared': True}, 'zero_filter': {'type': 'list', 'declared': True}, 'zero_ops': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'empty1', [])
+('LIST', 'empty2', [])
+('SETOP', 't1', 'union', 'empty1', 'empty2')
+('LIST', 'empty_union', 't1')
+('PRINT', 'empty_union')
+('STAT', 't2', 'count', 'empty_union')
+('PRINT', 't2')
+('LIST', 'single', [42.0])
+('PRINT', 'single')
+('MAP', 't3', 'single', '(x * x)')
+('LIST', 'single_squared', 't3')
+('PRINT', 'single_squared')
+('LIST', 'large', [1000000.0, 2000000.0, 3000000.0])
+('STAT', 't4', 'sum', 'large')
+('PRINT', 't4')
+('STAT', 't5', 'mean', 'large')
+('PRINT', 't5')
+('LIST', 'precise', [0.1, 0.2, 0.3])
+('STAT', 't6', 'sum', 'precise')
+('PRINT', 't6')
+('LIST', 'all_negative', [-1.0, -2.0, -3.0, -4.0, -5.0])
+('FILTER', 't7', 'all_negative', '>', -3.0)
+('LIST', 'negative_filter', 't7')
+('PRINT', 'negative_filter')
+('MAP', 't8', 'all_negative', '(-x)')
+('LIST', 'negative_map', 't8')
+('PRINT', 'negative_map')
+('LIST', 'with_zeros', [0.0, 1.0, 0.0, 2.0, 0.0, 3.0])
+('FILTER', 't9', 'with_zeros', '!=', 0.0)
+('LIST', 'zero_filter', 't9')
+('PRINT', 'zero_filter')
+('LISTOP', 't10', '+', 'with_zeros', 5.0)
+('LIST', 'zero_ops', 't10')
+('PRINT', 'zero_ops')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'empty1', [])
+('LIST', 'empty2', [])
+('SETOP', 't1', 'union', 'empty1', 'empty2')
+('LIST', 'empty_union', 't1')
+('PRINT', 't1')
+('STAT', 't2', 'count', 't1')
+('PRINT', 't2')
+('LIST', 'single', [42.0])
+('PRINT', 'single')
+('MAP', 't3', 'single', '(x * x)')
+('LIST', 'single_squared', 't3')
+('PRINT', 't3')
+('LIST', 'large', [1000000.0, 2000000.0, 3000000.0])
+('STAT', 't4', 'sum', 'large')
+('PRINT', 't4')
+('STAT', 't5', 'mean', 'large')
+('PRINT', 't5')
+('LIST', 'precise', [0.1, 0.2, 0.3])
+('STAT', 't6', 'sum', 'precise')
+('PRINT', 't6')
+('LIST', 'all_negative', [-1.0, -2.0, -3.0, -4.0, -5.0])
+('FILTER', 't7', 'all_negative', '>', -3.0)
+('LIST', 'negative_filter', 't7')
+('PRINT', 't7')
+('MAP', 't8', 'all_negative', '(-x)')
+('LIST', 'negative_map', 't8')
+('PRINT', 't8')
+('LIST', 'with_zeros', [0.0, 1.0, 0.0, 2.0, 0.0, 3.0])
+('FILTER', 't9', 'with_zeros', '!=', 0.0)
+('LIST', 'zero_filter', 't9')
+('PRINT', 't9')
+('LISTOP', 't10', '+', 'with_zeros', 5.0)
+('LIST', 'zero_ops', 't10')
+('PRINT', 't10')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 15: Edge Cases
+@ ──────────────────────────────────────────────────────────────────────────
+
+@ Empty list operations
+list empty1 = []
+list empty2 = []
+list empty_union = empty1 union empty2
+print empty_union
+print count empty_union
+
+@ Single element
+list single = [42]
+print single
+list single_squared = map single $0 => $0 * $0
+print single_squared
+
+@ Large numbers
+list large = [1000000, 2000000, 3000000]
+print sum large
+print mean large
+
+@ Decimal precision
+list precise = [0.1, 0.2, 0.3]
+print sum precise
+
+@ Negative numbers in all contexts
+list all_negative = [-1, -2, -3, -4, -5]
+list negative_filter = filter all_negative > -3
+print negative_filter
+
+list negative_map = map all_negative $0 => -$0
+print negative_map
+
+@ Zero in operations
+list with_zeros = [0, 1, 0, 2, 0, 3]
+list zero_filter = filter with_zeros != 0
+print zero_filter
+
+list zero_ops = with_zeros + 5
+print zero_ops
+
+
+
+OUTPUT:
+[]
+0
+[42.0]
+[1764]
+6000000.0
+2000000.0
+0.6
+[-1.0, -2.0]
+[1, 2, 3, 4, 5]
+[1.0, 2.0, 3.0]
+[5.0, 6.0, 5.0, 7.0, 5.0, 8.0]
+
+============================================================================
+============================================================================
+
+17 - CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 16: Real-World Use Cases
+@ ──────────────────────────────────────────────────────────────────────────
+
+@ Data analysis pipeline
+list temperatures = [72, 68, 75, 80, 85, 90, 88, 82, 79, 73]
+list hot_days = filter temperatures >= 80
+print count hot_days
+print mean hot_days
+print max hot_days
+
+@ Normalization (scale to 0-1 range)
+list scores = [50, 75, 100, 25, 80]
+list normalized = map scores $0 => $0 / 100
+print normalized
+
+@ Bit manipulation for flags
+list permissions = [0, 1, 2, 3, 4, 5, 6, 7]
+list read_perm = map permissions $0 => $0 and 1
+list write_perm = map permissions $0 => ($0 and 2) / 2
+print read_perm
+print write_perm
+
+@ Set operations for data deduplication
+list dataset1 = [1, 2, 3, 4, 5, 5, 5]
+list dataset2 = [4, 5, 6, 7, 8, 8, 8]
+list unique_all = dataset1 union dataset2
+list common = dataset1 intersection dataset2
+list exclusive = dataset1 difference dataset2
+print unique_all
+print common
+print exclusive
+
+@ Multi-step transformation
+list raw_data = [10, 20, 30, 40, 50]
+list filtered_data = filter raw_data >= 25
+list transformed = map filtered_data $0 => ($0 - 20) * 2
+list final = transformed + [100, 200, 300]
+sort final asc
+print final
+print median final
+print std final
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=7, col=1)
+Token(type='ID', value='temperatures', line=7, col=6)
+Token(type='ASSIGN', value='=', line=7, col=19)
+Token(type='LBRACK', value='[', line=7, col=21)
+Token(type='NUMBER', value='72', line=7, col=22)
+Token(type='COMMA', value=',', line=7, col=24)
+Token(type='NUMBER', value='68', line=7, col=26)
+Token(type='COMMA', value=',', line=7, col=28)
+Token(type='NUMBER', value='75', line=7, col=30)
+Token(type='COMMA', value=',', line=7, col=32)
+Token(type='NUMBER', value='80', line=7, col=34)
+Token(type='COMMA', value=',', line=7, col=36)
+Token(type='NUMBER', value='85', line=7, col=38)
+Token(type='COMMA', value=',', line=7, col=40)
+Token(type='NUMBER', value='90', line=7, col=42)
+Token(type='COMMA', value=',', line=7, col=44)
+Token(type='NUMBER', value='88', line=7, col=46)
+Token(type='COMMA', value=',', line=7, col=48)
+Token(type='NUMBER', value='82', line=7, col=50)
+Token(type='COMMA', value=',', line=7, col=52)
+Token(type='NUMBER', value='79', line=7, col=54)
+Token(type='COMMA', value=',', line=7, col=56)
+Token(type='NUMBER', value='73', line=7, col=58)
+Token(type='RBRACK', value=']', line=7, col=60)
+Token(type='KEYWORD', value='list', line=8, col=1)
+Token(type='ID', value='hot_days', line=8, col=6)
+Token(type='ASSIGN', value='=', line=8, col=15)
+Token(type='KEYWORD', value='filter', line=8, col=17)
+Token(type='ID', value='temperatures', line=8, col=24)
+Token(type='COMP', value='>=', line=8, col=37)
+Token(type='NUMBER', value='80', line=8, col=40)
+Token(type='KEYWORD', value='print', line=9, col=1)
+Token(type='KEYWORD', value='count', line=9, col=7)
+Token(type='ID', value='hot_days', line=9, col=13)
+Token(type='KEYWORD', value='print', line=10, col=1)
+Token(type='KEYWORD', value='mean', line=10, col=7)
+Token(type='ID', value='hot_days', line=10, col=12)
+Token(type='KEYWORD', value='print', line=11, col=1)
+Token(type='KEYWORD', value='max', line=11, col=7)
+Token(type='ID', value='hot_days', line=11, col=11)
+Token(type='KEYWORD', value='list', line=14, col=1)
+Token(type='ID', value='scores', line=14, col=6)
+Token(type='ASSIGN', value='=', line=14, col=13)
+Token(type='LBRACK', value='[', line=14, col=15)
+Token(type='NUMBER', value='50', line=14, col=16)
+Token(type='COMMA', value=',', line=14, col=18)
+Token(type='NUMBER', value='75', line=14, col=20)
+Token(type='COMMA', value=',', line=14, col=22)
+Token(type='NUMBER', value='100', line=14, col=24)
+Token(type='COMMA', value=',', line=14, col=27)
+Token(type='NUMBER', value='25', line=14, col=29)
+Token(type='COMMA', value=',', line=14, col=31)
+Token(type='NUMBER', value='80', line=14, col=33)
+Token(type='RBRACK', value=']', line=14, col=35)
+Token(type='KEYWORD', value='list', line=15, col=1)
+Token(type='ID', value='normalized', line=15, col=6)
+Token(type='ASSIGN', value='=', line=15, col=17)
+Token(type='KEYWORD', value='map', line=15, col=19)
+Token(type='ID', value='scores', line=15, col=23)
+Token(type='DOLLAR0', value='$0', line=15, col=30)
+Token(type='ARROW', value='=>', line=15, col=33)
+Token(type='DOLLAR0', value='$0', line=15, col=36)
+Token(type='OP', value='/', line=15, col=39)
+Token(type='NUMBER', value='100', line=15, col=41)
+Token(type='KEYWORD', value='print', line=16, col=1)
+Token(type='ID', value='normalized', line=16, col=7)
+Token(type='KEYWORD', value='list', line=19, col=1)
+Token(type='ID', value='permissions', line=19, col=6)
+Token(type='ASSIGN', value='=', line=19, col=18)
+Token(type='LBRACK', value='[', line=19, col=20)
+Token(type='NUMBER', value='0', line=19, col=21)
+Token(type='COMMA', value=',', line=19, col=22)
+Token(type='NUMBER', value='1', line=19, col=24)
+Token(type='COMMA', value=',', line=19, col=25)
+Token(type='NUMBER', value='2', line=19, col=27)
+Token(type='COMMA', value=',', line=19, col=28)
+Token(type='NUMBER', value='3', line=19, col=30)
+Token(type='COMMA', value=',', line=19, col=31)
+Token(type='NUMBER', value='4', line=19, col=33)
+Token(type='COMMA', value=',', line=19, col=34)
+Token(type='NUMBER', value='5', line=19, col=36)
+Token(type='COMMA', value=',', line=19, col=37)
+Token(type='NUMBER', value='6', line=19, col=39)
+Token(type='COMMA', value=',', line=19, col=40)
+Token(type='NUMBER', value='7', line=19, col=42)
+Token(type='RBRACK', value=']', line=19, col=43)
+Token(type='KEYWORD', value='list', line=20, col=1)
+Token(type='ID', value='read_perm', line=20, col=6)
+Token(type='ASSIGN', value='=', line=20, col=16)
+Token(type='KEYWORD', value='map', line=20, col=18)
+Token(type='ID', value='permissions', line=20, col=22)
+Token(type='DOLLAR0', value='$0', line=20, col=34)
+Token(type='ARROW', value='=>', line=20, col=37)
+Token(type='DOLLAR0', value='$0', line=20, col=40)
+Token(type='KEYWORD', value='and', line=20, col=43)
+Token(type='NUMBER', value='1', line=20, col=47)
+Token(type='KEYWORD', value='list', line=21, col=1)
+Token(type='ID', value='write_perm', line=21, col=6)
+Token(type='ASSIGN', value='=', line=21, col=17)
+Token(type='KEYWORD', value='map', line=21, col=19)
+Token(type='ID', value='permissions', line=21, col=23)
+Token(type='DOLLAR0', value='$0', line=21, col=35)
+Token(type='ARROW', value='=>', line=21, col=38)
+Token(type='LPAREN', value='(', line=21, col=41)
+Token(type='DOLLAR0', value='$0', line=21, col=42)
+Token(type='KEYWORD', value='and', line=21, col=45)
+Token(type='NUMBER', value='2', line=21, col=49)
+Token(type='RPAREN', value=')', line=21, col=50)
+Token(type='OP', value='/', line=21, col=52)
+Token(type='NUMBER', value='2', line=21, col=54)
+Token(type='KEYWORD', value='print', line=22, col=1)
+Token(type='ID', value='read_perm', line=22, col=7)
+Token(type='KEYWORD', value='print', line=23, col=1)
+Token(type='ID', value='write_perm', line=23, col=7)
+Token(type='KEYWORD', value='list', line=26, col=1)
+Token(type='ID', value='dataset1', line=26, col=6)
+Token(type='ASSIGN', value='=', line=26, col=15)
+Token(type='LBRACK', value='[', line=26, col=17)
+Token(type='NUMBER', value='1', line=26, col=18)
+Token(type='COMMA', value=',', line=26, col=19)
+Token(type='NUMBER', value='2', line=26, col=21)
+Token(type='COMMA', value=',', line=26, col=22)
+Token(type='NUMBER', value='3', line=26, col=24)
+Token(type='COMMA', value=',', line=26, col=25)
+Token(type='NUMBER', value='4', line=26, col=27)
+Token(type='COMMA', value=',', line=26, col=28)
+Token(type='NUMBER', value='5', line=26, col=30)
+Token(type='COMMA', value=',', line=26, col=31)
+Token(type='NUMBER', value='5', line=26, col=33)
+Token(type='COMMA', value=',', line=26, col=34)
+Token(type='NUMBER', value='5', line=26, col=36)
+Token(type='RBRACK', value=']', line=26, col=37)
+Token(type='KEYWORD', value='list', line=27, col=1)
+Token(type='ID', value='dataset2', line=27, col=6)
+Token(type='ASSIGN', value='=', line=27, col=15)
+Token(type='LBRACK', value='[', line=27, col=17)
+Token(type='NUMBER', value='4', line=27, col=18)
+Token(type='COMMA', value=',', line=27, col=19)
+Token(type='NUMBER', value='5', line=27, col=21)
+Token(type='COMMA', value=',', line=27, col=22)
+Token(type='NUMBER', value='6', line=27, col=24)
+Token(type='COMMA', value=',', line=27, col=25)
+Token(type='NUMBER', value='7', line=27, col=27)
+Token(type='COMMA', value=',', line=27, col=28)
+Token(type='NUMBER', value='8', line=27, col=30)
+Token(type='COMMA', value=',', line=27, col=31)
+Token(type='NUMBER', value='8', line=27, col=33)
+Token(type='COMMA', value=',', line=27, col=34)
+Token(type='NUMBER', value='8', line=27, col=36)
+Token(type='RBRACK', value=']', line=27, col=37)
+Token(type='KEYWORD', value='list', line=28, col=1)
+Token(type='ID', value='unique_all', line=28, col=6)
+Token(type='ASSIGN', value='=', line=28, col=17)
+Token(type='ID', value='dataset1', line=28, col=19)
+Token(type='KEYWORD', value='union', line=28, col=28)
+Token(type='ID', value='dataset2', line=28, col=34)
+Token(type='KEYWORD', value='list', line=29, col=1)
+Token(type='ID', value='common', line=29, col=6)
+Token(type='ASSIGN', value='=', line=29, col=13)
+Token(type='ID', value='dataset1', line=29, col=15)
+Token(type='KEYWORD', value='intersection', line=29, col=24)
+Token(type='ID', value='dataset2', line=29, col=37)
+Token(type='KEYWORD', value='list', line=30, col=1)
+Token(type='ID', value='exclusive', line=30, col=6)
+Token(type='ASSIGN', value='=', line=30, col=16)
+Token(type='ID', value='dataset1', line=30, col=18)
+Token(type='KEYWORD', value='difference', line=30, col=27)
+Token(type='ID', value='dataset2', line=30, col=38)
+Token(type='KEYWORD', value='print', line=31, col=1)
+Token(type='ID', value='unique_all', line=31, col=7)
+Token(type='KEYWORD', value='print', line=32, col=1)
+Token(type='ID', value='common', line=32, col=7)
+Token(type='KEYWORD', value='print', line=33, col=1)
+Token(type='ID', value='exclusive', line=33, col=7)
+Token(type='KEYWORD', value='list', line=36, col=1)
+Token(type='ID', value='raw_data', line=36, col=6)
+Token(type='ASSIGN', value='=', line=36, col=15)
+Token(type='LBRACK', value='[', line=36, col=17)
+Token(type='NUMBER', value='10', line=36, col=18)
+Token(type='COMMA', value=',', line=36, col=20)
+Token(type='NUMBER', value='20', line=36, col=22)
+Token(type='COMMA', value=',', line=36, col=24)
+Token(type='NUMBER', value='30', line=36, col=26)
+Token(type='COMMA', value=',', line=36, col=28)
+Token(type='NUMBER', value='40', line=36, col=30)
+Token(type='COMMA', value=',', line=36, col=32)
+Token(type='NUMBER', value='50', line=36, col=34)
+Token(type='RBRACK', value=']', line=36, col=36)
+Token(type='KEYWORD', value='list', line=37, col=1)
+Token(type='ID', value='filtered_data', line=37, col=6)
+Token(type='ASSIGN', value='=', line=37, col=20)
+Token(type='KEYWORD', value='filter', line=37, col=22)
+Token(type='ID', value='raw_data', line=37, col=29)
+Token(type='COMP', value='>=', line=37, col=38)
+Token(type='NUMBER', value='25', line=37, col=41)
+Token(type='KEYWORD', value='list', line=38, col=1)
+Token(type='ID', value='transformed', line=38, col=6)
+Token(type='ASSIGN', value='=', line=38, col=18)
+Token(type='KEYWORD', value='map', line=38, col=20)
+Token(type='ID', value='filtered_data', line=38, col=24)
+Token(type='DOLLAR0', value='$0', line=38, col=38)
+Token(type='ARROW', value='=>', line=38, col=41)
+Token(type='LPAREN', value='(', line=38, col=44)
+Token(type='DOLLAR0', value='$0', line=38, col=45)
+Token(type='OP', value='-', line=38, col=48)
+Token(type='NUMBER', value='20', line=38, col=50)
+Token(type='RPAREN', value=')', line=38, col=52)
+Token(type='OP', value='*', line=38, col=54)
+Token(type='NUMBER', value='2', line=38, col=56)
+Token(type='KEYWORD', value='list', line=39, col=1)
+Token(type='ID', value='final', line=39, col=6)
+Token(type='ASSIGN', value='=', line=39, col=12)
+Token(type='ID', value='transformed', line=39, col=14)
+Token(type='OP', value='+', line=39, col=26)
+Token(type='LBRACK', value='[', line=39, col=28)
+Token(type='NUMBER', value='100', line=39, col=29)
+Token(type='COMMA', value=',', line=39, col=32)
+Token(type='NUMBER', value='200', line=39, col=34)
+Token(type='COMMA', value=',', line=39, col=37)
+Token(type='NUMBER', value='300', line=39, col=39)
+Token(type='RBRACK', value=']', line=39, col=42)
+Token(type='KEYWORD', value='sort', line=40, col=1)
+Token(type='ID', value='final', line=40, col=6)
+Token(type='KEYWORD', value='asc', line=40, col=12)
+Token(type='KEYWORD', value='print', line=41, col=1)
+Token(type='ID', value='final', line=41, col=7)
+Token(type='KEYWORD', value='print', line=42, col=1)
+Token(type='KEYWORD', value='median', line=42, col=7)
+Token(type='ID', value='final', line=42, col=14)
+Token(type='KEYWORD', value='print', line=43, col=1)
+Token(type='KEYWORD', value='std', line=43, col=7)
+Token(type='ID', value='final', line=43, col=11)
+Token(type='EOF', value=None, line=44, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'temperatures', 'source': [72.0, 68.0, 75.0, 80.0, 85.0, 90.0, 88.0, 82.0, 79.0, 73.0]}
+{'name': 'hot_days', 'source': <parser.FilterStmt object at 0x00000286A951B4A0>}
+{'target': <parser.StatStmt object at 0x00000286A951A8D0>}
+{'target': <parser.StatStmt object at 0x00000286A951A780>}
+{'target': <parser.StatStmt object at 0x00000286A951B800>}
+{'name': 'scores', 'source': [50.0, 75.0, 100.0, 25.0, 80.0]}
+{'name': 'normalized', 'source': <parser.MapStmt object at 0x00000286A951BDD0>}
+{'target': 'normalized'}
+{'name': 'permissions', 'source': [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]}
+{'name': 'read_perm', 'source': <parser.MapStmt object at 0x00000286A951A420>}
+{'name': 'write_perm', 'source': <parser.MapStmt object at 0x00000286A9519D00>}
+{'target': 'read_perm'}
+{'target': 'write_perm'}
+{'name': 'dataset1', 'source': [1.0, 2.0, 3.0, 4.0, 5.0, 5.0, 5.0]}
+{'name': 'dataset2', 'source': [4.0, 5.0, 6.0, 7.0, 8.0, 8.0, 8.0]}
+{'name': 'unique_all', 'source': <parser.SetOpStmt object at 0x00000286A9519F40>}
+{'name': 'common', 'source': <parser.SetOpStmt object at 0x00000286A9519FA0>}
+{'name': 'exclusive', 'source': <parser.SetOpStmt object at 0x00000286A951A900>}
+{'target': 'unique_all'}
+{'target': 'common'}
+{'target': 'exclusive'}
+{'name': 'raw_data', 'source': [10.0, 20.0, 30.0, 40.0, 50.0]}
+{'name': 'filtered_data', 'source': <parser.FilterStmt object at 0x00000286A951A030>}
+{'name': 'transformed', 'source': <parser.MapStmt object at 0x00000286A953C6B0>}
+{'name': 'final', 'source': <parser.ListOpStmt object at 0x00000286A953C710>}
+{'list_name': 'final', 'order': 'asc'}
+{'target': 'final'}
+{'target': <parser.StatStmt object at 0x00000286A953C800>}
+{'target': <parser.StatStmt object at 0x00000286A953C860>}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'temperatures': {'type': 'list', 'declared': True}, 'hot_days': {'type': 'list', 'declared': True}, 'scores': {'type': 'list', 'declared': True}, 'normalized': {'type': 'list', 'declared': True}, 'permissions': {'type': 'list', 'declared': True}, 'read_perm': {'type': 'list', 'declared': True}, 'write_perm': {'type': 'list', 'declared': True}, 'dataset1': {'type': 'list', 'declared': True}, 'dataset2': {'type': 'list', 'declared': True}, 'unique_all': {'type': 'list', 'declared': True}, 'common': {'type': 'list', 'declared': True}, 'exclusive': {'type': 'list', 'declared': True}, 'raw_data': {'type': 'list', 'declared': True}, 'filtered_data': {'type': 'list', 'declared': True}, 'transformed': {'type': 'list', 'declared': True}, 'final': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'temperatures', [72.0, 68.0, 75.0, 80.0, 85.0, 90.0, 88.0, 82.0, 79.0, 73.0])
+('FILTER', 't1', 'temperatures', '>=', 80.0)
+('LIST', 'hot_days', 't1')
+('STAT', 't2', 'count', 'hot_days')
+('PRINT', 't2')
+('STAT', 't3', 'mean', 'hot_days')
+('PRINT', 't3')
+('STAT', 't4', 'max', 'hot_days')
+('PRINT', 't4')
+('LIST', 'scores', [50.0, 75.0, 100.0, 25.0, 80.0])
+('MAP', 't5', 'scores', '(x / 100)')
+('LIST', 'normalized', 't5')
+('PRINT', 'normalized')
+('LIST', 'permissions', [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0])
+('MAP', 't6', 'permissions', '(x & 1)')
+('LIST', 'read_perm', 't6')
+('MAP', 't7', 'permissions', '((x & 2) / 2)')
+('LIST', 'write_perm', 't7')
+('PRINT', 'read_perm')
+('PRINT', 'write_perm')
+('LIST', 'dataset1', [1.0, 2.0, 3.0, 4.0, 5.0, 5.0, 5.0])
+('LIST', 'dataset2', [4.0, 5.0, 6.0, 7.0, 8.0, 8.0, 8.0])
+('SETOP', 't8', 'union', 'dataset1', 'dataset2')
+('LIST', 'unique_all', 't8')
+('SETOP', 't9', 'intersection', 'dataset1', 'dataset2')
+('LIST', 'common', 't9')
+('SETOP', 't10', 'difference', 'dataset1', 'dataset2')
+('LIST', 'exclusive', 't10')
+('PRINT', 'unique_all')
+('PRINT', 'common')
+('PRINT', 'exclusive')
+('LIST', 'raw_data', [10.0, 20.0, 30.0, 40.0, 50.0])
+('FILTER', 't11', 'raw_data', '>=', 25.0)
+('LIST', 'filtered_data', 't11')
+('MAP', 't12', 'filtered_data', '((x - 20) * 2)')
+('LIST', 'transformed', 't12')
+('LISTOP', 't13', '+', 'transformed', [100.0, 200.0, 300.0])
+('LIST', 'final', 't13')
+('SORT', 'final', 'asc')
+('PRINT', 'final')
+('STAT', 't14', 'median', 'final')
+('PRINT', 't14')
+('STAT', 't15', 'std', 'final')
+('PRINT', 't15')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'temperatures', [72.0, 68.0, 75.0, 80.0, 85.0, 90.0, 88.0, 82.0, 79.0, 73.0])
+('FILTER', 't1', 'temperatures', '>=', 80.0)
+('LIST', 'hot_days', 't1')
+('STAT', 't2', 'count', 't1')
+('PRINT', 't2')
+('STAT', 't3', 'mean', 't1')
+('PRINT', 't3')
+('STAT', 't4', 'max', 't1')
+('PRINT', 't4')
+('LIST', 'scores', [50.0, 75.0, 100.0, 25.0, 80.0])
+('MAP', 't5', 'scores', '(x / 100)')
+('LIST', 'normalized', 't5')
+('PRINT', 't5')
+('LIST', 'permissions', [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0])
+('MAP', 't6', 'permissions', '(x & 1)')
+('LIST', 'read_perm', 't6')
+('MAP', 't7', 'permissions', '((x & 2) / 2)')
+('LIST', 'write_perm', 't7')
+('PRINT', 't6')
+('PRINT', 't7')
+('LIST', 'dataset1', [1.0, 2.0, 3.0, 4.0, 5.0, 5.0, 5.0])
+('LIST', 'dataset2', [4.0, 5.0, 6.0, 7.0, 8.0, 8.0, 8.0])
+('SETOP', 't8', 'union', 'dataset1', 'dataset2')
+('LIST', 'unique_all', 't8')
+('SETOP', 't9', 'intersection', 'dataset1', 'dataset2')
+('LIST', 'common', 't9')
+('SETOP', 't10', 'difference', 'dataset1', 'dataset2')
+('LIST', 'exclusive', 't10')
+('PRINT', 't8')
+('PRINT', 't9')
+('PRINT', 't10')
+('LIST', 'raw_data', [10.0, 20.0, 30.0, 40.0, 50.0])
+('FILTER', 't11', 'raw_data', '>=', 25.0)
+('LIST', 'filtered_data', 't11')
+('MAP', 't12', 't11', '((x - 20) * 2)')
+('LIST', 'transformed', 't12')
+('LISTOP', 't13', '+', 't12', [100.0, 200.0, 300.0])
+('LIST', 'final', 't13')
+('SORT', 't13', 'asc')
+('PRINT', 't13')
+('STAT', 't14', 'median', 't13')
+('PRINT', 't14')
+('STAT', 't15', 'std', 't13')
+('PRINT', 't15')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 16: Real-World Use Cases
+@ ──────────────────────────────────────────────────────────────────────────
+
+@ Data analysis pipeline
+list temperatures = [72, 68, 75, 80, 85, 90, 88, 82, 79, 73]
+list hot_days = filter temperatures >= 80
+print count hot_days
+print mean hot_days
+print max hot_days
+
+@ Normalization (scale to 0-1 range)
+list scores = [50, 75, 100, 25, 80]
+list normalized = map scores $0 => $0 / 100
+print normalized
+
+@ Bit manipulation for flags
+list permissions = [0, 1, 2, 3, 4, 5, 6, 7]
+list read_perm = map permissions $0 => $0 and 1
+list write_perm = map permissions $0 => ($0 and 2) / 2
+print read_perm
+print write_perm
+
+@ Set operations for data deduplication
+list dataset1 = [1, 2, 3, 4, 5, 5, 5]
+list dataset2 = [4, 5, 6, 7, 8, 8, 8]
+list unique_all = dataset1 union dataset2
+list common = dataset1 intersection dataset2
+list exclusive = dataset1 difference dataset2
+print unique_all
+print common
+print exclusive
+
+@ Multi-step transformation
+list raw_data = [10, 20, 30, 40, 50]
+list filtered_data = filter raw_data >= 25
+list transformed = map filtered_data $0 => ($0 - 20) * 2
+list final = transformed + [100, 200, 300]
+sort final asc
+print final
+print median final
+print std final
+
+
+OUTPUT:
+5
+85.0
+90.0
+[0.5, 0.75, 1.0, 0.25, 0.8]
+[0, 1, 0, 1, 0, 1, 0, 1]
+[0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0]
+[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
+[4.0, 5.0]
+[1.0, 2.0, 3.0]
+[120.0, 240.0, 360.0]
+240.0
+97.97958971132712
+
+============================================================================
+============================================================================
+
+18 - CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 17: Operator Precedence Validation
+@ Explicit tests for correct precedence parsing
+@ ──────────────────────────────────────────────────────────────────────────
+list prec = [5, 10, 15, 20]
+
+@ Mul before Add: 5 + 10 * 2 = 5 + 20 = 25
+list test1 = map prec $0 => $0 + $0 * 2
+print test1
+
+@ And before Or: 5 or 3 and 1 = 5 or (3 and 1) = 5 or 1
+list test2 = map prec $0 => $0 or 3 and 1
+print test2
+
+@ Xor between And and Or: 5 and 3 xor 1 or 2 = (5 and 3) xor 1 or 2
+list test3 = map prec $0 => $0 and 3 xor 1 or 2
+print test3
+
+@ Division before subtraction: 20 - 10 / 2 = 20 - 5 = 15
+list test4 = map prec $0 => $0 - $0 / 2
+print test4
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=6, col=1)
+Token(type='ID', value='prec', line=6, col=6)
+Token(type='ASSIGN', value='=', line=6, col=11)
+Token(type='LBRACK', value='[', line=6, col=13)
+Token(type='NUMBER', value='5', line=6, col=14)
+Token(type='COMMA', value=',', line=6, col=15)
+Token(type='NUMBER', value='10', line=6, col=17)
+Token(type='COMMA', value=',', line=6, col=19)
+Token(type='NUMBER', value='15', line=6, col=21)
+Token(type='COMMA', value=',', line=6, col=23)
+Token(type='NUMBER', value='20', line=6, col=25)
+Token(type='RBRACK', value=']', line=6, col=27)
+Token(type='KEYWORD', value='list', line=9, col=1)
+Token(type='ID', value='test1', line=9, col=6)
+Token(type='ASSIGN', value='=', line=9, col=12)
+Token(type='KEYWORD', value='map', line=9, col=14)
+Token(type='ID', value='prec', line=9, col=18)
+Token(type='DOLLAR0', value='$0', line=9, col=23)
+Token(type='ARROW', value='=>', line=9, col=26)
+Token(type='DOLLAR0', value='$0', line=9, col=29)
+Token(type='OP', value='+', line=9, col=32)
+Token(type='DOLLAR0', value='$0', line=9, col=34)
+Token(type='OP', value='*', line=9, col=37)
+Token(type='NUMBER', value='2', line=9, col=39)
+Token(type='KEYWORD', value='print', line=10, col=1)
+Token(type='ID', value='test1', line=10, col=7)
+Token(type='KEYWORD', value='list', line=13, col=1)
+Token(type='ID', value='test2', line=13, col=6)
+Token(type='ASSIGN', value='=', line=13, col=12)
+Token(type='KEYWORD', value='map', line=13, col=14)
+Token(type='ID', value='prec', line=13, col=18)
+Token(type='DOLLAR0', value='$0', line=13, col=23)
+Token(type='ARROW', value='=>', line=13, col=26)
+Token(type='DOLLAR0', value='$0', line=13, col=29)
+Token(type='KEYWORD', value='or', line=13, col=32)
+Token(type='NUMBER', value='3', line=13, col=35)
+Token(type='KEYWORD', value='and', line=13, col=37)
+Token(type='NUMBER', value='1', line=13, col=41)
+Token(type='KEYWORD', value='print', line=14, col=1)
+Token(type='ID', value='test2', line=14, col=7)
+Token(type='KEYWORD', value='list', line=17, col=1)
+Token(type='ID', value='test3', line=17, col=6)
+Token(type='ASSIGN', value='=', line=17, col=12)
+Token(type='KEYWORD', value='map', line=17, col=14)
+Token(type='ID', value='prec', line=17, col=18)
+Token(type='DOLLAR0', value='$0', line=17, col=23)
+Token(type='ARROW', value='=>', line=17, col=26)
+Token(type='DOLLAR0', value='$0', line=17, col=29)
+Token(type='KEYWORD', value='and', line=17, col=32)
+Token(type='NUMBER', value='3', line=17, col=36)
+Token(type='KEYWORD', value='xor', line=17, col=38)
+Token(type='NUMBER', value='1', line=17, col=42)
+Token(type='KEYWORD', value='or', line=17, col=44)
+Token(type='NUMBER', value='2', line=17, col=47)
+Token(type='KEYWORD', value='print', line=18, col=1)
+Token(type='ID', value='test3', line=18, col=7)
+Token(type='KEYWORD', value='list', line=21, col=1)
+Token(type='ID', value='test4', line=21, col=6)
+Token(type='ASSIGN', value='=', line=21, col=12)
+Token(type='KEYWORD', value='map', line=21, col=14)
+Token(type='ID', value='prec', line=21, col=18)
+Token(type='DOLLAR0', value='$0', line=21, col=23)
+Token(type='ARROW', value='=>', line=21, col=26)
+Token(type='DOLLAR0', value='$0', line=21, col=29)
+Token(type='OP', value='-', line=21, col=32)
+Token(type='DOLLAR0', value='$0', line=21, col=34)
+Token(type='OP', value='/', line=21, col=37)
+Token(type='NUMBER', value='2', line=21, col=39)
+Token(type='KEYWORD', value='print', line=22, col=1)
+Token(type='ID', value='test4', line=22, col=7)
+Token(type='EOF', value=None, line=23, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'prec', 'source': [5.0, 10.0, 15.0, 20.0]}
+{'name': 'test1', 'source': <parser.MapStmt object at 0x00000286A951A180>}
+{'target': 'test1'}
+{'name': 'test2', 'source': <parser.MapStmt object at 0x00000286A951A630>}
+{'target': 'test2'}
+{'name': 'test3', 'source': <parser.MapStmt object at 0x00000286A951BAD0>}
+{'target': 'test3'}
+{'name': 'test4', 'source': <parser.MapStmt object at 0x00000286A951B1D0>}
+{'target': 'test4'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'prec': {'type': 'list', 'declared': True}, 'test1': {'type': 'list', 'declared': True}, 'test2': {'type': 'list', 'declared': True}, 'test3': {'type': 'list', 'declared': True}, 'test4': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'prec', [5.0, 10.0, 15.0, 20.0])
+('MAP', 't1', 'prec', '(x + (x * 2))')
+('LIST', 'test1', 't1')
+('PRINT', 'test1')
+('MAP', 't2', 'prec', '(x | (3 & 1))')
+('LIST', 'test2', 't2')
+('PRINT', 'test2')
+('MAP', 't3', 'prec', '(((x & 3) ^ 1) | 2)')
+('LIST', 'test3', 't3')
+('PRINT', 'test3')
+('MAP', 't4', 'prec', '(x - (x / 2))')
+('LIST', 'test4', 't4')
+('PRINT', 'test4')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'prec', [5.0, 10.0, 15.0, 20.0])
+('MAP', 't1', 'prec', '(x + (x * 2))')
+('LIST', 'test1', 't1')
+('PRINT', 't1')
+('MAP', 't2', 'prec', '(x | (3 & 1))')
+('LIST', 'test2', 't2')
+('PRINT', 't2')
+('MAP', 't3', 'prec', '(((x & 3) ^ 1) | 2)')
+('LIST', 'test3', 't3')
+('PRINT', 't3')
+('MAP', 't4', 'prec', '(x - (x / 2))')
+('LIST', 'test4', 't4')
+('PRINT', 't4')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 17: Operator Precedence Validation
+@ Explicit tests for correct precedence parsing
+@ ──────────────────────────────────────────────────────────────────────────
+list prec = [5, 10, 15, 20]
+
+@ Mul before Add: 5 + 10 * 2 = 5 + 20 = 25
+list test1 = map prec $0 => $0 + $0 * 2
+print test1
+
+@ And before Or: 5 or 3 and 1 = 5 or (3 and 1) = 5 or 1
+list test2 = map prec $0 => $0 or 3 and 1
+print test2
+
+@ Xor between And and Or: 5 and 3 xor 1 or 2 = (5 and 3) xor 1 or 2
+list test3 = map prec $0 => $0 and 3 xor 1 or 2
+print test3
+
+@ Division before subtraction: 20 - 10 / 2 = 20 - 5 = 15
+list test4 = map prec $0 => $0 - $0 / 2
+print test4
+
+
+OUTPUT:
+[15, 30, 45, 60]
+[5, 11, 15, 21]
+[2, 3, 2, 3]
+[2.5, 5.0, 7.5, 10.0]
+
+============================================================================
+============================================================================
+
+19 - CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 18: ListSource Combinations
+@ All possible ways to create a list
+@ ──────────────────────────────────────────────────────────────────────────
+
+@ From literal array
+list from_literal = [100, 200, 300]
+print from_literal
+
+@ From another list
+list from_list = from_literal
+print from_list
+
+@ From filter
+list from_filter = filter from_literal > 150
+print from_filter
+
+@ From map
+list from_map = map from_literal $0 => $0 / 10
+print from_map
+
+@ From set operation
+list set1 = [1, 2, 3]
+list set2 = [2, 3, 4]
+list from_set = set1 union set2
+print from_set
+
+@ From list operation
+list op1 = [1, 2, 3]
+list op2 = [10, 20, 30]
+list from_listop = op1 + op2
+print from_listop
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=8, col=1)
+Token(type='ID', value='from_literal', line=8, col=6)
+Token(type='ASSIGN', value='=', line=8, col=19)
+Token(type='LBRACK', value='[', line=8, col=21)
+Token(type='NUMBER', value='100', line=8, col=22)
+Token(type='COMMA', value=',', line=8, col=25)
+Token(type='NUMBER', value='200', line=8, col=27)
+Token(type='COMMA', value=',', line=8, col=30)
+Token(type='NUMBER', value='300', line=8, col=32)
+Token(type='RBRACK', value=']', line=8, col=35)
+Token(type='KEYWORD', value='print', line=9, col=1)
+Token(type='ID', value='from_literal', line=9, col=7)
+Token(type='KEYWORD', value='list', line=12, col=1)
+Token(type='ID', value='from_list', line=12, col=6)
+Token(type='ASSIGN', value='=', line=12, col=16)
+Token(type='ID', value='from_literal', line=12, col=18)
+Token(type='KEYWORD', value='print', line=13, col=1)
+Token(type='ID', value='from_list', line=13, col=7)
+Token(type='KEYWORD', value='list', line=16, col=1)
+Token(type='ID', value='from_filter', line=16, col=6)
+Token(type='ASSIGN', value='=', line=16, col=18)
+Token(type='KEYWORD', value='filter', line=16, col=20)
+Token(type='ID', value='from_literal', line=16, col=27)
+Token(type='COMP', value='>', line=16, col=40)
+Token(type='NUMBER', value='150', line=16, col=42)
+Token(type='KEYWORD', value='print', line=17, col=1)
+Token(type='ID', value='from_filter', line=17, col=7)
+Token(type='KEYWORD', value='list', line=20, col=1)
+Token(type='ID', value='from_map', line=20, col=6)
+Token(type='ASSIGN', value='=', line=20, col=15)
+Token(type='KEYWORD', value='map', line=20, col=17)
+Token(type='ID', value='from_literal', line=20, col=21)
+Token(type='DOLLAR0', value='$0', line=20, col=34)
+Token(type='ARROW', value='=>', line=20, col=37)
+Token(type='DOLLAR0', value='$0', line=20, col=40)
+Token(type='OP', value='/', line=20, col=43)
+Token(type='NUMBER', value='10', line=20, col=45)
+Token(type='KEYWORD', value='print', line=21, col=1)
+Token(type='ID', value='from_map', line=21, col=7)
+Token(type='KEYWORD', value='list', line=24, col=1)
+Token(type='ID', value='set1', line=24, col=6)
+Token(type='ASSIGN', value='=', line=24, col=11)
+Token(type='LBRACK', value='[', line=24, col=13)
+Token(type='NUMBER', value='1', line=24, col=14)
+Token(type='COMMA', value=',', line=24, col=15)
+Token(type='NUMBER', value='2', line=24, col=17)
+Token(type='COMMA', value=',', line=24, col=18)
+Token(type='NUMBER', value='3', line=24, col=20)
+Token(type='RBRACK', value=']', line=24, col=21)
+Token(type='KEYWORD', value='list', line=25, col=1)
+Token(type='ID', value='set2', line=25, col=6)
+Token(type='ASSIGN', value='=', line=25, col=11)
+Token(type='LBRACK', value='[', line=25, col=13)
+Token(type='NUMBER', value='2', line=25, col=14)
+Token(type='COMMA', value=',', line=25, col=15)
+Token(type='NUMBER', value='3', line=25, col=17)
+Token(type='COMMA', value=',', line=25, col=18)
+Token(type='NUMBER', value='4', line=25, col=20)
+Token(type='RBRACK', value=']', line=25, col=21)
+Token(type='KEYWORD', value='list', line=26, col=1)
+Token(type='ID', value='from_set', line=26, col=6)
+Token(type='ASSIGN', value='=', line=26, col=15)
+Token(type='ID', value='set1', line=26, col=17)
+Token(type='KEYWORD', value='union', line=26, col=22)
+Token(type='ID', value='set2', line=26, col=28)
+Token(type='KEYWORD', value='print', line=27, col=1)
+Token(type='ID', value='from_set', line=27, col=7)
+Token(type='KEYWORD', value='list', line=30, col=1)
+Token(type='ID', value='op1', line=30, col=6)
+Token(type='ASSIGN', value='=', line=30, col=10)
+Token(type='LBRACK', value='[', line=30, col=12)
+Token(type='NUMBER', value='1', line=30, col=13)
+Token(type='COMMA', value=',', line=30, col=14)
+Token(type='NUMBER', value='2', line=30, col=16)
+Token(type='COMMA', value=',', line=30, col=17)
+Token(type='NUMBER', value='3', line=30, col=19)
+Token(type='RBRACK', value=']', line=30, col=20)
+Token(type='KEYWORD', value='list', line=31, col=1)
+Token(type='ID', value='op2', line=31, col=6)
+Token(type='ASSIGN', value='=', line=31, col=10)
+Token(type='LBRACK', value='[', line=31, col=12)
+Token(type='NUMBER', value='10', line=31, col=13)
+Token(type='COMMA', value=',', line=31, col=15)
+Token(type='NUMBER', value='20', line=31, col=17)
+Token(type='COMMA', value=',', line=31, col=19)
+Token(type='NUMBER', value='30', line=31, col=21)
+Token(type='RBRACK', value=']', line=31, col=23)
+Token(type='KEYWORD', value='list', line=32, col=1)
+Token(type='ID', value='from_listop', line=32, col=6)
+Token(type='ASSIGN', value='=', line=32, col=18)
+Token(type='ID', value='op1', line=32, col=20)
+Token(type='OP', value='+', line=32, col=24)
+Token(type='ID', value='op2', line=32, col=26)
+Token(type='KEYWORD', value='print', line=33, col=1)
+Token(type='ID', value='from_listop', line=33, col=7)
+Token(type='EOF', value=None, line=34, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'from_literal', 'source': [100.0, 200.0, 300.0]}
+{'target': 'from_literal'}
+{'name': 'from_list', 'source': 'from_literal'}
+{'target': 'from_list'}
+{'name': 'from_filter', 'source': <parser.FilterStmt object at 0x00000286A9519E20>}
+{'target': 'from_filter'}
+{'name': 'from_map', 'source': <parser.MapStmt object at 0x00000286A951B650>}
+{'target': 'from_map'}
+{'name': 'set1', 'source': [1.0, 2.0, 3.0]}
+{'name': 'set2', 'source': [2.0, 3.0, 4.0]}
+{'name': 'from_set', 'source': <parser.SetOpStmt object at 0x00000286A951AC00>}
+{'target': 'from_set'}
+{'name': 'op1', 'source': [1.0, 2.0, 3.0]}
+{'name': 'op2', 'source': [10.0, 20.0, 30.0]}
+{'name': 'from_listop', 'source': <parser.ListOpStmt object at 0x00000286A951AC30>}
+{'target': 'from_listop'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'from_literal': {'type': 'list', 'declared': True}, 'from_list': {'type': 'list', 'declared': True}, 'from_filter': {'type': 'list', 'declared': True}, 'from_map': {'type': 'list', 'declared': True}, 'set1': {'type': 'list', 'declared': True}, 'set2': {'type': 'list', 'declared': True}, 'from_set': {'type': 'list', 'declared': True}, 'op1': {'type': 'list', 'declared': True}, 'op2': {'type': 'list', 'declared': True}, 'from_listop': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'from_literal', [100.0, 200.0, 300.0])
+('PRINT', 'from_literal')
+('LIST', 'from_list', 'from_literal')
+('PRINT', 'from_list')
+('FILTER', 't1', 'from_literal', '>', 150.0)
+('LIST', 'from_filter', 't1')
+('PRINT', 'from_filter')
+('MAP', 't2', 'from_literal', '(x / 10)')
+('LIST', 'from_map', 't2')
+('PRINT', 'from_map')
+('LIST', 'set1', [1.0, 2.0, 3.0])
+('LIST', 'set2', [2.0, 3.0, 4.0])
+('SETOP', 't3', 'union', 'set1', 'set2')
+('LIST', 'from_set', 't3')
+('PRINT', 'from_set')
+('LIST', 'op1', [1.0, 2.0, 3.0])
+('LIST', 'op2', [10.0, 20.0, 30.0])
+('LISTOP', 't4', '+', 'op1', 'op2')
+('LIST', 'from_listop', 't4')
+('PRINT', 'from_listop')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'from_literal', [100.0, 200.0, 300.0])
+('PRINT', 'from_literal')
+('LIST', 'from_list', 'from_literal')
+('PRINT', 'from_literal')
+('FILTER', 't1', 'from_literal', '>', 150.0)
+('LIST', 'from_filter', 't1')
+('PRINT', 't1')
+('MAP', 't2', 'from_literal', '(x / 10)')
+('LIST', 'from_map', 't2')
+('PRINT', 't2')
+('LIST', 'set1', [1.0, 2.0, 3.0])
+('LIST', 'set2', [2.0, 3.0, 4.0])
+('SETOP', 't3', 'union', 'set1', 'set2')
+('LIST', 'from_set', 't3')
+('PRINT', 't3')
+('LIST', 'op1', [1.0, 2.0, 3.0])
+('LIST', 'op2', [10.0, 20.0, 30.0])
+('LISTOP', 't4', '+', 'op1', 'op2')
+('LIST', 'from_listop', 't4')
+('PRINT', 't4')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 18: ListSource Combinations
+@ All possible ways to create a list
+@ ──────────────────────────────────────────────────────────────────────────
+
+@ From literal array
+list from_literal = [100, 200, 300]
+print from_literal
+
+@ From another list
+list from_list = from_literal
+print from_list
+
+@ From filter
+list from_filter = filter from_literal > 150
+print from_filter
+
+@ From map
+list from_map = map from_literal $0 => $0 / 10
+print from_map
+
+@ From set operation
+list set1 = [1, 2, 3]
+list set2 = [2, 3, 4]
+list from_set = set1 union set2
+print from_set
+
+@ From list operation
+list op1 = [1, 2, 3]
+list op2 = [10, 20, 30]
+list from_listop = op1 + op2
+print from_listop
+
+
+OUTPUT:
+[100.0, 200.0, 300.0]
+[100.0, 200.0, 300.0]
+[200.0, 300.0]
+[10.0, 20.0, 30.0]
+[1.0, 2.0, 3.0, 4.0]
+[11.0, 22.0, 33.0]
+
+============================================================================
+============================================================================
+
+20 - CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ FINAL TEST: Kitchen Sink
+@ Everything together in one complex program
+@ ──────────────────────────────────────────────────────────────────────────
+list kitchen_sink = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+list filtered = filter kitchen_sink >= 5
+list mapped = map filtered $0 => ($0 * 2.0 + 3.0) and 31.0
+list combined = mapped + [100, 200, 1, 1, 1, 1, 1, 1, 1, 1, 1] * 2
+list others = [50, 60, 70]
+list final_result = combined union others
+sort final_result desc
+print final_result
+print mean final_result
+print count final_result
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=6, col=1)
+Token(type='ID', value='kitchen_sink', line=6, col=6)
+Token(type='ASSIGN', value='=', line=6, col=19)
+Token(type='LBRACK', value='[', line=6, col=21)
+Token(type='NUMBER', value='1', line=6, col=22)
+Token(type='COMMA', value=',', line=6, col=23)
+Token(type='NUMBER', value='2', line=6, col=25)
+Token(type='COMMA', value=',', line=6, col=26)
+Token(type='NUMBER', value='3', line=6, col=28)
+Token(type='COMMA', value=',', line=6, col=29)
+Token(type='NUMBER', value='4', line=6, col=31)
+Token(type='COMMA', value=',', line=6, col=32)
+Token(type='NUMBER', value='5', line=6, col=34)
+Token(type='COMMA', value=',', line=6, col=35)
+Token(type='NUMBER', value='6', line=6, col=37)
+Token(type='COMMA', value=',', line=6, col=38)
+Token(type='NUMBER', value='7', line=6, col=40)
+Token(type='COMMA', value=',', line=6, col=41)
+Token(type='NUMBER', value='8', line=6, col=43)
+Token(type='COMMA', value=',', line=6, col=44)
+Token(type='NUMBER', value='9', line=6, col=46)
+Token(type='COMMA', value=',', line=6, col=47)
+Token(type='NUMBER', value='10', line=6, col=49)
+Token(type='COMMA', value=',', line=6, col=51)
+Token(type='NUMBER', value='11', line=6, col=53)
+Token(type='COMMA', value=',', line=6, col=55)
+Token(type='NUMBER', value='12', line=6, col=57)
+Token(type='COMMA', value=',', line=6, col=59)
+Token(type='NUMBER', value='13', line=6, col=61)
+Token(type='COMMA', value=',', line=6, col=63)
+Token(type='NUMBER', value='14', line=6, col=65)
+Token(type='COMMA', value=',', line=6, col=67)
+Token(type='NUMBER', value='15', line=6, col=69)
+Token(type='RBRACK', value=']', line=6, col=71)
+Token(type='KEYWORD', value='list', line=7, col=1)
+Token(type='ID', value='filtered', line=7, col=6)
+Token(type='ASSIGN', value='=', line=7, col=15)
+Token(type='KEYWORD', value='filter', line=7, col=17)
+Token(type='ID', value='kitchen_sink', line=7, col=24)
+Token(type='COMP', value='>=', line=7, col=37)
+Token(type='NUMBER', value='5', line=7, col=40)
+Token(type='KEYWORD', value='list', line=8, col=1)
+Token(type='ID', value='mapped', line=8, col=6)
+Token(type='ASSIGN', value='=', line=8, col=13)
+Token(type='KEYWORD', value='map', line=8, col=15)
+Token(type='ID', value='filtered', line=8, col=19)
+Token(type='DOLLAR0', value='$0', line=8, col=28)
+Token(type='ARROW', value='=>', line=8, col=31)
+Token(type='LPAREN', value='(', line=8, col=34)
+Token(type='DOLLAR0', value='$0', line=8, col=35)
+Token(type='OP', value='*', line=8, col=38)
+Token(type='NUMBER', value='2.0', line=8, col=40)
+Token(type='OP', value='+', line=8, col=44)
+Token(type='NUMBER', value='3.0', line=8, col=46)
+Token(type='RPAREN', value=')', line=8, col=49)
+Token(type='KEYWORD', value='and', line=8, col=51)
+Token(type='NUMBER', value='31.0', line=8, col=55)
+Token(type='KEYWORD', value='list', line=9, col=1)
+Token(type='ID', value='combined', line=9, col=6)
+Token(type='ASSIGN', value='=', line=9, col=15)
+Token(type='ID', value='mapped', line=9, col=17)
+Token(type='OP', value='+', line=9, col=24)
+Token(type='LBRACK', value='[', line=9, col=26)
+Token(type='NUMBER', value='100', line=9, col=27)
+Token(type='COMMA', value=',', line=9, col=30)
+Token(type='NUMBER', value='200', line=9, col=32)
+Token(type='COMMA', value=',', line=9, col=35)
+Token(type='NUMBER', value='1', line=9, col=37)
+Token(type='COMMA', value=',', line=9, col=38)
+Token(type='NUMBER', value='1', line=9, col=40)
+Token(type='COMMA', value=',', line=9, col=41)
+Token(type='NUMBER', value='1', line=9, col=43)
+Token(type='COMMA', value=',', line=9, col=44)
+Token(type='NUMBER', value='1', line=9, col=46)
+Token(type='COMMA', value=',', line=9, col=47)
+Token(type='NUMBER', value='1', line=9, col=49)
+Token(type='COMMA', value=',', line=9, col=50)
+Token(type='NUMBER', value='1', line=9, col=52)
+Token(type='COMMA', value=',', line=9, col=53)
+Token(type='NUMBER', value='1', line=9, col=55)
+Token(type='COMMA', value=',', line=9, col=56)
+Token(type='NUMBER', value='1', line=9, col=58)
+Token(type='COMMA', value=',', line=9, col=59)
+Token(type='NUMBER', value='1', line=9, col=61)
+Token(type='RBRACK', value=']', line=9, col=62)
+Token(type='OP', value='*', line=9, col=64)
+Token(type='NUMBER', value='2', line=9, col=66)
+Token(type='KEYWORD', value='list', line=10, col=1)
+Token(type='ID', value='others', line=10, col=6)
+Token(type='ASSIGN', value='=', line=10, col=13)
+Token(type='LBRACK', value='[', line=10, col=15)
+Token(type='NUMBER', value='50', line=10, col=16)
+Token(type='COMMA', value=',', line=10, col=18)
+Token(type='NUMBER', value='60', line=10, col=20)
+Token(type='COMMA', value=',', line=10, col=22)
+Token(type='NUMBER', value='70', line=10, col=24)
+Token(type='RBRACK', value=']', line=10, col=26)
+Token(type='KEYWORD', value='list', line=11, col=1)
+Token(type='ID', value='final_result', line=11, col=6)
+Token(type='ASSIGN', value='=', line=11, col=19)
+Token(type='ID', value='combined', line=11, col=21)
+Token(type='KEYWORD', value='union', line=11, col=30)
+Token(type='ID', value='others', line=11, col=36)
+Token(type='KEYWORD', value='sort', line=12, col=1)
+Token(type='ID', value='final_result', line=12, col=6)
+Token(type='KEYWORD', value='desc', line=12, col=19)
+Token(type='KEYWORD', value='print', line=13, col=1)
+Token(type='ID', value='final_result', line=13, col=7)
+Token(type='KEYWORD', value='print', line=14, col=1)
+Token(type='KEYWORD', value='mean', line=14, col=7)
+Token(type='ID', value='final_result', line=14, col=12)
+Token(type='KEYWORD', value='print', line=15, col=1)
+Token(type='KEYWORD', value='count', line=15, col=7)
+Token(type='ID', value='final_result', line=15, col=13)
+Token(type='EOF', value=None, line=16, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'kitchen_sink', 'source': [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]}
+{'name': 'filtered', 'source': <parser.FilterStmt object at 0x00000286A951B2F0>}
+{'name': 'mapped', 'source': <parser.MapStmt object at 0x00000286A951B500>}
+{'name': 'combined', 'source': <parser.ListOpStmt object at 0x00000286A951A600>}
+{'name': 'others', 'source': [50.0, 60.0, 70.0]}
+{'name': 'final_result', 'source': <parser.SetOpStmt object at 0x00000286A9519DF0>}
+{'list_name': 'final_result', 'order': 'desc'}
+{'target': 'final_result'}
+{'target': <parser.StatStmt object at 0x00000286A951B440>}
+{'target': <parser.StatStmt object at 0x00000286A951A9F0>}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'kitchen_sink': {'type': 'list', 'declared': True}, 'filtered': {'type': 'list', 'declared': True}, 'mapped': {'type': 'list', 'declared': True}, 'combined': {'type': 'list', 'declared': True}, 'others': {'type': 'list', 'declared': True}, 'final_result': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'kitchen_sink', [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0])
+('FILTER', 't1', 'kitchen_sink', '>=', 5.0)
+('LIST', 'filtered', 't1')
+('MAP', 't2', 'filtered', '(((x * 2) + 3) & 31)')
+('LIST', 'mapped', 't2')
+('LISTOP', 't4', '*', [100.0, 200.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 2.0)
+('LISTOP', 't3', '+', 'mapped', 't4')
+('LIST', 'combined', 't3')
+('LIST', 'others', [50.0, 60.0, 70.0])
+('SETOP', 't5', 'union', 'combined', 'others')
+('LIST', 'final_result', 't5')
+('SORT', 'final_result', 'desc')
+('PRINT', 'final_result')
+('STAT', 't6', 'mean', 'final_result')
+('PRINT', 't6')
+('STAT', 't7', 'count', 'final_result')
+('PRINT', 't7')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'kitchen_sink', [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0])
+('FILTER', 't1', 'kitchen_sink', '>=', 5.0)
+('LIST', 'filtered', 't1')
+('MAP', 't2', 't1', '(((x * 2) + 3) & 31)')
+('LIST', 'mapped', 't2')
+('LISTOP', 't4', '+', [100.0, 200.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], [100.0, 200.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+('LISTOP', 't3', '+', 't2', 't4')
+('LIST', 'combined', 't3')
+('LIST', 'others', [50.0, 60.0, 70.0])
+('SETOP', 't5', 'union', 't3', 'others')
+('LIST', 'final_result', 't5')
+('SORT', 't5', 'desc')
+('PRINT', 't5')
+('STAT', 't6', 'mean', 't5')
+('PRINT', 't6')
+('STAT', 't7', 'count', 't5')
+('PRINT', 't7')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ FINAL TEST: Kitchen Sink
+@ Everything together in one complex program
+@ ──────────────────────────────────────────────────────────────────────────
+list kitchen_sink = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+list filtered = filter kitchen_sink >= 5
+list mapped = map filtered $0 => ($0 * 2.0 + 3.0) and 31.0
+list combined = mapped + [100, 200, 1, 1, 1, 1, 1, 1, 1, 1, 1] * 2
+list others = [50, 60, 70]
+list final_result = combined union others
+sort final_result desc
+print final_result
+print mean final_result
+print count final_result
+
+
+OUTPUT:
+[415.0, 213.0, 70.0, 60.0, 50.0, 33.0, 31.0, 29.0, 27.0, 25.0, 23.0, 21.0, 19.0, 3.0]
+72.78571428571429
+14
+
+============================================================================
+============================================================================

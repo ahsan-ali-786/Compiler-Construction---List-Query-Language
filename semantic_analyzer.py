@@ -1,142 +1,3 @@
-# from parser import ListDecl, FilterStmt, SortStmt, MapStmt, StatStmt, PrintStmt, SetOpStmt;
-
-# class SemanticAnalyzer:
-#     def __init__(self):
-#         # symbol table:
-#         #   name -> { "type": "list", "value": [...] }
-#         self.symbols = {}
-
-#     def analyze(self, ast):
-#         for node in ast:
-#             self.visit(node)
-#         return self.symbols   # return final symbol table
-
-#     # --------------------------------------------
-#     # Node Dispatcher
-#     # --------------------------------------------
-#     def visit(self, node):
-
-#         if isinstance(node, ListDecl):
-#             return self.visit_list_decl(node)
-
-#         if isinstance(node, FilterStmt):
-#             return self.visit_filter(node)
-
-#         if isinstance(node, SortStmt):
-#             return self.visit_sort(node)
-
-#         if isinstance(node, MapStmt):
-#             return self.visit_map(node)
-
-#         if isinstance(node, StatStmt):
-#             return self.visit_stat(node)
-
-#         if isinstance(node, PrintStmt):
-#             return self.visit_print(node)
-
-#         if isinstance(node, SetOpStmt):
-#             return self.visit_set_op(node)
-
-#         raise Exception(f"Unknown AST node type: {type(node)}")
-
-#     # --------------------------------------------
-#     # Semantic Rule Implementations
-#     # --------------------------------------------
-
-#     # list nums = [...]
-#     def visit_list_decl(self, node):
-#         if node.name in self.symbols:
-#             raise Exception(f"Semantic Error: Redeclaration of '{node.name}'")
-
-#         # check list values are numeric
-#         for v in node.values:
-#             if not isinstance(v, (int, float)):
-#                 raise Exception(f"Semantic Error: List '{node.name}' contains non-numeric value {v}")
-
-#         self.symbols[node.name] = {
-#             "type": "list",
-#             "value": node.values
-#         }
-
-#     # filter nums > 4
-#     def visit_filter(self, node):
-#         self.assert_declared(node.name)
-#         self.assert_list(node.name)
-
-#         # number already verified in parser
-#         return
-
-#     # sort nums asc
-#     def visit_sort(self, node):
-#         self.assert_declared(node.name)
-#         self.assert_list(node.name)
-
-#         if node.order not in ("asc", "desc"):
-#             raise Exception(f"Semantic Error: sort order must be asc/desc")
-
-#     # map nums x -> expr
-#     def visit_map(self, node):
-#         self.assert_declared(node.list_name)
-#         self.assert_list(node.list_name)
-
-#         # verify expression correctness
-#         self.validate_expr(node.expr, allowed_var=node.var)
-
-#     # mean nums, variance nums
-#     def visit_stat(self, node):
-#         self.assert_declared(node.list_name)
-#         self.assert_list(node.list_name)
-
-#     # print nums, print result, print nums union nums2
-#     def visit_print(self, node):
-#         # print result → always allowed after a stat
-#         if node.target == "result":
-#             return
-
-#         self.assert_declared(node.target)
-
-#     # print nums union nums2
-#     def visit_set_op(self, node):
-#         self.assert_declared(node.list1)
-#         self.assert_list(node.list1)
-
-#         self.assert_declared(node.list2)
-#         self.assert_list(node.list2)
-
-#         if node.op not in ("union", "unique", "intersection", "difference"):
-#             raise Exception(f"Semantic Error: Unknown set operation '{node.op}'")
-
-#     # --------------------------------------------
-#     # Expression Validation
-#     # --------------------------------------------
-#     def validate_expr(self, expr, allowed_var):
-#         """
-#         Ensures that expressions in map x -> expr
-#         only use the correct variable or numbers.
-#         """
-#         if expr.op is None:
-#             # single value: number or identifier
-#             if isinstance(expr.left, (int, float)):
-#                 return
-#             if expr.left == allowed_var:
-#                 return
-#             raise Exception(f"Semantic Error: Invalid variable '{expr.left}' in map expression")
-
-#         # recursively validate expression children
-#         self.validate_expr(expr.left, allowed_var)
-#         self.validate_expr(expr.right, allowed_var)
-
-#     # --------------------------------------------
-#     # Helper Functions
-#     # --------------------------------------------
-#     def assert_declared(self, name):
-#         if name not in self.symbols:
-#             raise Exception(f"Semantic Error: '{name}' not declared")
-
-#     def assert_list(self, name):
-#         if self.symbols[name]["type"] != "list":
-#             raise Exception(f"Semantic Error: '{name}' must be a list")
-
 from parser import (
     ListDecl, FilterStmt, SortStmt, MapStmt, StatStmt, PrintStmt, 
     SetOpStmt, ListOpStmt, BinOp, UnaryOp, Number, Var
@@ -348,7 +209,7 @@ class SemanticAnalyzer:
             raise Exception(f"Semantic Error: Invalid list operation operand type {type(node.right).__name__}")
         
         # Validate operator
-        if node.op not in ('+', '-', '*', '/', 'and', 'or', 'xor'):
+        if node.op not in ('+', '-', '*', '/', '%', 'and', 'or', 'xor'):
             raise Exception(f"Semantic Error: Invalid list operation '{node.op}'")
 
     # --------------------------------------------
@@ -373,7 +234,7 @@ class SemanticAnalyzer:
         
         if isinstance(expr, BinOp):
             # Validate operator
-            if expr.op not in ('+', '-', '*', '/', 'and', 'or', 'xor'):
+            if expr.op not in ('+', '-', '*', '/', '%', 'and', 'or', 'xor'):
                 raise Exception(f"Semantic Error: Invalid operator '{expr.op}' in map expression")
             
             # Recursively validate operands
