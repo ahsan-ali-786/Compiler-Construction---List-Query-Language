@@ -7,6 +7,7 @@ import OutputPanels from "../Components/OutputPanels";
 export default function App() {
   // Vite exposes variables starting with VITE_ inside import.meta.env.
   const API_URL = import.meta.env.VITE_API_URL;
+
   const [outputs, setOutputs] = useState({
     lexerOutput: "",
     parserOutput: "",
