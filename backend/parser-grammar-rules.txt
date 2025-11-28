@@ -151,7 +151,7 @@ OrExpr        → XorExpr ( "or" XorExpr )*
 XorExpr       → AndExpr ( "xor" AndExpr )*
 AndExpr       → AddExpr ( "and" AddExpr )*
 AddExpr       → MulExpr ( ("+" | "-") MulExpr )*
-MulExpr       → Primary ( ("*" | "/") Primary )*
+MulExpr       → Primary ( ("*" | "/" | "%") Primary )*
 Primary       → Number | "$0" | "(" Expr ")" | "-" Primary
 
 Array         → Number ("," Number)* | ε
@@ -165,9 +165,6 @@ ListIdentifier→ [a-zA-Z_][a-zA-Z0-9_]*
 /***************************************************************/
 
                         CODE EXAMPLES:
-
-
-
 
 % ============================================================================
 % COMPREHENSIVE TEST SUITE FOR LIST PROCESSING DSL
