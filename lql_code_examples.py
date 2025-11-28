@@ -595,7 +595,7 @@ print from_listop
 
 """
 @ ──────────────────────────────────────────────────────────────────────────
-@ FINAL TEST: Kitchen Sink
+@ TEST 19: Kitchen Sink
 @ Everything together in one complex program
 @ ──────────────────────────────────────────────────────────────────────────
 list kitchen_sink = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -608,6 +608,24 @@ sort final_result desc
 print final_result
 print mean final_result
 print count final_result
+"""
+,
+
+"""
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 20: 
+@ Testing MOD operator
+@ ──────────────────────────────────────────────────────────────────────────
+
+list l1 = [2,4,5,6]
+list modList = l1 % 2
+print modList
+
+list l2 = [3,3]
+list res = l1 union l2
+
+print res
+
 """
 
 ]

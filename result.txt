@@ -98,13 +98,13 @@ Token(type='EOF', value=None, line=15, col=1)
  PARSER:
 -----------
 {'name': 'data', 'source': [1.0, 2.0, 3.0, 4.0]}
-{'name': 'big', 'source': <parser.FilterStmt object at 0x00000286A9519EB0>}
-{'name': 'sq', 'source': <parser.MapStmt object at 0x00000286A951A060>}
-{'name': 'result', 'source': <parser.ListOpStmt object at 0x00000286A951A0C0>}
+{'name': 'big', 'source': <parser.FilterStmt object at 0x000001E0D4A29E50>}
+{'name': 'sq', 'source': <parser.MapStmt object at 0x000001E0D4A29FD0>}
+{'name': 'result', 'source': <parser.ListOpStmt object at 0x000001E0D4A2A030>}
 {'list_name': 'result', 'order': 'desc'}
 {'target': 'result'}
-{'target': <parser.StatStmt object at 0x00000286A951A180>}
-{'name': 'union_res', 'source': <parser.SetOpStmt object at 0x00000286A951A1E0>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A0F0>}
+{'name': 'union_res', 'source': <parser.SetOpStmt object at 0x000001E0D4A2A120>}
 {'target': 'union_res'}
 
 -----------
@@ -430,14 +430,14 @@ Token(type='EOF', value=None, line=19, col=1)
  PARSER:
 -----------
 {'name': 'stats_data', 'source': [10.0, 20.0, 30.0, 40.0, 50.0]}
-{'target': <parser.StatStmt object at 0x00000286A951A600>}
-{'target': <parser.StatStmt object at 0x00000286A951A6F0>}
-{'target': <parser.StatStmt object at 0x00000286A951A7B0>}
-{'target': <parser.StatStmt object at 0x00000286A951A810>}
-{'target': <parser.StatStmt object at 0x00000286A951A870>}
-{'target': <parser.StatStmt object at 0x00000286A951A930>}
-{'target': <parser.StatStmt object at 0x00000286A951A960>}
-{'target': <parser.StatStmt object at 0x00000286A951A9C0>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A570>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A690>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A750>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A7B0>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A810>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A8D0>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A900>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A960>}
 
 -----------
  SEMANTIC:
@@ -652,19 +652,19 @@ Token(type='EOF', value=None, line=30, col=1)
  PARSER:
 -----------
 {'name': 'values', 'source': [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]}
-{'name': 'gt_five', 'source': <parser.FilterStmt object at 0x00000286A951A5A0>}
+{'name': 'gt_five', 'source': <parser.FilterStmt object at 0x000001E0D4A2A420>}
 {'target': 'gt_five'}
-{'name': 'gte_five', 'source': <parser.FilterStmt object at 0x00000286A951A480>}
+{'name': 'gte_five', 'source': <parser.FilterStmt object at 0x000001E0D4A2A390>}
 {'target': 'gte_five'}
-{'name': 'lt_five', 'source': <parser.FilterStmt object at 0x00000286A95199D0>}
+{'name': 'lt_five', 'source': <parser.FilterStmt object at 0x000001E0D4A296D0>}
 {'target': 'lt_five'}
-{'name': 'lte_five', 'source': <parser.FilterStmt object at 0x00000286A9519BB0>}
+{'name': 'lte_five', 'source': <parser.FilterStmt object at 0x000001E0D4A29A90>}
 {'target': 'lte_five'}
-{'name': 'eq_five', 'source': <parser.FilterStmt object at 0x00000286A9519EE0>}
+{'name': 'eq_five', 'source': <parser.FilterStmt object at 0x000001E0D4A2A1B0>}
 {'target': 'eq_five'}
-{'name': 'neq_five', 'source': <parser.FilterStmt object at 0x00000286A95196A0>}
+{'name': 'neq_five', 'source': <parser.FilterStmt object at 0x000001E0D4A29490>}
 {'target': 'neq_five'}
-{'name': 'decimals', 'source': <parser.FilterStmt object at 0x00000286A951AA20>}
+{'name': 'decimals', 'source': <parser.FilterStmt object at 0x000001E0D4A2A9C0>}
 {'target': 'decimals'}
 
 -----------
@@ -1058,19 +1058,19 @@ Token(type='EOF', value=None, line=37, col=1)
  PARSER:
 -----------
 {'name': 'base', 'source': [1.0, 2.0, 3.0, 4.0, 5.0]}
-{'name': 'squared', 'source': <parser.MapStmt object at 0x00000286A95193A0>}
+{'name': 'squared', 'source': <parser.MapStmt object at 0x000001E0D4A29610>}
 {'target': 'squared'}
-{'name': 'doubled', 'source': <parser.MapStmt object at 0x00000286A9519D90>}
+{'name': 'doubled', 'source': <parser.MapStmt object at 0x000001E0D4A29D60>}
 {'target': 'doubled'}
-{'name': 'incremented', 'source': <parser.MapStmt object at 0x00000286A951A930>}
+{'name': 'incremented', 'source': <parser.MapStmt object at 0x000001E0D4A2A8D0>}
 {'target': 'incremented'}
-{'name': 'negated', 'source': <parser.MapStmt object at 0x00000286A951ACC0>}
+{'name': 'negated', 'source': <parser.MapStmt object at 0x000001E0D4A2AC60>}
 {'target': 'negated'}
-{'name': 'complex', 'source': <parser.MapStmt object at 0x00000286A951AE70>}
+{'name': 'complex', 'source': <parser.MapStmt object at 0x000001E0D4A2AE10>}
 {'target': 'complex'}
-{'name': 'precedence', 'source': <parser.MapStmt object at 0x00000286A951AFF0>}
+{'name': 'precedence', 'source': <parser.MapStmt object at 0x000001E0D4A2AF90>}
 {'target': 'precedence'}
-{'name': 'nested', 'source': <parser.MapStmt object at 0x00000286A951B1D0>}
+{'name': 'nested', 'source': <parser.MapStmt object at 0x000001E0D4A2B170>}
 {'target': 'nested'}
 
 -----------
@@ -1339,17 +1339,17 @@ Token(type='EOF', value=None, line=35, col=1)
  PARSER:
 -----------
 {'name': 'bits', 'source': [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 15.0, 255.0]}
-{'name': 'masked', 'source': <parser.MapStmt object at 0x00000286A951A690>}
+{'name': 'masked', 'source': <parser.MapStmt object at 0x000001E0D4A2A630>}
 {'target': 'masked'}
-{'name': 'set_bits', 'source': <parser.MapStmt object at 0x00000286A951A210>}
+{'name': 'set_bits', 'source': <parser.MapStmt object at 0x000001E0D4A2A150>}
 {'target': 'set_bits'}
-{'name': 'toggled', 'source': <parser.MapStmt object at 0x00000286A951AA50>}
+{'name': 'toggled', 'source': <parser.MapStmt object at 0x000001E0D4A2A9F0>}
 {'target': 'toggled'}
-{'name': 'bitwise_combo', 'source': <parser.MapStmt object at 0x00000286A95199D0>}
+{'name': 'bitwise_combo', 'source': <parser.MapStmt object at 0x000001E0D4A296D0>}
 {'target': 'bitwise_combo'}
-{'name': 'complex_bits', 'source': <parser.MapStmt object at 0x00000286A951A5D0>}
+{'name': 'complex_bits', 'source': <parser.MapStmt object at 0x000001E0D4A2A540>}
 {'target': 'complex_bits'}
-{'name': 'all_bitwise', 'source': <parser.MapStmt object at 0x00000286A9519B50>}
+{'name': 'all_bitwise', 'source': <parser.MapStmt object at 0x000001E0D4A299D0>}
 {'target': 'all_bitwise'}
 
 -----------
@@ -1572,13 +1572,13 @@ Token(type='EOF', value=None, line=24, col=1)
  PARSER:
 -----------
 {'name': 'mixed_ops', 'source': [1.0, 2.0, 4.0, 8.0, 16.0]}
-{'name': 'arith_precedence', 'source': <parser.MapStmt object at 0x00000286A951B500>}
+{'name': 'arith_precedence', 'source': <parser.MapStmt object at 0x000001E0D4A2B4A0>}
 {'target': 'arith_precedence'}
-{'name': 'mixed_precedence', 'source': <parser.MapStmt object at 0x00000286A951B740>}
+{'name': 'mixed_precedence', 'source': <parser.MapStmt object at 0x000001E0D4A2B6E0>}
 {'target': 'mixed_precedence'}
-{'name': 'full_precedence', 'source': <parser.MapStmt object at 0x00000286A951BC20>}
+{'name': 'full_precedence', 'source': <parser.MapStmt object at 0x000001E0D4A2BBC0>}
 {'target': 'full_precedence'}
-{'name': 'override', 'source': <parser.MapStmt object at 0x00000286A951BEC0>}
+{'name': 'override', 'source': <parser.MapStmt object at 0x000001E0D4A2BE60>}
 {'target': 'override'}
 
 -----------
@@ -1790,15 +1790,15 @@ Token(type='EOF', value=None, line=27, col=1)
 -----------
 {'name': 'set_a', 'source': [1.0, 2.0, 3.0, 4.0, 5.0]}
 {'name': 'set_b', 'source': [4.0, 5.0, 6.0, 7.0, 8.0]}
-{'name': 'union_ab', 'source': <parser.SetOpStmt object at 0x00000286A951A9C0>}
+{'name': 'union_ab', 'source': <parser.SetOpStmt object at 0x000001E0D4A2AB70>}
 {'target': 'union_ab'}
-{'name': 'intersection_ab', 'source': <parser.SetOpStmt object at 0x00000286A951B350>}
+{'name': 'intersection_ab', 'source': <parser.SetOpStmt object at 0x000001E0D4A2B2F0>}
 {'target': 'intersection_ab'}
-{'name': 'diff_ab', 'source': <parser.SetOpStmt object at 0x00000286A951B290>}
+{'name': 'diff_ab', 'source': <parser.SetOpStmt object at 0x000001E0D4A2B230>}
 {'target': 'diff_ab'}
 {'name': 'dupes_a', 'source': [1.0, 1.0, 2.0, 2.0, 3.0, 3.0]}
 {'name': 'dupes_b', 'source': [2.0, 2.0, 3.0, 3.0, 4.0, 4.0]}
-{'name': 'union_dupes', 'source': <parser.SetOpStmt object at 0x00000286A9519EE0>}
+{'name': 'union_dupes', 'source': <parser.SetOpStmt object at 0x000001E0D4A2A1B0>}
 {'target': 'union_dupes'}
 
 -----------
@@ -2078,25 +2078,25 @@ Token(type='EOF', value=None, line=51, col=1)
 {'name': 'a', 'source': [1.0, 2.0, 3.0, 4.0]}
 {'name': 'b', 'source': [10.0, 20.0, 30.0, 40.0]}
 {'name': 'c', 'source': [2.0, 2.0, 2.0, 2.0]}
-{'name': 'add_result', 'source': <parser.ListOpStmt object at 0x00000286A951B7A0>}
+{'name': 'add_result', 'source': <parser.ListOpStmt object at 0x000001E0D4954B90>}
 {'target': 'add_result'}
-{'name': 'sub_result', 'source': <parser.ListOpStmt object at 0x00000286A951B800>}
+{'name': 'sub_result', 'source': <parser.ListOpStmt object at 0x000001E0D4A2B5F0>}
 {'target': 'sub_result'}
-{'name': 'mul_result', 'source': <parser.ListOpStmt object at 0x00000286A951A510>}
+{'name': 'mul_result', 'source': <parser.ListOpStmt object at 0x000001E0D4A2A930>}
 {'target': 'mul_result'}
-{'name': 'div_result', 'source': <parser.ListOpStmt object at 0x00000286A951A240>}
+{'name': 'div_result', 'source': <parser.ListOpStmt object at 0x000001E0D4A2A090>}
 {'target': 'div_result'}
-{'name': 'precedence1', 'source': <parser.ListOpStmt object at 0x00000286A951B8F0>}
+{'name': 'precedence1', 'source': <parser.ListOpStmt object at 0x000001E0D4A2A570>}
 {'target': 'precedence1'}
-{'name': 'precedence2', 'source': <parser.ListOpStmt object at 0x00000286A951BC80>}
+{'name': 'precedence2', 'source': <parser.ListOpStmt object at 0x000001E0D4A2B7D0>}
 {'target': 'precedence2'}
-{'name': 'and_result', 'source': <parser.ListOpStmt object at 0x00000286A951BE60>}
+{'name': 'and_result', 'source': <parser.ListOpStmt object at 0x000001E0D4A2BE60>}
 {'target': 'and_result'}
-{'name': 'or_result', 'source': <parser.ListOpStmt object at 0x00000286A951BE30>}
+{'name': 'or_result', 'source': <parser.ListOpStmt object at 0x000001E0D4A2BDA0>}
 {'target': 'or_result'}
-{'name': 'xor_result', 'source': <parser.ListOpStmt object at 0x00000286A951BD10>}
+{'name': 'xor_result', 'source': <parser.ListOpStmt object at 0x000001E0D4A2BD40>}
 {'target': 'xor_result'}
-{'name': 'full_list_precedence', 'source': <parser.ListOpStmt object at 0x00000286A9519BE0>}
+{'name': 'full_list_precedence', 'source': <parser.ListOpStmt object at 0x000001E0D4A2A6C0>}
 {'target': 'full_list_precedence'}
 
 -----------
@@ -2355,15 +2355,15 @@ Token(type='EOF', value=None, line=28, col=1)
  PARSER:
 -----------
 {'name': 'broadcast_base', 'source': [1.0, 2.0, 3.0, 4.0, 5.0]}
-{'name': 'scalar_add', 'source': <parser.ListOpStmt object at 0x00000286A951A6F0>}
+{'name': 'scalar_add', 'source': <parser.ListOpStmt object at 0x000001E0D4A2A690>}
 {'target': 'scalar_add'}
-{'name': 'scalar_mul', 'source': <parser.ListOpStmt object at 0x00000286A951B410>}
+{'name': 'scalar_mul', 'source': <parser.ListOpStmt object at 0x000001E0D4A2B3B0>}
 {'target': 'scalar_mul'}
-{'name': 'scalar_and', 'source': <parser.ListOpStmt object at 0x00000286A951B560>}
+{'name': 'scalar_and', 'source': <parser.ListOpStmt object at 0x000001E0D4A2B500>}
 {'target': 'scalar_and'}
-{'name': 'scalar_or', 'source': <parser.ListOpStmt object at 0x00000286A951B710>}
+{'name': 'scalar_or', 'source': <parser.ListOpStmt object at 0x000001E0D4A2B6B0>}
 {'target': 'scalar_or'}
-{'name': 'mixed_scalar', 'source': <parser.ListOpStmt object at 0x00000286A951B5F0>}
+{'name': 'mixed_scalar', 'source': <parser.ListOpStmt object at 0x000001E0D4A2B590>}
 {'target': 'mixed_scalar'}
 
 -----------
@@ -2543,11 +2543,11 @@ Token(type='EOF', value=None, line=17, col=1)
  PARSER:
 -----------
 {'name': 'literal_base', 'source': [1.0, 2.0, 3.0]}
-{'name': 'literal_add', 'source': <parser.ListOpStmt object at 0x00000286A951B500>}
+{'name': 'literal_add', 'source': <parser.ListOpStmt object at 0x000001E0D4A2B4A0>}
 {'target': 'literal_add'}
-{'name': 'literal_mul', 'source': <parser.ListOpStmt object at 0x00000286A951ABA0>}
+{'name': 'literal_mul', 'source': <parser.ListOpStmt object at 0x000001E0D4A2AB40>}
 {'target': 'literal_mul'}
-{'name': 'two_literals', 'source': <parser.ListOpStmt object at 0x00000286A95197F0>}
+{'name': 'two_literals', 'source': <parser.ListOpStmt object at 0x000001E0D4A29790>}
 {'target': 'two_literals'}
 
 -----------
@@ -2705,9 +2705,9 @@ Token(type='EOF', value=None, line=20, col=1)
 {'name': 'paren_a', 'source': [1.0, 2.0, 3.0, 4.0]}
 {'name': 'paren_b', 'source': [2.0, 2.0, 2.0, 2.0]}
 {'name': 'paren_c', 'source': [10.0, 10.0, 10.0, 10.0]}
-{'name': 'no_paren', 'source': <parser.ListOpStmt object at 0x00000286A951A780>}
+{'name': 'no_paren', 'source': <parser.ListOpStmt object at 0x000001E0D4A2A720>}
 {'target': 'no_paren'}
-{'name': 'with_paren', 'source': <parser.ListOpStmt object at 0x00000286A95193A0>}
+{'name': 'with_paren', 'source': <parser.ListOpStmt object at 0x000001E0D4A29610>}
 {'target': 'with_paren'}
 
 -----------
@@ -2894,15 +2894,15 @@ Token(type='EOF', value=None, line=29, col=1)
  PARSER:
 -----------
 {'name': 'chain_start', 'source': [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]}
-{'name': 'chain_filtered', 'source': <parser.FilterStmt object at 0x00000286A951B320>}
+{'name': 'chain_filtered', 'source': <parser.FilterStmt object at 0x000001E0D4A2B2C0>}
 {'target': 'chain_filtered'}
-{'name': 'chain_mapped', 'source': <parser.MapStmt object at 0x00000286A951B4A0>}
+{'name': 'chain_mapped', 'source': <parser.MapStmt object at 0x000001E0D4A295E0>}
 {'target': 'chain_mapped'}
-{'name': 'chain_added', 'source': <parser.ListOpStmt object at 0x00000286A951B5F0>}
+{'name': 'chain_added', 'source': <parser.ListOpStmt object at 0x000001E0D4A2B590>}
 {'target': 'chain_added'}
 {'list_name': 'chain_added', 'order': 'desc'}
 {'target': 'chain_added'}
-{'name': 'chain_set', 'source': <parser.SetOpStmt object at 0x00000286A951BE00>}
+{'name': 'chain_set', 'source': <parser.SetOpStmt object at 0x000001E0D4A2BE30>}
 {'target': 'chain_set'}
 
 -----------
@@ -3113,11 +3113,11 @@ Token(type='EOF', value=None, line=21, col=1)
  PARSER:
 -----------
 {'name': 'nest_base', 'source': [1.0, 2.0, 3.0, 4.0, 5.0]}
-{'name': 'deep_nest', 'source': <parser.MapStmt object at 0x00000286A951A240>}
+{'name': 'deep_nest', 'source': <parser.MapStmt object at 0x000001E0D4A2A090>}
 {'target': 'deep_nest'}
-{'name': 'deep_bitwise', 'source': <parser.MapStmt object at 0x00000286A951ABA0>}
+{'name': 'deep_bitwise', 'source': <parser.MapStmt object at 0x000001E0D4A2AB40>}
 {'target': 'deep_bitwise'}
-{'name': 'ultimate', 'source': <parser.MapStmt object at 0x00000286A9519B80>}
+{'name': 'ultimate', 'source': <parser.MapStmt object at 0x000001E0D4A29FD0>}
 {'target': 'ultimate'}
 
 -----------
@@ -3382,27 +3382,27 @@ Token(type='EOF', value=None, line=45, col=1)
 -----------
 {'name': 'empty1', 'source': []}
 {'name': 'empty2', 'source': []}
-{'name': 'empty_union', 'source': <parser.SetOpStmt object at 0x00000286A951B500>}
+{'name': 'empty_union', 'source': <parser.SetOpStmt object at 0x000001E0D4A2B4A0>}
 {'target': 'empty_union'}
-{'target': <parser.StatStmt object at 0x00000286A951B590>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2B530>}
 {'name': 'single', 'source': [42.0]}
 {'target': 'single'}
-{'name': 'single_squared', 'source': <parser.MapStmt object at 0x00000286A95193A0>}
+{'name': 'single_squared', 'source': <parser.MapStmt object at 0x000001E0D4A29610>}
 {'target': 'single_squared'}
 {'name': 'large', 'source': [1000000.0, 2000000.0, 3000000.0]}
-{'target': <parser.StatStmt object at 0x00000286A951BDA0>}
-{'target': <parser.StatStmt object at 0x00000286A951BD10>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2BD70>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2BD40>}
 {'name': 'precise', 'source': [0.1, 0.2, 0.3]}
-{'target': <parser.StatStmt object at 0x00000286A9519BE0>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A6C0>}
 {'name': 'all_negative', 'source': [-1.0, -2.0, -3.0, -4.0, -5.0]}
-{'name': 'negative_filter', 'source': <parser.FilterStmt object at 0x00000286A951BCB0>}
+{'name': 'negative_filter', 'source': <parser.FilterStmt object at 0x000001E0D4A2BC80>}
 {'target': 'negative_filter'}
-{'name': 'negative_map', 'source': <parser.MapStmt object at 0x00000286A951AD50>}
+{'name': 'negative_map', 'source': <parser.MapStmt object at 0x000001E0D4A2AC00>}
 {'target': 'negative_map'}
 {'name': 'with_zeros', 'source': [0.0, 1.0, 0.0, 2.0, 0.0, 3.0]}
-{'name': 'zero_filter', 'source': <parser.FilterStmt object at 0x00000286A951AE10>}
+{'name': 'zero_filter', 'source': <parser.FilterStmt object at 0x000001E0D4A2ADE0>}
 {'target': 'zero_filter'}
-{'name': 'zero_ops', 'source': <parser.ListOpStmt object at 0x00000286A951AD80>}
+{'name': 'zero_ops', 'source': <parser.ListOpStmt object at 0x000001E0D4A2AD50>}
 {'target': 'zero_ops'}
 
 -----------
@@ -3840,34 +3840,34 @@ Token(type='EOF', value=None, line=44, col=1)
  PARSER:
 -----------
 {'name': 'temperatures', 'source': [72.0, 68.0, 75.0, 80.0, 85.0, 90.0, 88.0, 82.0, 79.0, 73.0]}
-{'name': 'hot_days', 'source': <parser.FilterStmt object at 0x00000286A951B4A0>}
-{'target': <parser.StatStmt object at 0x00000286A951A8D0>}
-{'target': <parser.StatStmt object at 0x00000286A951A780>}
-{'target': <parser.StatStmt object at 0x00000286A951B800>}
+{'name': 'hot_days', 'source': <parser.FilterStmt object at 0x000001E0D4A2BDA0>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A120>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2A720>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2B5F0>}
 {'name': 'scores', 'source': [50.0, 75.0, 100.0, 25.0, 80.0]}
-{'name': 'normalized', 'source': <parser.MapStmt object at 0x00000286A951BDD0>}
+{'name': 'normalized', 'source': <parser.MapStmt object at 0x000001E0D4A2BDD0>}
 {'target': 'normalized'}
 {'name': 'permissions', 'source': [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]}
-{'name': 'read_perm', 'source': <parser.MapStmt object at 0x00000286A951A420>}
-{'name': 'write_perm', 'source': <parser.MapStmt object at 0x00000286A9519D00>}
+{'name': 'read_perm', 'source': <parser.MapStmt object at 0x000001E0D4A29970>}
+{'name': 'write_perm', 'source': <parser.MapStmt object at 0x000001E0D4A29A90>}
 {'target': 'read_perm'}
 {'target': 'write_perm'}
 {'name': 'dataset1', 'source': [1.0, 2.0, 3.0, 4.0, 5.0, 5.0, 5.0]}
 {'name': 'dataset2', 'source': [4.0, 5.0, 6.0, 7.0, 8.0, 8.0, 8.0]}
-{'name': 'unique_all', 'source': <parser.SetOpStmt object at 0x00000286A9519F40>}
-{'name': 'common', 'source': <parser.SetOpStmt object at 0x00000286A9519FA0>}
-{'name': 'exclusive', 'source': <parser.SetOpStmt object at 0x00000286A951A900>}
+{'name': 'unique_all', 'source': <parser.SetOpStmt object at 0x000001E0D4A2A030>}
+{'name': 'common', 'source': <parser.SetOpStmt object at 0x000001E0D4A29EE0>}
+{'name': 'exclusive', 'source': <parser.SetOpStmt object at 0x000001E0D4A2A510>}
 {'target': 'unique_all'}
 {'target': 'common'}
 {'target': 'exclusive'}
 {'name': 'raw_data', 'source': [10.0, 20.0, 30.0, 40.0, 50.0]}
-{'name': 'filtered_data', 'source': <parser.FilterStmt object at 0x00000286A951A030>}
-{'name': 'transformed', 'source': <parser.MapStmt object at 0x00000286A953C6B0>}
-{'name': 'final', 'source': <parser.ListOpStmt object at 0x00000286A953C710>}
+{'name': 'filtered_data', 'source': <parser.FilterStmt object at 0x000001E0D4A2AAE0>}
+{'name': 'transformed', 'source': <parser.MapStmt object at 0x000001E0D4A4C620>}
+{'name': 'final', 'source': <parser.ListOpStmt object at 0x000001E0D4A4C680>}
 {'list_name': 'final', 'order': 'asc'}
 {'target': 'final'}
-{'target': <parser.StatStmt object at 0x00000286A953C800>}
-{'target': <parser.StatStmt object at 0x00000286A953C860>}
+{'target': <parser.StatStmt object at 0x000001E0D4A4C770>}
+{'target': <parser.StatStmt object at 0x000001E0D4A4C7D0>}
 
 -----------
  SEMANTIC:
@@ -4141,13 +4141,13 @@ Token(type='EOF', value=None, line=23, col=1)
  PARSER:
 -----------
 {'name': 'prec', 'source': [5.0, 10.0, 15.0, 20.0]}
-{'name': 'test1', 'source': <parser.MapStmt object at 0x00000286A951A180>}
+{'name': 'test1', 'source': <parser.MapStmt object at 0x000001E0D4A2A0F0>}
 {'target': 'test1'}
-{'name': 'test2', 'source': <parser.MapStmt object at 0x00000286A951A630>}
+{'name': 'test2', 'source': <parser.MapStmt object at 0x000001E0D4A293A0>}
 {'target': 'test2'}
-{'name': 'test3', 'source': <parser.MapStmt object at 0x00000286A951BAD0>}
+{'name': 'test3', 'source': <parser.MapStmt object at 0x000001E0D4A2BA70>}
 {'target': 'test3'}
-{'name': 'test4', 'source': <parser.MapStmt object at 0x00000286A951B1D0>}
+{'name': 'test4', 'source': <parser.MapStmt object at 0x000001E0D4A2B1A0>}
 {'target': 'test4'}
 
 -----------
@@ -4370,17 +4370,17 @@ Token(type='EOF', value=None, line=34, col=1)
 {'target': 'from_literal'}
 {'name': 'from_list', 'source': 'from_literal'}
 {'target': 'from_list'}
-{'name': 'from_filter', 'source': <parser.FilterStmt object at 0x00000286A9519E20>}
+{'name': 'from_filter', 'source': <parser.FilterStmt object at 0x000001E0D4A2B950>}
 {'target': 'from_filter'}
-{'name': 'from_map', 'source': <parser.MapStmt object at 0x00000286A951B650>}
+{'name': 'from_map', 'source': <parser.MapStmt object at 0x000001E0D4A295E0>}
 {'target': 'from_map'}
 {'name': 'set1', 'source': [1.0, 2.0, 3.0]}
 {'name': 'set2', 'source': [2.0, 3.0, 4.0]}
-{'name': 'from_set', 'source': <parser.SetOpStmt object at 0x00000286A951AC00>}
+{'name': 'from_set', 'source': <parser.SetOpStmt object at 0x000001E0D4A2A9F0>}
 {'target': 'from_set'}
 {'name': 'op1', 'source': [1.0, 2.0, 3.0]}
 {'name': 'op2', 'source': [10.0, 20.0, 30.0]}
-{'name': 'from_listop', 'source': <parser.ListOpStmt object at 0x00000286A951AC30>}
+{'name': 'from_listop', 'source': <parser.ListOpStmt object at 0x000001E0D4A29E50>}
 {'target': 'from_listop'}
 
 -----------
@@ -4490,7 +4490,7 @@ OUTPUT:
 20 - CODE:
 
 @ ──────────────────────────────────────────────────────────────────────────
-@ FINAL TEST: Kitchen Sink
+@ TEST 19: Kitchen Sink
 @ Everything together in one complex program
 @ ──────────────────────────────────────────────────────────────────────────
 list kitchen_sink = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -4628,15 +4628,15 @@ Token(type='EOF', value=None, line=16, col=1)
  PARSER:
 -----------
 {'name': 'kitchen_sink', 'source': [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0]}
-{'name': 'filtered', 'source': <parser.FilterStmt object at 0x00000286A951B2F0>}
-{'name': 'mapped', 'source': <parser.MapStmt object at 0x00000286A951B500>}
-{'name': 'combined', 'source': <parser.ListOpStmt object at 0x00000286A951A600>}
+{'name': 'filtered', 'source': <parser.FilterStmt object at 0x000001E0D4A2B290>}
+{'name': 'mapped', 'source': <parser.MapStmt object at 0x000001E0D4A2B4A0>}
+{'name': 'combined', 'source': <parser.ListOpStmt object at 0x000001E0D4A29760>}
 {'name': 'others', 'source': [50.0, 60.0, 70.0]}
-{'name': 'final_result', 'source': <parser.SetOpStmt object at 0x00000286A9519DF0>}
+{'name': 'final_result', 'source': <parser.SetOpStmt object at 0x000001E0D4A2B020>}
 {'list_name': 'final_result', 'order': 'desc'}
 {'target': 'final_result'}
-{'target': <parser.StatStmt object at 0x00000286A951B440>}
-{'target': <parser.StatStmt object at 0x00000286A951A9F0>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2B3E0>}
+{'target': <parser.StatStmt object at 0x000001E0D4A2B1D0>}
 
 -----------
  SEMANTIC:
@@ -4692,7 +4692,7 @@ Semantic OK! Symbol Table:
 CODE:
 
 @ ──────────────────────────────────────────────────────────────────────────
-@ FINAL TEST: Kitchen Sink
+@ TEST 19: Kitchen Sink
 @ Everything together in one complex program
 @ ──────────────────────────────────────────────────────────────────────────
 list kitchen_sink = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -4711,6 +4711,133 @@ OUTPUT:
 [415.0, 213.0, 70.0, 60.0, 50.0, 33.0, 31.0, 29.0, 27.0, 25.0, 23.0, 21.0, 19.0, 3.0]
 72.78571428571429
 14
+
+============================================================================
+============================================================================
+
+21 - CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 20: 
+@ Testing MOD operator
+@ ──────────────────────────────────────────────────────────────────────────
+
+list l1 = [2,4,5,6]
+list modList = l1 % 2
+print modList
+
+list l2 = [3,3]
+list res = l1 union l2
+
+print res
+
+
+
+-----------
+ TOKENS:
+-----------
+Token(type='KEYWORD', value='list', line=7, col=1)
+Token(type='ID', value='l1', line=7, col=6)
+Token(type='ASSIGN', value='=', line=7, col=9)
+Token(type='LBRACK', value='[', line=7, col=11)
+Token(type='NUMBER', value='2', line=7, col=12)
+Token(type='COMMA', value=',', line=7, col=13)
+Token(type='NUMBER', value='4', line=7, col=14)
+Token(type='COMMA', value=',', line=7, col=15)
+Token(type='NUMBER', value='5', line=7, col=16)
+Token(type='COMMA', value=',', line=7, col=17)
+Token(type='NUMBER', value='6', line=7, col=18)
+Token(type='RBRACK', value=']', line=7, col=19)
+Token(type='KEYWORD', value='list', line=8, col=1)
+Token(type='ID', value='modList', line=8, col=6)
+Token(type='ASSIGN', value='=', line=8, col=14)
+Token(type='ID', value='l1', line=8, col=16)
+Token(type='OP', value='%', line=8, col=19)
+Token(type='NUMBER', value='2', line=8, col=21)
+Token(type='KEYWORD', value='print', line=9, col=1)
+Token(type='ID', value='modList', line=9, col=7)
+Token(type='KEYWORD', value='list', line=11, col=1)
+Token(type='ID', value='l2', line=11, col=6)
+Token(type='ASSIGN', value='=', line=11, col=9)
+Token(type='LBRACK', value='[', line=11, col=11)
+Token(type='NUMBER', value='3', line=11, col=12)
+Token(type='COMMA', value=',', line=11, col=13)
+Token(type='NUMBER', value='3', line=11, col=14)
+Token(type='RBRACK', value=']', line=11, col=15)
+Token(type='KEYWORD', value='list', line=12, col=1)
+Token(type='ID', value='res', line=12, col=6)
+Token(type='ASSIGN', value='=', line=12, col=10)
+Token(type='ID', value='l1', line=12, col=12)
+Token(type='KEYWORD', value='union', line=12, col=15)
+Token(type='ID', value='l2', line=12, col=21)
+Token(type='KEYWORD', value='print', line=14, col=1)
+Token(type='ID', value='res', line=14, col=7)
+Token(type='EOF', value=None, line=16, col=1)
+
+-----------
+ PARSER:
+-----------
+{'name': 'l1', 'source': [2.0, 4.0, 5.0, 6.0]}
+{'name': 'modList', 'source': <parser.ListOpStmt object at 0x000001E0D4A2BDA0>}
+{'target': 'modList'}
+{'name': 'l2', 'source': [3.0, 3.0]}
+{'name': 'res', 'source': <parser.SetOpStmt object at 0x000001E0D4A2A6F0>}
+{'target': 'res'}
+
+-----------
+ SEMANTIC:
+-----------
+Semantic OK! Symbol Table:
+{'l1': {'type': 'list', 'declared': True}, 'modList': {'type': 'list', 'declared': True}, 'l2': {'type': 'list', 'declared': True}, 'res': {'type': 'list', 'declared': True}}
+
+-----------
+ TAC:
+-----------
+('LIST', 'l1', [2.0, 4.0, 5.0, 6.0])
+('LISTOP', 't1', '%', 'l1', 2.0)
+('LIST', 'modList', 't1')
+('PRINT', 'modList')
+('LIST', 'l2', [3.0, 3.0])
+('SETOP', 't2', 'union', 'l1', 'l2')
+('LIST', 'res', 't2')
+('PRINT', 'res')
+
+-----------
+ Optimizer:
+-----------
+('LIST', 'l1', [2.0, 4.0, 5.0, 6.0])
+('LISTOP', 't1', '%', 'l1', 2.0)
+('LIST', 'modList', 't1')
+('PRINT', 't1')
+('LIST', 'l2', [3.0, 3.0])
+('SETOP', 't2', 'union', 'l1', 'l2')
+('LIST', 'res', 't2')
+('PRINT', 't2')
+
+-----------
+ Executer:
+-----------
+CODE:
+
+@ ──────────────────────────────────────────────────────────────────────────
+@ TEST 20: 
+@ Testing MOD operator
+@ ──────────────────────────────────────────────────────────────────────────
+
+list l1 = [2,4,5,6]
+list modList = l1 % 2
+print modList
+
+list l2 = [3,3]
+list res = l1 union l2
+
+print res
+
+
+
+OUTPUT:
+[0.0, 0.0, 1.0, 0.0]
+[2.0, 4.0, 5.0, 6.0, 3.0]
 
 ============================================================================
 ============================================================================

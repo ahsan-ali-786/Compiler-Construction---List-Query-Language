@@ -57,7 +57,7 @@ def lex(source):
                 tokens.append(Token('KEYWORD', value, line, col))
             else:
                 tokens.append(Token('ID', value, line, col))
-        elif kind in ('PLUS', 'MINUS', 'STAR', 'SLASH'):
+        elif kind in ('PLUS', 'MINUS', 'STAR', 'SLASH', 'MOD'):
             # Unify arithmetic operators as OP
             tokens.append(Token('OP', value, line, col))
         elif kind in ('GT', 'LT', 'COMP'):

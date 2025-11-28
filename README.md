@@ -6,16 +6,16 @@ A small domain-specific language for **list operations, arithmetic, bitwise, and
 
 ## **Table of Contents**
 
-- [Features](#features)  
-- [Syntax](#syntax)  
-- [Comments](#comments)  
-- [List Operations](#list-operations)  
-- [Arithmetic & Bitwise Rules](#arithmetic--bitwise-rules)  
-- [Map Operation](#map-operation)  
-- [Filter Operation](#filter-operation)  
-- [Sort Operation](#sort-operation)  
-- [Print Statement](#print-statement)  
-- [Examples](#examples)  
+- [Features](#features)
+- [Syntax](#syntax)
+- [Comments](#comments)
+- [List Operations](#list-operations)
+- [Arithmetic & Bitwise Rules](#arithmetic--bitwise-rules)
+- [Map Operation](#map-operation)
+- [Filter Operation](#filter-operation)
+- [Sort Operation](#sort-operation)
+- [Print Statement](#print-statement)
+- [Examples](#examples)
 
 ---
 
@@ -35,9 +35,10 @@ A small domain-specific language for **list operations, arithmetic, bitwise, and
 ## **Syntax**
 
 ### List Declaration
+
 ```lql
 list name = [1, 2, 3]
-````
+```
 
 ### List Assignment
 
@@ -47,11 +48,11 @@ otherList = name
 
 ### Arithmetic / Bitwise Operators
 
-* Arithmetic: `+`, `-`, `*`, `/`, `%`
-* Bitwise: `&`, `|`, `^`
-* Scalar-list operations allowed.
-* List-list operations must have **same length**.
-* List-literal operations must have **same length**.
+- Arithmetic: `+`, `-`, `*`, `/`, `%`
+- Bitwise: `and`, `or`, `xor`
+- Scalar-list operations allowed.
+- List-list operations must have **same length**.
+- List-literal operations must have **same length**.
 
 ### Set Operations
 
@@ -61,8 +62,8 @@ listA intersection listB
 listA difference listB
 ```
 
-* Operands must be lists of equal length.
-* Produces a list of the same length.
+- Operands must be lists of equal length.
+- Produces a list of the same length.
 
 ### Map Operation
 
@@ -70,9 +71,9 @@ listA difference listB
 map listName $0 => expression
 ```
 
-* `$0` refers to the current element.
-* Expression can use arithmetic, bitwise, or scalar operations.
-* Returns a new list of same length as input.
+- `$0` refers to the current element.
+- Expression can use arithmetic, bitwise, or scalar operations.
+- Returns a new list of same length as input.
 
 ### Filter Operation
 
@@ -80,8 +81,8 @@ map listName $0 => expression
 filter listName > 5
 ```
 
-* Only scalar comparisons allowed: `==`, `!=`, `>`, `>=`, `<`, `<=`.
-* Returns a new list with elements satisfying the condition.
+- Only scalar comparisons allowed: `==`, `!=`, `>`, `>=`, `<`, `<=`.
+- Returns a new list with elements satisfying the condition.
 
 ### Sort Operation
 
@@ -90,7 +91,7 @@ sort listName asc
 sort listName desc
 ```
 
-* Sorts numeric lists in ascending or descending order.
+- Sorts numeric lists in ascending or descending order.
 
 ### Print Statement
 
@@ -100,13 +101,13 @@ print mean listName
 print sum listName
 ```
 
-* Supports **statistical functions**: `mean`, `sum`, `median`, `variance`, `std`, `min`, `max`, `count`.
+- Supports **statistical functions**: `mean`, `sum`, `median`, `variance`, `std`, `min`, `max`, `count`.
 
 ---
 
 ## **Comments**
 
-* Use `@` for single-line comments:
+- Use `@` for single-line comments:
 
 ```lql
 list numbers = [1,2,3]   @ this is a comment
@@ -118,44 +119,44 @@ list numbers = [1,2,3]   @ this is a comment
 
 1. **Numbers**
 
-   * Integers, floats, negative numbers supported.
-   * Division `/` returns floating-point.
-   * Modulus `%` is supported.
+   - Integers, floats, negative numbers supported.
+   - Division `/` returns floating-point.
+   - Modulus `%` is supported.
 
 2. **Bitwise**
 
-   * Operands are converted to integers.
-   * Scalar-list and list-list element-wise operations allowed.
+   - Operands are converted to integers.
+   - Scalar-list and list-list element-wise operations allowed.
 
 3. **Arithmetic / List Operations**
 
-   * Scalar ⟷ List: element-wise arithmetic allowed.
-   * List ⟷ List: lengths must match.
-   * List ⟷ Literal array: lengths must match.
+   - Scalar ⟷ List: element-wise arithmetic allowed.
+   - List ⟷ List: lengths must match.
+   - List ⟷ Literal array: lengths must match.
 
 4. **Set Operations**
 
-   * Lists must be equal length.
-   * Element-wise operation.
+   - Lists can be of varaible length.
+   - Supports `union`, `intersection`, `difference` operators.
 
 5. **Map**
 
-   * `$0` references the current element.
-   * Result list has same length as input.
+   - `$0` references the current element.
+   - Result list has same length as input.
 
 6. **Filter**
 
-   * Scalar comparison only.
-   * Resulting list may have fewer elements.
+   - Scalar comparison only.
+   - Resulting list may have fewer elements.
 
 7. **Sort**
 
-   * Only numeric lists.
-   * Can sort ascending or descending.
+   - Only numeric lists.
+   - Can sort ascending or descending.
 
 8. **Assignment**
 
-   * Lists assigned must respect length rules for element-wise operations.
+   - Lists assigned must respect length rules for element-wise operations.
 
 ---
 
@@ -186,19 +187,4 @@ print result
 list bits = [1,2,3]
 list masked = map bits $0 => $0 & 2
 print masked
-```
-
----
-
-## **License**
-
-This project is open-source under the MIT License.
-
-```
-
----
-
-If you want, I can also **add a visual cheat-sheet section** at the bottom showing **all operators, keywords, and functions in one table** for quick reference.  
-
-Do you want me to do that?
 ```
