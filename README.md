@@ -30,7 +30,7 @@ docker-compose up
 ```
 - Access the frontend at:
 
-```http
+```
 http://localhost:5173
 ```
 
