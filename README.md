@@ -6,6 +6,7 @@ A small domain-specific language for **list operations, arithmetic, bitwise, and
 
 ## **Table of Contents**
 
+- [Project-Setup](#project-setup)
 - [Features](#features)
 - [Syntax](#syntax)
 - [Comments](#comments)
@@ -16,6 +17,21 @@ A small domain-specific language for **list operations, arithmetic, bitwise, and
 - [Sort Operation](#sort-operation)
 - [Print Statement](#print-statement)
 - [Examples](#examples)
+
+---
+
+## **Project-Setup**
+
+- Run these commands:
+
+```docker
+docker-compose build
+docker-compose up
+```
+
+---
+
+---
 
 ---
 
