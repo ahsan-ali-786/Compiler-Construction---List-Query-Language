@@ -31,10 +31,6 @@ docker-compose up
 
 ---
 
----
-
----
-
 ## **Features**
 
 - Supports **lists of integers and floats**.
