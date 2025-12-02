@@ -1,0 +1,8 @@
+=> Start of Language can be one of the following keywords:
+    - print
+    - sort
+    - list
+
+
+=> Our Semantic Analyzer checks:
+
