@@ -104,6 +104,8 @@ print mean sq
 list l1 = [2,4,5,6]
 list l2 = [3,3]
 list res = l1 union l2 union [0,9,8,7]
+print res
+sort res desc
 print res`);
 
   const handleRun = () => onRun(code);
