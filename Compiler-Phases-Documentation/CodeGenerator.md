@@ -238,7 +238,7 @@ dump_memory() prints all stored variables for debugging.
 Example output:
 
 MEMORY DUMP 
-a = [1, 3, 5]
-b = [2, 4, 6]
-t1 = [3, 7]
-mean_val = 5.0
+- a = [1, 3, 5]
+- b = [2, 4, 6]
+- t1 = [3, 7]
+- mean_val = 5.0
